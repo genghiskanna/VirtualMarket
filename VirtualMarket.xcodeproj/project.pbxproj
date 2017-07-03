@@ -8,22 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		FC7E82501F0961C5001333A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E824F1F0961C5001333A5 /* AppDelegate.swift */; };
-		FC7E82521F0961C5001333A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E82511F0961C5001333A5 /* ViewController.swift */; };
 		FC7E82551F0961C5001333A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7E82531F0961C5001333A5 /* Main.storyboard */; };
 		FC7E82581F0961C5001333A5 /* VirtualMarket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC7E82561F0961C5001333A5 /* VirtualMarket.xcdatamodeld */; };
 		FC7E825A1F0961C5001333A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC7E82591F0961C5001333A5 /* Assets.xcassets */; };
 		FC7E825D1F0961C5001333A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7E825B1F0961C5001333A5 /* LaunchScreen.storyboard */; };
+		FC7E82651F096A6A001333A5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E82641F096A6A001333A5 /* Colors.swift */; };
+		FC7E82681F096C72001333A5 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E82671F096C72001333A5 /* HomeScreenViewController.swift */; };
+		FC7E826B1F096CD1001333A5 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E826A1F096CD1001333A5 /* CustomNavigationBar.swift */; };
+		FC7E826D1F096DC0001333A5 /* CurrentSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E826C1F096DC0001333A5 /* CurrentSettings.swift */; };
+		FCF29C141F09FF3300965D83 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C131F09FF3300965D83 /* FloatingView.swift */; };
+		FCF29C161F0A048700965D83 /* OrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C151F0A048700965D83 /* OrderView.xib */; };
+		FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C181F0A49AC00965D83 /* StockDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FC7E824C1F0961C5001333A5 /* VirtualMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7E824F1F0961C5001333A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC7E82511F0961C5001333A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC7E82541F0961C5001333A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC7E82571F0961C5001333A5 /* VirtualMarket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualMarket.xcdatamodel; sourceTree = "<group>"; };
 		FC7E82591F0961C5001333A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC7E825C1F0961C5001333A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC7E825E1F0961C5001333A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC7E82641F096A6A001333A5 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = Design/Colors.swift; sourceTree = "<group>"; };
+		FC7E82671F096C72001333A5 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewController.swift; path = ViewControllers/HomeScreenViewController.swift; sourceTree = "<group>"; };
+		FC7E826A1F096CD1001333A5 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNavigationBar.swift; path = Design/CustomNavigationBar.swift; sourceTree = "<group>"; };
+		FC7E826C1F096DC0001333A5 /* CurrentSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentSettings.swift; path = Settings/CurrentSettings.swift; sourceTree = "<group>"; };
+		FCF29C131F09FF3300965D83 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatingView.swift; path = Design/FloatingView.swift; sourceTree = "<group>"; };
+		FCF29C151F0A048700965D83 /* OrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderView.xib; path = Design/xib/OrderView.xib; sourceTree = "<group>"; };
+		FCF29C181F0A49AC00965D83 /* StockDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockDetails.swift; path = API/StockDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +69,52 @@
 			isa = PBXGroup;
 			children = (
 				FC7E824F1F0961C5001333A5 /* AppDelegate.swift */,
-				FC7E82511F0961C5001333A5 /* ViewController.swift */,
 				FC7E82531F0961C5001333A5 /* Main.storyboard */,
-				FC7E82591F0961C5001333A5 /* Assets.xcassets */,
-				FC7E825B1F0961C5001333A5 /* LaunchScreen.storyboard */,
-				FC7E825E1F0961C5001333A5 /* Info.plist */,
+				FCF29C181F0A49AC00965D83 /* StockDetails.swift */,
+				FCF29C131F09FF3300965D83 /* FloatingView.swift */,
+				FC7E82691F096C79001333A5 /* ViewControllers */,
+				FC7E82661F096C23001333A5 /* Design */,
+				FCF29C101F09E91000965D83 /* SupportingFiles */,
 				FC7E82561F0961C5001333A5 /* VirtualMarket.xcdatamodeld */,
 			);
 			path = VirtualMarket;
+			sourceTree = "<group>";
+		};
+		FC7E82661F096C23001333A5 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				FCF29C171F0A048E00965D83 /* xib */,
+				FC7E82641F096A6A001333A5 /* Colors.swift */,
+				FC7E826A1F096CD1001333A5 /* CustomNavigationBar.swift */,
+				FC7E826C1F096DC0001333A5 /* CurrentSettings.swift */,
+			);
+			name = Design;
+			sourceTree = "<group>";
+		};
+		FC7E82691F096C79001333A5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC7E82671F096C72001333A5 /* HomeScreenViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FCF29C101F09E91000965D83 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FC7E82591F0961C5001333A5 /* Assets.xcassets */,
+				FC7E825B1F0961C5001333A5 /* LaunchScreen.storyboard */,
+				FC7E825E1F0961C5001333A5 /* Info.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FCF29C171F0A048E00965D83 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				FCF29C151F0A048700965D83 /* OrderView.xib */,
+			);
+			name = xib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC7E825D1F0961C5001333A5 /* LaunchScreen.storyboard in Resources */,
+				FCF29C161F0A048700965D83 /* OrderView.xib in Resources */,
 				FC7E825A1F0961C5001333A5 /* Assets.xcassets in Resources */,
 				FC7E82551F0961C5001333A5 /* Main.storyboard in Resources */,
 			);
@@ -140,9 +191,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC7E82521F0961C5001333A5 /* ViewController.swift in Sources */,
+				FC7E826D1F096DC0001333A5 /* CurrentSettings.swift in Sources */,
+				FC7E82651F096A6A001333A5 /* Colors.swift in Sources */,
+				FCF29C141F09FF3300965D83 /* FloatingView.swift in Sources */,
+				FC7E82681F096C72001333A5 /* HomeScreenViewController.swift in Sources */,
 				FC7E82581F0961C5001333A5 /* VirtualMarket.xcdatamodeld in Sources */,
 				FC7E82501F0961C5001333A5 /* AppDelegate.swift in Sources */,
+				FC7E826B1F096CD1001333A5 /* CustomNavigationBar.swift in Sources */,
+				FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +366,7 @@
 				FC7E82631F0961C5001333A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
