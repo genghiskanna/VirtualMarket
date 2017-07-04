@@ -1,0 +1,1782 @@
+[
+  {
+    "Symbol": "XXII",
+    "Name": "22nd Century Group, Inc",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "FAX",
+    "Name": "Aberdeen Asia-Pacific Income Fund Inc",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "IAF",
+    "Name": "Aberdeen Australia Equity Fund Inc",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "CH",
+    "Name": "Aberdeen Chile Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ABE",
+    "Name": "Aberdeen Emerging Markets Smaller Company Opportunities Fund I",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "FCO",
+    "Name": "Aberdeen Global Income Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "IF",
+    "Name": "Aberdeen Indonesia Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ISL",
+    "Name": "Aberdeen Israel Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ACU",
+    "Name": "Acme United Corporation.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "ATNM",
+    "Name": "Actinium Pharmaceuticals, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "AE",
+    "Name": "Adams Resources & Energy, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "ADK",
+    "Name": "Adcare Health Systems Inc",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "ADK^A",
+    "Name": "Adcare Health Systems Inc",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ACY",
+    "Name": "AeroCentury Corp.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "AIRI",
+    "Name": "Air Industries Group",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "AXU",
+    "Name": "Alexco Resource Corp",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "ALO",
+    "Name": "Alio Gold Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "AAU",
+    "Name": "Almaden Minerals, Ltd.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "APT",
+    "Name": "Alpha Pro Tech, Ltd.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "AAMC",
+    "Name": "Altisource Asset Management Corp",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "DIT",
+    "Name": "AMCON Distributing Company",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "ALN",
+    "Name": "American Lorain Corporation",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "AMS",
+    "Name": "American Shared Hospital Services",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "USAS",
+    "Name": "Americas Silver Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "AMPE",
+    "Name": "Ampio Pharmaceuticals, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "APHB",
+    "Name": "AmpliPhi Biosciences Corporation",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "AXN",
+    "Name": "Aoxing Pharmaceutical Company, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "ARNC^",
+    "Name": "Arconic Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "AKG",
+    "Name": "Asanko Gold Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "AINC",
+    "Name": "Ashford Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "ASB.WS",
+    "Name": "Associated Banc-Corp",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "AST",
+    "Name": "Asterias Biotherapeutics, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "AST.WS",
+    "Name": "Asterias Biotherapeutics, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "AUXO",
+    "Name": "Auxilio, Inc.",
+    "Sector": "Miscellaneous"
+  },
+  {
+    "Symbol": "AWX",
+    "Name": "Avalon Holdings Corporation",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "ASM",
+    "Name": "Avino Silver",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "BTG",
+    "Name": "B2Gold Corp",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "BTN",
+    "Name": "Ballantyne Strong, Inc",
+    "Sector": "Miscellaneous"
+  },
+  {
+    "Symbol": "BKJ",
+    "Name": "Bancorp of New Jersey, Inc",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "BCV",
+    "Name": "Bancroft Fund Limited",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BCV^A",
+    "Name": "Bancroft Fund Limited",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BAA",
+    "Name": "BANRO CORPORATION",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "BHB",
+    "Name": "Bar Harbor Bankshares, Inc.",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "BRN",
+    "Name": "Barnwell Industries, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "BGSF",
+    "Name": "BG Staffing Inc",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "BPMX",
+    "Name": "BioPharmX Corporation",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "BTX",
+    "Name": "BioTime, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "BTX.WS",
+    "Name": "BioTime, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BGI",
+    "Name": "Birks Group Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "BZM",
+    "Name": "BlackRock Maryland Municipal Bond Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "MHE",
+    "Name": "BlackRock Massachusetts Tax-Exempt Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BLE",
+    "Name": "BlackRock Municipal Income Trust II",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BLJ",
+    "Name": "Blackrock New Jersey Municipal Bond Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BFY",
+    "Name": "BlackRock New York Municipal Income Trust II",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BHV",
+    "Name": "BlackRock Virginia Municipal Bond Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BDR",
+    "Name": "Blonder Tongue Laboratories, Inc.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "BRG",
+    "Name": "Bluerock Residential Growth REIT, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "BRG^A",
+    "Name": "Bluerock Residential Growth REIT, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BRG^C",
+    "Name": "Bluerock Residential Growth REIT, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BRG^D",
+    "Name": "Bluerock Residential Growth REIT, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BVX",
+    "Name": "Bovie Medical Corporation",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "BWL.A",
+    "Name": "Bowl America, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BTI",
+    "Name": "British American Tobacco p.l.c.",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "CEI",
+    "Name": "Camber Energy, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "CANF",
+    "Name": "Can-Fite Biopharma Ltd",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "ROX",
+    "Name": "Castle Brands, Inc.",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "CAW",
+    "Name": "CCA Industries, Inc.",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "CVM",
+    "Name": "Cel-Sci Corporation",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "CVM.WS",
+    "Name": "Cel-Sci Corporation",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "CEF",
+    "Name": "Central Fund of Canada Limited",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "CET",
+    "Name": "Central Securities Corporation",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "LEU",
+    "Name": "Centrus Energy Corp.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "CCF",
+    "Name": "Chase Corporation",
+    "Sector": "Consumer Durables"
+  },
+  {
+    "Symbol": "CQH",
+    "Name": "Cheniere Energy Partners LP Holdings, LLC",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "CQP",
+    "Name": "Cheniere Energy Partners, LP",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "LNG",
+    "Name": "Cheniere Energy, Inc.",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "CVR",
+    "Name": "Chicago Rivet & Machine Co.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "CPHI",
+    "Name": "China Pharma Holdings, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "CKX",
+    "Name": "CKX Lands, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "GLV",
+    "Name": "Clough Global Dividend and Income Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "GLQ",
+    "Name": "Clough Global Equity Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "GLO",
+    "Name": "Clough Global Opportunities Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "MOC",
+    "Name": "Command Security Corporation",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "CIX",
+    "Name": "CompX International Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "LODE",
+    "Name": "Comstock Mining, Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "CTO",
+    "Name": "Consolidated-Tomoka Land Co.",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "MCF",
+    "Name": "Contango Oil & Gas Company",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "CUO",
+    "Name": "Continental Materials Corporation",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "CMT",
+    "Name": "Core Molding Technologies Inc",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "CVRS",
+    "Name": "Corindus Vascular Robotics, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "CRMD",
+    "Name": "CorMedix Inc",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "CRF",
+    "Name": "Cornerstone Strategic Return Fund, Inc. (The)",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "CLM",
+    "Name": "Cornerstone Strategic Value Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "CVU",
+    "Name": "CPI Aerostructures, Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "CIK",
+    "Name": "Credit Suisse Asset Management Income Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "DHY",
+    "Name": "Credit Suisse High Yield Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "CRHM",
+    "Name": "CRH Medical Corporation",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "CRVP",
+    "Name": "Crystal Rock Holdings, Inc.",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "DXR",
+    "Name": "Daxor Corporation",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "VCF",
+    "Name": "Delaware Investments Colorado Municipal Income Fund, Inc",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "VFL",
+    "Name": "Delaware Investments Florida Insured Municipal Income Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "VMM",
+    "Name": "Delaware Investments Minnesota Municipal Income Fund II, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "DLA",
+    "Name": "Delta Apparel, Inc.",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "DNN",
+    "Name": "Denison Mine Corp",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "DGSE",
+    "Name": "DGSE Companies, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "DPW",
+    "Name": "Digital Power Corporation",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "DSS",
+    "Name": "Document Security Systems, Inc.",
+    "Sector": "Consumer Durables"
+  },
+  {
+    "Symbol": "DMF",
+    "Name": "Dreyfus Municipal Income, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "GRF",
+    "Name": "Eagle Capital Growth Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EVM",
+    "Name": "Eaton Vance California Municipal Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EIA",
+    "Name": "Eaton Vance California Municipal Bond Fund II",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "CEV",
+    "Name": "Eaton Vance California Municipal Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EVV",
+    "Name": "Eaton Vance Limited Duration Income Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "MAB",
+    "Name": "Eaton Vance Massachusetts Municipal Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "MMV",
+    "Name": "Eaton Vance Massachusetts Municipal Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "MIW",
+    "Name": "Eaton Vance Michigan Municipal Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EMI",
+    "Name": "Eaton Vance Michigan Municipal Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EIM",
+    "Name": "Eaton Vance Municipal Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EIV",
+    "Name": "Eaton Vance Municipal Bond Fund II",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EMJ",
+    "Name": "Eaton Vance New Jersey Municipal Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EVJ",
+    "Name": "Eaton Vance New Jersey Municipal Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ENX",
+    "Name": "Eaton Vance New York Municipal Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NYH",
+    "Name": "Eaton Vance New York Municipal Bond Fund II",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EVY",
+    "Name": "Eaton Vance New York Municipal Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EIO",
+    "Name": "Eaton Vance Ohio Municipal Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EVO",
+    "Name": "Eaton Vance Ohio Municipal Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EIP",
+    "Name": "Eaton Vance Pennsylvania Municipal Bond Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EVP",
+    "Name": "Eaton Vance Pennsylvania Municipal Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ELMD",
+    "Name": "Electromed, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "ELLO",
+    "Name": "Ellomay Capital Ltd.",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "ECF",
+    "Name": "Ellsworth Growth and Income Fund Ltd.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EMAN",
+    "Name": "eMagin Corporation",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "MSN",
+    "Name": "Emerson Radio Corporation",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "UUUU",
+    "Name": "Energy Fuels Inc",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "UUUU.WS",
+    "Name": "Energy Fuels Inc",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ENRJ",
+    "Name": "EnerJex Resources, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "ENSV",
+    "Name": "ENSERVCO Corporation",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "ESNC",
+    "Name": "EnSync, Inc.",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "EGI",
+    "Name": "Entree Resources Ltd.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "EVI",
+    "Name": "EnviroStarm, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "ERN",
+    "Name": "Erin Energy Corp.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "ESP",
+    "Name": "Espey Mfg. & Electronics Corp.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "EMX",
+    "Name": "Eurasian Minerals Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "EVBN",
+    "Name": "Evans Bancorp, Inc.",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "EPM",
+    "Name": "Evolution Petroleum Corporation, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "XRA",
+    "Name": "Exeter Resource Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "FPP",
+    "Name": "FieldPoint Petroleum Corporation",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "FPP.WS",
+    "Name": "FieldPoint Petroleum Corporation",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "FEN",
+    "Name": "First Trust Energy Income and Growth Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "BDL",
+    "Name": "Flanigan&#39;s Enterprises, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "FSI",
+    "Name": "Flexible Solutions International Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "FTF",
+    "Name": "Franklin Limited Duration Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "FSP",
+    "Name": "Franklin Street Properties Corp.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "FRD",
+    "Name": "Friedman Industries Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "GGN",
+    "Name": "GAMCO Global Gold, Natural Reources & Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "GGN^B",
+    "Name": "GAMCO Global Gold, Natural Reources & Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "EGAS",
+    "Name": "Gas Natural Inc.",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "GST",
+    "Name": "Gastar Exploration Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "GST^A",
+    "Name": "Gastar Exploration Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "GST^B",
+    "Name": "Gastar Exploration Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "JOB",
+    "Name": "GEE Group Inc.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "GMO",
+    "Name": "General Moly, Inc",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "GSB",
+    "Name": "GlobalSCAPE, Inc.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "GSAT",
+    "Name": "Globalstar, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "GLOW",
+    "Name": "Glowpoint, Inc.",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "GORO",
+    "Name": "Gold Resource Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "GSV",
+    "Name": "Gold Standard Ventures Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "AUMN",
+    "Name": "Golden Minerals Company",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "GSS",
+    "Name": "Golden Star Resources, Ltd",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "GV",
+    "Name": "Goldfield Corporation (The)",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "GDP",
+    "Name": "Goodrich Petroleum Corporation",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "GTE",
+    "Name": "Gran Tierra Energy Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "GPL",
+    "Name": "Great Panther Silver Limited",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "SIM",
+    "Name": "Grupo Simec, S.A. de C.V.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "GVP",
+    "Name": "GSE Systems, Inc.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "HEB",
+    "Name": "Hemispherx BioPharma, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "HCAC.U",
+    "Name": "Hennessy Capital Acquisition Corp. III",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "HLM^",
+    "Name": "Hillman Group Capital Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "HMG",
+    "Name": "HMG/Courtland Properties, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "HUSA",
+    "Name": "Houston American Energy Corporation",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "IBIO",
+    "Name": "iBio, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "IBO",
+    "Name": "IBO (Listing Market - NYSE Amex Network B F)",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "IEC",
+    "Name": "IEC Electronics Corp.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "IMUC",
+    "Name": "ImmunoCellular Therapeutics, Ltd.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "IMUC.WS",
+    "Name": "ImmunoCellular Therapeutics, Ltd.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "IMH",
+    "Name": "Impac Mortgage Holdings, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "IMO",
+    "Name": "Imperial Oil Limited",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "IRT",
+    "Name": "Independence Realty Trust, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "IGC",
+    "Name": "India Globalization Capital Inc.",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "INFU",
+    "Name": "InfuSystems Holdings, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "IHT",
+    "Name": "InnSuites Hospitality Trust",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "NSPR",
+    "Name": "InspireMD, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "NSPR.WS",
+    "Name": "InspireMD, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NSPR.WS.B",
+    "Name": "InspireMD, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "IFMI",
+    "Name": "Institutional Financial Markets, Inc.",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "IDN",
+    "Name": "Intellicheck, Inc.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "INS",
+    "Name": "Intelligent Systems Corporation",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "THM",
+    "Name": "International Tower Hill Mines Ltd",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "INTT",
+    "Name": "inTest Corporation",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "INUV",
+    "Name": "Inuvo, Inc",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "VKI",
+    "Name": "Invesco Advantage Municipal Income Trust II",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ISR",
+    "Name": "IsoRay, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "ISDR",
+    "Name": "Issuer Direct Corporation",
+    "Sector": "Miscellaneous"
+  },
+  {
+    "Symbol": "JRJR",
+    "Name": "JRjr33, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "KIQ",
+    "Name": "Kelso Technologies Inc",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "KLDX",
+    "Name": "Klondex Mines Ltd.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "LTS",
+    "Name": "Ladenburg Thalmann Financial Services Inc",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "LTS^A",
+    "Name": "Ladenburg Thalmann Financial Services Inc",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "LAQ",
+    "Name": "Latin America Equity Fund, Inc. (The)",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "LGL",
+    "Name": "LGL Group, Inc. (The)",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "LBY",
+    "Name": "Libbey, Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "LLEX",
+    "Name": "Lilis Energy, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "LIQT",
+    "Name": "LiqTech International, Inc.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "MAG",
+    "Name": "MAG Silver Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "MJCO",
+    "Name": "Majesco",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "MHH",
+    "Name": "Mastech Digital, Inc",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "MTNB",
+    "Name": "Matinas Biopharma Holdings, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "IPB",
+    "Name": "Merrill Lynch & Co., Inc.",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "MXC",
+    "Name": "Mexco Energy Corporation",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "CCA",
+    "Name": "MFS California Insured Municipal Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "MICR",
+    "Name": "Micron Solutions, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "MLSS",
+    "Name": "Milestone Scientific, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "MVF",
+    "Name": "MuniVest Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "MZA",
+    "Name": "MuniYield Arizona Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "MYO",
+    "Name": "Myomo Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "NNVC",
+    "Name": "NanoViricides, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "ATEST",
+    "Name": "NASDAQ TEST STOCK",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ATEST.A",
+    "Name": "NASDAQ TEST STOCK",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ATEST.B",
+    "Name": "NASDAQ TEST STOCK",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ATEST.C",
+    "Name": "NASDAQ TEST STOCK",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NHC",
+    "Name": "National HealthCare Corporation",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "NAVB",
+    "Name": "Navidea Biopharmaceuticals, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "NTIP",
+    "Name": "Network-1 Technologies, Inc.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "NBW",
+    "Name": "Neuberger Berman California Intermediate Municipal Fund Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NHS",
+    "Name": "Neuberger Berman High Yield Strategies Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NBH",
+    "Name": "Neuberger Berman Intermediate Municipal Fund Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NML",
+    "Name": "Neuberger Berman MLP Income Fund Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NBO",
+    "Name": "Neuberger Berman New York Intermediate Municipal Fund Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NRO",
+    "Name": "Neuberger Berman Real Estate Securities Income Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "UWN",
+    "Name": "Nevada Gold & Casinos, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "NSU",
+    "Name": "Nevsun Resources Ltd",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "GBR",
+    "Name": "New Concept Energy, Inc",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "NEN",
+    "Name": "New England Realty Associates Limited Partnership",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "NGD",
+    "Name": "New Gold Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "NXE",
+    "Name": "Nexgen Energy Ltd.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "HLTH",
+    "Name": "Nobilis Health Corp.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "NSAT",
+    "Name": "Norsat International Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "NAK",
+    "Name": "Northern Dynasty Minerals, Ltd.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "NOG",
+    "Name": "Northern Oil and Gas, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "NBY",
+    "Name": "NovaBay Pharmaceuticals, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "NG",
+    "Name": "Novagold Resources Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "NTN",
+    "Name": "NTN Buzztime, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "NJV",
+    "Name": "Nuveen New Jersey Municipal Value Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "NPN",
+    "Name": "Nuveen Pennsylvania Municipal Value Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "OCX",
+    "Name": "OncoCyte Corporation",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "OGEN",
+    "Name": "Oragenics, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "TIS",
+    "Name": "Orchids Paper Products Company",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "ONP",
+    "Name": "Orient Paper, Inc.",
+    "Sector": "Consumer Durables"
+  },
+  {
+    "Symbol": "ORM",
+    "Name": "Owens Realty Mortgage, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "PHF",
+    "Name": "Pacholder High Yield Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PCG^A",
+    "Name": "Pacific Gas & Electric Co.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PCG^B",
+    "Name": "Pacific Gas & Electric Co.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PCG^C",
+    "Name": "Pacific Gas & Electric Co.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PCG^D",
+    "Name": "Pacific Gas & Electric Co.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PCG^E",
+    "Name": "Pacific Gas & Electric Co.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PCG^G",
+    "Name": "Pacific Gas & Electric Co.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PCG^H",
+    "Name": "Pacific Gas & Electric Co.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PCG^I",
+    "Name": "Pacific Gas & Electric Co.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PTN",
+    "Name": "Palatin Technologies, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "PARR",
+    "Name": "Par Pacific Holdings, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "PZG",
+    "Name": "Paramount Gold Nevada Corp.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "TEUM",
+    "Name": "Pareteum Corporation",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "PRK",
+    "Name": "Park National Corporation",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "PED",
+    "Name": "Pedevco Corp.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "PFNX",
+    "Name": "Pfenex Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "HNW",
+    "Name": "Pioneer Diversified High Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PLG",
+    "Name": "Platinum Group Metals Ltd.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "PLYM",
+    "Name": "Plymouth Industrial REIT, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "PLM",
+    "Name": "Polymet Mining Corp.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "PW",
+    "Name": "Power REIT",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "PW^A",
+    "Name": "Power REIT",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "PLX",
+    "Name": "Protalix BioTherapeutics, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "RLGT",
+    "Name": "Radiant Logistics, Inc.",
+    "Sector": "Transportation"
+  },
+  {
+    "Symbol": "RLGT^A",
+    "Name": "Radiant Logistics, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "UTG",
+    "Name": "Reaves Utility Income Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "REED",
+    "Name": "Reeds, Inc.",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "RWC",
+    "Name": "RELM Wireless Corporation",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "RCG",
+    "Name": "RENN Fund, Inc.",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "RVP",
+    "Name": "Retractable Technologies, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "RNN",
+    "Name": "Rexahn Pharmaceuticals, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "REI",
+    "Name": "Ring Energy, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "RIF",
+    "Name": "RMR Real Estate Income Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "SACH",
+    "Name": "Sachem Capital Corp.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "SGA",
+    "Name": "Saga Communications, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "SSN",
+    "Name": "Samson Oil & Gas Limited",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "SNMP",
+    "Name": "Sanchez Midstream Partners LP",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "SAND",
+    "Name": "Sandstorm Gold Ltd",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "SEB",
+    "Name": "Seaboard Corporation",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "SENS",
+    "Name": "Senseonics Holdings, Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "SVT",
+    "Name": "Servotronics, Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "SIF",
+    "Name": "SIFCO Industries, Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "SVM",
+    "Name": "Silvercorp Metals Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "SKY",
+    "Name": "Skyline Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "XPL",
+    "Name": "Solitario Exploration & Royalty Corp",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "SCE^B",
+    "Name": "Southern California Edison Company",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "SCE^C",
+    "Name": "Southern California Edison Company",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "SCE^D",
+    "Name": "Southern California Edison Company",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "SCE^E",
+    "Name": "Southern California Edison Company",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "SGB",
+    "Name": "Southwest Georgia Financial Corporation",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "LOV",
+    "Name": "Spark Networks, Inc.",
+    "Sector": "Miscellaneous"
+  },
+  {
+    "Symbol": "SRCI",
+    "Name": "SRC Energy Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "SGY.WS",
+    "Name": "Stone Energy Corporation",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "STRP",
+    "Name": "Straight Path Communications Inc.",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "SSY",
+    "Name": "SunLink Health Systems, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "SDPI",
+    "Name": "Superior Drilling Products, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "STS",
+    "Name": "Supreme Industries, Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "SYN",
+    "Name": "Synthetic Biologics, Inc",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "TKAT",
+    "Name": "Takung Art Co., Ltd.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "TRX",
+    "Name": "Tanzanian Royalty Exploration Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "TGB",
+    "Name": "Taseko Mines Limited",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "TIK",
+    "Name": "Tel-Instrument Electronics Corp.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "TGC",
+    "Name": "Tengasco, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "GLU",
+    "Name": "The Gabelli Global Utility and Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "GLU^A",
+    "Name": "The Gabelli Global Utility and Income Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "GGO",
+    "Name": "The Gabelli Go Anywhere Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "GGO^A",
+    "Name": "The Gabelli Go Anywhere Trust",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "TXMD",
+    "Name": "TherapeuticsMD, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "TMP",
+    "Name": "Tompkins Financial Corporation",
+    "Sector": "Finance"
+  },
+  {
+    "Symbol": "TAT",
+    "Name": "Transatlantic Petroleum Ltd",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "TRXC",
+    "Name": "TransEnterix, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "TMQ",
+    "Name": "Trilogy Metals Inc.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "TPHS",
+    "Name": "Trinity Place Holdings Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "TRT",
+    "Name": "Trio-Tech International",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "HTM",
+    "Name": "U.S. Geothermal Inc.",
+    "Sector": "Public Utilities"
+  },
+  {
+    "Symbol": "UFAB",
+    "Name": "Unique Fabricating, Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "UAMY",
+    "Name": "United States Antimony Corporation",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "UUU",
+    "Name": "Universal Security Instruments, Inc.",
+    "Sector": "Consumer Non-Durables"
+  },
+  {
+    "Symbol": "UQM",
+    "Name": "UQM TECHNOLOGIES INC",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "URG",
+    "Name": "Ur Energy Inc",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "UEC",
+    "Name": "Uranium Energy Corp.",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "VSR",
+    "Name": "Versar, Inc.",
+    "Sector": "Consumer Services"
+  },
+  {
+    "Symbol": "VII",
+    "Name": "Vicon Industries, Inc.",
+    "Sector": "Consumer Durables"
+  },
+  {
+    "Symbol": "VHC",
+    "Name": "VirnetX Holding Corp",
+    "Sector": "Miscellaneous"
+  },
+  {
+    "Symbol": "VGZ",
+    "Name": "Vista Gold Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "VNRX",
+    "Name": "VolitionRX Limited",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "VISI",
+    "Name": "Volt Information Sciences, Inc.",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "EAD",
+    "Name": "Wells Fargo Income Opportunities Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ERC",
+    "Name": "Wells Fargo Multi-Sector Income Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "ERH",
+    "Name": "Wells Fargo Utilities and High Income Fund",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "SBI",
+    "Name": "Western Asset Intermediate Muni Fund Inc",
+    "Sector": "n/a"
+  },
+  {
+    "Symbol": "WRN",
+    "Name": "Western Copper and Gold Corporation",
+    "Sector": "Basic Industries"
+  },
+  {
+    "Symbol": "WYY",
+    "Name": "WidePoint Corporation",
+    "Sector": "Technology"
+  },
+  {
+    "Symbol": "WTT",
+    "Name": "Wireless Telecom Group,  Inc.",
+    "Sector": "Capital Goods"
+  },
+  {
+    "Symbol": "XTNT",
+    "Name": "Xtant Medical Holdings, Inc.",
+    "Sector": "Health Care"
+  },
+  {
+    "Symbol": "YUMA",
+    "Name": "Yuma Energy, Inc.",
+    "Sector": "Energy"
+  },
+  {
+    "Symbol": "ZDGE",
+    "Name": "Zedge, Inc.",
+    "Sector": "Technology"
+  }
+]
