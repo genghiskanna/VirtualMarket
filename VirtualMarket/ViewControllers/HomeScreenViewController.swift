@@ -21,6 +21,8 @@ class HomeScreenViewController: UIViewController {
         super.viewDidLoad()
         
         setLabelColor()
+        print("json")
+        
         
 
         
