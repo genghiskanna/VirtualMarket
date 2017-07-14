@@ -20,6 +20,7 @@
 		FC7E82681F096C72001333A5 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E82671F096C72001333A5 /* HomeScreenViewController.swift */; };
 		FC7E826B1F096CD1001333A5 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E826A1F096CD1001333A5 /* CustomNavigationBar.swift */; };
 		FC7E826D1F096DC0001333A5 /* CurrentSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E826C1F096DC0001333A5 /* CurrentSettings.swift */; };
+		FC9FA6E61F192BAA002435BC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FA6E51F192BAA002435BC /* Button.swift */; };
 		FCF29C141F09FF3300965D83 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C131F09FF3300965D83 /* FloatingView.swift */; };
 		FCF29C161F0A048700965D83 /* OrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C151F0A048700965D83 /* OrderView.xib */; };
 		FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C181F0A49AC00965D83 /* StockDetails.swift */; };
@@ -47,6 +48,7 @@
 		FC7E82671F096C72001333A5 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewController.swift; path = ViewControllers/HomeScreenViewController.swift; sourceTree = "<group>"; };
 		FC7E826A1F096CD1001333A5 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNavigationBar.swift; path = Design/CustomNavigationBar.swift; sourceTree = "<group>"; };
 		FC7E826C1F096DC0001333A5 /* CurrentSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentSettings.swift; path = Settings/CurrentSettings.swift; sourceTree = "<group>"; };
+		FC9FA6E51F192BAA002435BC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Design/Button.swift; sourceTree = "<group>"; };
 		FCF29C131F09FF3300965D83 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatingView.swift; path = Design/FloatingView.swift; sourceTree = "<group>"; };
 		FCF29C151F0A048700965D83 /* OrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderView.xib; path = Design/xib/OrderView.xib; sourceTree = "<group>"; };
 		FCF29C181F0A49AC00965D83 /* StockDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockDetails.swift; path = API/StockDetails.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				FC7E824F1F0961C5001333A5 /* AppDelegate.swift */,
 				FC7E82531F0961C5001333A5 /* Main.storyboard */,
+				FC9FA6E51F192BAA002435BC /* Button.swift */,
 				FCF29C1A1F0AAD9400965D83 /* API */,
 				FC7E82691F096C79001333A5 /* ViewControllers */,
 				FC7E82661F096C23001333A5 /* Design */,
@@ -317,6 +320,7 @@
 				FC7E826B1F096CD1001333A5 /* CustomNavigationBar.swift in Sources */,
 				FC4FDFD11F0C063D00CB09A1 /* SearchTableViewCell.swift in Sources */,
 				FC4FDFC91F0BC5E300CB09A1 /* TextField.swift in Sources */,
+				FC9FA6E61F192BAA002435BC /* Button.swift in Sources */,
 				FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
