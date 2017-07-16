@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>VirtualMarketKeyboard.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>FC7E824B1F0961C5001333A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FCA1D2311F19EE4500003264</key>
 		<dict>
 			<key>primary</key>
 			<true/>

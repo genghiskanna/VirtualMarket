@@ -26,7 +26,7 @@ import UIKit
         self.backgroundColor = CurrentSettings.getTheme()["light"]
         self.textColor = CurrentSettings.getTheme()["dark"]
         self.layer.borderColor = Colors.teal.cgColor
-        self.layer.borderWidth = 1.0
+        self.layer.borderWidth =  1.0
         self.layer.cornerRadius = 5.0
         self.tintColor = Colors.teal
         

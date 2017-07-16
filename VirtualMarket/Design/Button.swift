@@ -29,6 +29,7 @@ import UIKit
         layer.cornerRadius = 5.0
         
         titleLabel?.text = self.text
+        tintColor = Colors.light
         titleLabel?.textColor = Colors.light
         
     }

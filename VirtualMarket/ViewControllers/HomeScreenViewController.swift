@@ -17,6 +17,12 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var change: UILabel!
     
     
+    @IBOutlet weak var orderScrollView: UIScrollView!
+    @IBOutlet weak var newsScrollView: UIScrollView!
+    @IBOutlet weak var stockTableView: UITableView!
+    
+    @IBOutlet weak var segmentedControl2: SegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -10,6 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
+    @IBAction func closePressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     fileprivate var searchResultsGlobal: Dictionary<String,NSArray> = [:]
 
     @IBOutlet weak var navigationBar: CustomNavigationBar!
@@ -110,6 +114,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    @IBAction func prepareForUnwind(segue:UIStoryboardSegue){
+    
     }
 
     

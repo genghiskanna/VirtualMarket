@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		092D75F27B2E7FEF2F621254 /* Pods_VirtualMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335870C2DD4DDA0F0C48C9D /* Pods_VirtualMarket.framework */; };
+		FC1E7B411F19DBB300C3CAB9 /* QuantityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1E7B401F19DBB300C3CAB9 /* QuantityView.xib */; };
+		FC1E7B431F19DBCC00C3CAB9 /* CustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1E7B421F19DBCC00C3CAB9 /* CustomKeyboard.xib */; };
+		FC4E66491F1B337400458B92 /* ReportStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E66481F1B337400458B92 /* ReportStockTableViewCell.swift */; };
+		FC4E664E1F1B7BD700458B92 /* CoreDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E664D1F1B7BD700458B92 /* CoreDataAccess.swift */; };
 		FC4FDFC71F0BC4D000CB09A1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FDFC61F0BC4D000CB09A1 /* SearchViewController.swift */; };
 		FC4FDFC91F0BC5E300CB09A1 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FDFC81F0BC5E300CB09A1 /* TextField.swift */; };
 		FC4FDFD11F0C063D00CB09A1 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FDFD01F0C063D00CB09A1 /* SearchTableViewCell.swift */; };
@@ -21,6 +25,21 @@
 		FC7E826B1F096CD1001333A5 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E826A1F096CD1001333A5 /* CustomNavigationBar.swift */; };
 		FC7E826D1F096DC0001333A5 /* CurrentSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E826C1F096DC0001333A5 /* CurrentSettings.swift */; };
 		FC9FA6E61F192BAA002435BC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FA6E51F192BAA002435BC /* Button.swift */; };
+		FCA1D2271F19E03300003264 /* LimitPriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA1D2261F19E03300003264 /* LimitPriceView.xib */; };
+		FCA1D2291F19E04A00003264 /* ValidityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA1D2281F19E04A00003264 /* ValidityView.xib */; };
+		FCA1D22D1F19E07300003264 /* StopPrice.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA1D22C1F19E07300003264 /* StopPrice.xib */; };
+		FCA1D23F1F19F28300003264 /* QuickNewsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA1D23E1F19F28300003264 /* QuickNewsView.xib */; };
+		FCA1D2411F1A0BDB00003264 /* SegmentedControl2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2401F1A0BDB00003264 /* SegmentedControl2.swift */; };
+		FCA1D2431F1A151200003264 /* SegmentedControl6.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2421F1A151200003264 /* SegmentedControl6.swift */; };
+		FCA1D2451F1A968D00003264 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2441F1A968D00003264 /* AccountViewController.swift */; };
+		FCA1D2471F1A96CF00003264 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2461F1A96CF00003264 /* MarketViewController.swift */; };
+		FCA1D2491F1A96FD00003264 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2481F1A96FD00003264 /* TransferViewController.swift */; };
+		FCA1D24B1F1A971B00003264 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D24A1F1A971B00003264 /* SettingsViewController.swift */; };
+		FCA1D24D1F1A975200003264 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D24C1F1A975200003264 /* ReportViewController.swift */; };
+		FCA1D24F1F1A976E00003264 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D24E1F1A976E00003264 /* StatisticsViewController.swift */; };
+		FCA1D2511F1A979100003264 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2501F1A979100003264 /* StockDetailViewController.swift */; };
+		FCA1D2531F1A97B300003264 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2521F1A97B300003264 /* BuySellViewController.swift */; };
+		FCA1D2551F1AFE5600003264 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */; };
 		FCF29C141F09FF3300965D83 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C131F09FF3300965D83 /* FloatingView.swift */; };
 		FCF29C161F0A048700965D83 /* OrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C151F0A048700965D83 /* OrderView.xib */; };
 		FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C181F0A49AC00965D83 /* StockDetails.swift */; };
@@ -30,10 +49,27 @@
 		FCF29C231F0ABA8600965D83 /* SearchJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C221F0ABA8600965D83 /* SearchJSON.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FCA1D23D1F19EE4500003264 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AC1AB94D1254B84007D7F395 /* Pods-VirtualMarket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualMarket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualMarket/Pods-VirtualMarket.debug.xcconfig"; sourceTree = "<group>"; };
 		C335870C2DD4DDA0F0C48C9D /* Pods_VirtualMarket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualMarket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81218020F802637E7A86CF3 /* Pods-VirtualMarket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualMarket.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualMarket/Pods-VirtualMarket.release.xcconfig"; sourceTree = "<group>"; };
+		FC1E7B401F19DBB300C3CAB9 /* QuantityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuantityView.xib; path = Design/xib/QuantityView.xib; sourceTree = "<group>"; };
+		FC1E7B421F19DBCC00C3CAB9 /* CustomKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomKeyboard.xib; path = Design/xib/CustomKeyboard.xib; sourceTree = "<group>"; };
+		FC4E66481F1B337400458B92 /* ReportStockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportStockTableViewCell.swift; path = Design/ReportStockTableViewCell.swift; sourceTree = "<group>"; };
+		FC4E664D1F1B7BD700458B92 /* CoreDataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataAccess.swift; path = VirtualMarket/CoreData/CoreDataAccess.swift; sourceTree = "<group>"; };
 		FC4FDFC61F0BC4D000CB09A1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ViewControllers/SearchViewController.swift; sourceTree = "<group>"; };
 		FC4FDFC81F0BC5E300CB09A1 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Design/TextField.swift; sourceTree = "<group>"; };
 		FC4FDFD01F0C063D00CB09A1 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = Design/SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -49,6 +85,21 @@
 		FC7E826A1F096CD1001333A5 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNavigationBar.swift; path = Design/CustomNavigationBar.swift; sourceTree = "<group>"; };
 		FC7E826C1F096DC0001333A5 /* CurrentSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentSettings.swift; path = Settings/CurrentSettings.swift; sourceTree = "<group>"; };
 		FC9FA6E51F192BAA002435BC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = Design/Button.swift; sourceTree = "<group>"; };
+		FCA1D2261F19E03300003264 /* LimitPriceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LimitPriceView.xib; path = Design/xib/LimitPriceView.xib; sourceTree = "<group>"; };
+		FCA1D2281F19E04A00003264 /* ValidityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ValidityView.xib; path = Design/xib/ValidityView.xib; sourceTree = "<group>"; };
+		FCA1D22C1F19E07300003264 /* StopPrice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StopPrice.xib; path = Design/xib/StopPrice.xib; sourceTree = "<group>"; };
+		FCA1D23E1F19F28300003264 /* QuickNewsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuickNewsView.xib; path = Design/xib/QuickNewsView.xib; sourceTree = "<group>"; };
+		FCA1D2401F1A0BDB00003264 /* SegmentedControl2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl2.swift; sourceTree = "<group>"; };
+		FCA1D2421F1A151200003264 /* SegmentedControl6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedControl6.swift; path = Design/SegmentedControl6.swift; sourceTree = "<group>"; };
+		FCA1D2441F1A968D00003264 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = ViewControllers/AccountViewController.swift; sourceTree = "<group>"; };
+		FCA1D2461F1A96CF00003264 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketViewController.swift; path = ViewControllers/MarketViewController.swift; sourceTree = "<group>"; };
+		FCA1D2481F1A96FD00003264 /* TransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransferViewController.swift; path = ViewControllers/TransferViewController.swift; sourceTree = "<group>"; };
+		FCA1D24A1F1A971B00003264 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ViewControllers/SettingsViewController.swift; sourceTree = "<group>"; };
+		FCA1D24C1F1A975200003264 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportViewController.swift; path = ViewControllers/ReportViewController.swift; sourceTree = "<group>"; };
+		FCA1D24E1F1A976E00003264 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsViewController.swift; path = ViewControllers/StatisticsViewController.swift; sourceTree = "<group>"; };
+		FCA1D2501F1A979100003264 /* StockDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockDetailViewController.swift; path = ViewControllers/StockDetailViewController.swift; sourceTree = "<group>"; };
+		FCA1D2521F1A97B300003264 /* BuySellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuySellViewController.swift; path = ViewControllers/BuySellViewController.swift; sourceTree = "<group>"; };
+		FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockTableViewCell.swift; path = Design/StockTableViewCell.swift; sourceTree = "<group>"; };
 		FCF29C131F09FF3300965D83 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatingView.swift; path = Design/FloatingView.swift; sourceTree = "<group>"; };
 		FCF29C151F0A048700965D83 /* OrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderView.xib; path = Design/xib/OrderView.xib; sourceTree = "<group>"; };
 		FCF29C181F0A49AC00965D83 /* StockDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockDetails.swift; path = API/StockDetails.swift; sourceTree = "<group>"; };
@@ -87,6 +138,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC4E664B1F1B7B8F00458B92 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FC4E664D1F1B7BD700458B92 /* CoreDataAccess.swift */,
+			);
+			name = CoreData;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		FC7E82431F0961C5001333A5 = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +170,7 @@
 			children = (
 				FC7E824F1F0961C5001333A5 /* AppDelegate.swift */,
 				FC7E82531F0961C5001333A5 /* Main.storyboard */,
-				FC9FA6E51F192BAA002435BC /* Button.swift */,
+				FC4E664B1F1B7B8F00458B92 /* CoreData */,
 				FCF29C1A1F0AAD9400965D83 /* API */,
 				FC7E82691F096C79001333A5 /* ViewControllers */,
 				FC7E82661F096C23001333A5 /* Design */,
@@ -124,6 +184,11 @@
 		FC7E82661F096C23001333A5 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				FC4E66481F1B337400458B92 /* ReportStockTableViewCell.swift */,
+				FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */,
+				FCA1D2401F1A0BDB00003264 /* SegmentedControl2.swift */,
+				FCA1D2421F1A151200003264 /* SegmentedControl6.swift */,
+				FC9FA6E51F192BAA002435BC /* Button.swift */,
 				FC4FDFD01F0C063D00CB09A1 /* SearchTableViewCell.swift */,
 				FC4FDFC81F0BC5E300CB09A1 /* TextField.swift */,
 				FCF29C131F09FF3300965D83 /* FloatingView.swift */,
@@ -138,6 +203,14 @@
 		FC7E82691F096C79001333A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCA1D2441F1A968D00003264 /* AccountViewController.swift */,
+				FCA1D2461F1A96CF00003264 /* MarketViewController.swift */,
+				FCA1D2481F1A96FD00003264 /* TransferViewController.swift */,
+				FCA1D24A1F1A971B00003264 /* SettingsViewController.swift */,
+				FCA1D24C1F1A975200003264 /* ReportViewController.swift */,
+				FCA1D24E1F1A976E00003264 /* StatisticsViewController.swift */,
+				FCA1D2501F1A979100003264 /* StockDetailViewController.swift */,
+				FCA1D2521F1A97B300003264 /* BuySellViewController.swift */,
 				FC4FDFC61F0BC4D000CB09A1 /* SearchViewController.swift */,
 				FC7E82671F096C72001333A5 /* HomeScreenViewController.swift */,
 			);
@@ -157,6 +230,12 @@
 		FCF29C171F0A048E00965D83 /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				FCA1D23E1F19F28300003264 /* QuickNewsView.xib */,
+				FCA1D22C1F19E07300003264 /* StopPrice.xib */,
+				FC1E7B421F19DBCC00C3CAB9 /* CustomKeyboard.xib */,
+				FC1E7B401F19DBB300C3CAB9 /* QuantityView.xib */,
+				FCA1D2261F19E03300003264 /* LimitPriceView.xib */,
+				FCA1D2281F19E04A00003264 /* ValidityView.xib */,
 				FCF29C151F0A048700965D83 /* OrderView.xib */,
 			);
 			name = xib;
@@ -194,6 +273,7 @@
 				FC7E824A1F0961C5001333A5 /* Resources */,
 				B6E1B0D1550E3A92A8E2AA04 /* 📦 Embed Pods Frameworks */,
 				5B8973C2A2BA22EF08E858B8 /* 📦 Copy Pods Resources */,
+				FCA1D23D1F19EE4500003264 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -245,10 +325,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC7E825D1F0961C5001333A5 /* LaunchScreen.storyboard in Resources */,
+				FCA1D23F1F19F28300003264 /* QuickNewsView.xib in Resources */,
 				FCF29C161F0A048700965D83 /* OrderView.xib in Resources */,
 				FC7E825A1F0961C5001333A5 /* Assets.xcassets in Resources */,
+				FCA1D22D1F19E07300003264 /* StopPrice.xib in Resources */,
+				FC1E7B411F19DBB300C3CAB9 /* QuantityView.xib in Resources */,
 				FCF29C1F1F0ABA4000965D83 /* nasdaq.json in Resources */,
+				FC1E7B431F19DBCC00C3CAB9 /* CustomKeyboard.xib in Resources */,
+				FCA1D2271F19E03300003264 /* LimitPriceView.xib in Resources */,
 				FCF29C1E1F0ABA4000965D83 /* amex.json in Resources */,
+				FCA1D2291F19E04A00003264 /* ValidityView.xib in Resources */,
 				FC7E82551F0961C5001333A5 /* Main.storyboard in Resources */,
 				FCF29C201F0ABA4000965D83 /* nyse.json in Resources */,
 			);
@@ -309,16 +395,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA1D2511F1A979100003264 /* StockDetailViewController.swift in Sources */,
 				FC4FDFC71F0BC4D000CB09A1 /* SearchViewController.swift in Sources */,
+				FC4E66491F1B337400458B92 /* ReportStockTableViewCell.swift in Sources */,
+				FCA1D2491F1A96FD00003264 /* TransferViewController.swift in Sources */,
 				FC7E826D1F096DC0001333A5 /* CurrentSettings.swift in Sources */,
+				FCA1D2451F1A968D00003264 /* AccountViewController.swift in Sources */,
+				FCA1D2471F1A96CF00003264 /* MarketViewController.swift in Sources */,
+				FCA1D24B1F1A971B00003264 /* SettingsViewController.swift in Sources */,
+				FCA1D24F1F1A976E00003264 /* StatisticsViewController.swift in Sources */,
+				FCA1D2411F1A0BDB00003264 /* SegmentedControl2.swift in Sources */,
 				FC7E82651F096A6A001333A5 /* Colors.swift in Sources */,
+				FCA1D2551F1AFE5600003264 /* StockTableViewCell.swift in Sources */,
+				FCA1D24D1F1A975200003264 /* ReportViewController.swift in Sources */,
 				FCF29C141F09FF3300965D83 /* FloatingView.swift in Sources */,
 				FCF29C231F0ABA8600965D83 /* SearchJSON.swift in Sources */,
 				FC7E82681F096C72001333A5 /* HomeScreenViewController.swift in Sources */,
+				FCA1D2531F1A97B300003264 /* BuySellViewController.swift in Sources */,
 				FC7E82581F0961C5001333A5 /* VirtualMarket.xcdatamodeld in Sources */,
 				FC7E82501F0961C5001333A5 /* AppDelegate.swift in Sources */,
 				FC7E826B1F096CD1001333A5 /* CustomNavigationBar.swift in Sources */,
+				FCA1D2431F1A151200003264 /* SegmentedControl6.swift in Sources */,
 				FC4FDFD11F0C063D00CB09A1 /* SearchTableViewCell.swift in Sources */,
+				FC4E664E1F1B7BD700458B92 /* CoreDataAccess.swift in Sources */,
 				FC4FDFC91F0BC5E300CB09A1 /* TextField.swift in Sources */,
 				FC9FA6E61F192BAA002435BC /* Button.swift in Sources */,
 				FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */,
@@ -372,9 +471,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -422,9 +522,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -444,6 +545,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC1AB94D1254B84007D7F395 /* Pods-VirtualMarket.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4REL9XBP3N;
 				INFOPLIST_FILE = VirtualMarket/Info.plist;
@@ -460,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C81218020F802637E7A86CF3 /* Pods-VirtualMarket.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4REL9XBP3N;
 				INFOPLIST_FILE = VirtualMarket/Info.plist;

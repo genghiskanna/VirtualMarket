@@ -26,7 +26,5 @@ import UIKit
         self.layer.borderWidth = 2
         self.layer.borderColor = Colors.light.cgColor
         self.layer.cornerRadius = 30.0
-        
     }
-    
 }
