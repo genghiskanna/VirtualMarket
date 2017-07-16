@@ -12,6 +12,7 @@
 		FC1E7B431F19DBCC00C3CAB9 /* CustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1E7B421F19DBCC00C3CAB9 /* CustomKeyboard.xib */; };
 		FC4E66491F1B337400458B92 /* ReportStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E66481F1B337400458B92 /* ReportStockTableViewCell.swift */; };
 		FC4E664E1F1B7BD700458B92 /* CoreDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E664D1F1B7BD700458B92 /* CoreDataAccess.swift */; };
+		FC4E66501F1BDAC600458B92 /* StockNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E664F1F1BDAC600458B92 /* StockNews.swift */; };
 		FC4FDFC71F0BC4D000CB09A1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FDFC61F0BC4D000CB09A1 /* SearchViewController.swift */; };
 		FC4FDFC91F0BC5E300CB09A1 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FDFC81F0BC5E300CB09A1 /* TextField.swift */; };
 		FC4FDFD11F0C063D00CB09A1 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FDFD01F0C063D00CB09A1 /* SearchTableViewCell.swift */; };
@@ -70,6 +71,7 @@
 		FC1E7B421F19DBCC00C3CAB9 /* CustomKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomKeyboard.xib; path = Design/xib/CustomKeyboard.xib; sourceTree = "<group>"; };
 		FC4E66481F1B337400458B92 /* ReportStockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportStockTableViewCell.swift; path = Design/ReportStockTableViewCell.swift; sourceTree = "<group>"; };
 		FC4E664D1F1B7BD700458B92 /* CoreDataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataAccess.swift; path = VirtualMarket/CoreData/CoreDataAccess.swift; sourceTree = "<group>"; };
+		FC4E664F1F1BDAC600458B92 /* StockNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockNews.swift; path = API/StockNews.swift; sourceTree = "<group>"; };
 		FC4FDFC61F0BC4D000CB09A1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ViewControllers/SearchViewController.swift; sourceTree = "<group>"; };
 		FC4FDFC81F0BC5E300CB09A1 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Design/TextField.swift; sourceTree = "<group>"; };
 		FC4FDFD01F0C063D00CB09A1 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = Design/SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		FCF29C1A1F0AAD9400965D83 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				FC4E664F1F1BDAC600458B92 /* StockNews.swift */,
 				FCF29C221F0ABA8600965D83 /* SearchJSON.swift */,
 				FCF29C181F0A49AC00965D83 /* StockDetails.swift */,
 			);
@@ -402,6 +405,7 @@
 				FC7E826D1F096DC0001333A5 /* CurrentSettings.swift in Sources */,
 				FCA1D2451F1A968D00003264 /* AccountViewController.swift in Sources */,
 				FCA1D2471F1A96CF00003264 /* MarketViewController.swift in Sources */,
+				FC4E66501F1BDAC600458B92 /* StockNews.swift in Sources */,
 				FCA1D24B1F1A971B00003264 /* SettingsViewController.swift in Sources */,
 				FCA1D24F1F1A976E00003264 /* StatisticsViewController.swift in Sources */,
 				FCA1D2411F1A0BDB00003264 /* SegmentedControl2.swift in Sources */,

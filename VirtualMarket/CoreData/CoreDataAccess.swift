@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import UIKit
 
 
 public func allPendingOrders() -> Array<Any>{
@@ -37,4 +38,25 @@ public func getBuyingPower() -> Float {
 public func getPortfolioValue() -> Float {
     
     return 0.0
+}
+
+public func insertStock(stockName: String, orderType: String, quantity: Int64, priceBought:Float, worthBefore: Float, status: String) {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let stock = Stock(context: context)
+    
+    stock.name = stockName
+    stock.orderType = orderType
+    stock.quantity = quantity
+    stock.priceBought = priceBought
+    stock.worthBefore = worthBefore
+    stock.status = status
+    
+    do {
+        try context.save()
+    } catch {
+        print("Error Saving \(error.localizedDescription)")
+    }
+    
+    
 }

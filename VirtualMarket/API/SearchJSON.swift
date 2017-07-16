@@ -74,4 +74,6 @@ class SearchJSON: NSObject {
 
         return searchResult
     }
+    
+ 
 }

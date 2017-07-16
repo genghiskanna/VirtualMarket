@@ -2375,6 +2375,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="Buy"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="buyPressed:" destination="g9E-Dd-Hqv" eventType="touchUpInside" id="p2G-Cr-TNs"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hg-7z-xlt" customClass="Button" customModule="VirtualMarket" customModuleProvider="target">
                                                 <rect key="frame" x="217" y="420" width="150" height="40"/>
@@ -2383,6 +2386,9 @@
                                                     <constraint firstAttribute="width" constant="150" id="RUt-rv-8E9"/>
                                                 </constraints>
                                                 <state key="normal" title="Sell"/>
+                                                <connections>
+                                                    <action selector="followPressed:" destination="g9E-Dd-Hqv" eventType="touchUpInside" id="lCB-UO-usJ"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STATS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoA-dh-AUK">
                                                 <rect key="frame" x="8" y="576" width="70" height="29"/>
@@ -2906,6 +2912,24 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="2000"/>
+                    <connections>
+                        <outlet property="avgVolume" destination="zcC-EG-Ntx" id="qqo-y1-y8c"/>
+                        <outlet property="change" destination="xl5-zi-cUQ" id="3fH-bz-4ba"/>
+                        <outlet property="div" destination="K38-5t-XmZ" id="A2z-k2-15N"/>
+                        <outlet property="followButton" destination="8hg-7z-xlt" id="a9H-gq-HMc"/>
+                        <outlet property="highPrice" destination="IHr-no-1Ms" id="NQU-ce-TTG"/>
+                        <outlet property="lowPrice" destination="ul7-BP-rQS" id="dco-Sz-C9H"/>
+                        <outlet property="mktCap" destination="hFg-rs-bUw" id="DN9-mQ-K1A"/>
+                        <outlet property="newsTable" destination="H7l-bQ-vhj" id="Zo9-fK-vrb"/>
+                        <outlet property="openPrice" destination="xR6-9o-hhu" id="lF8-x5-P5h"/>
+                        <outlet property="prRatio" destination="Stw-J8-uGo" id="fbh-Cj-KEj"/>
+                        <outlet property="price" destination="LJ8-Ch-lUj" id="x41-ij-emN"/>
+                        <outlet property="priceFloat" destination="0OY-c7-qzQ" id="3s6-Ja-WKe"/>
+                        <outlet property="stockName" destination="p3X-Um-vZF" id="dUc-7i-zjU"/>
+                        <outlet property="volume" destination="LGy-U3-Dq3" id="nvD-tN-KgX"/>
+                        <outlet property="wkHigh" destination="Y1D-ce-0Z5" id="i3F-1C-qHI"/>
+                        <outlet property="wkLow" destination="RpL-Hx-bZt" id="8Hh-Ob-5Sv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iEt-k1-3Uu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

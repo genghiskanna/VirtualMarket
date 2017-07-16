@@ -8,28 +8,60 @@
 
 import UIKit
 
-class StockDetailViewController: UIViewController {
+class StockDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    // label
+    @IBOutlet weak var stockName: UILabel!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var priceFloat: UILabel!
+    @IBOutlet weak var change: UILabel!
+    
+    //stats
+    @IBOutlet weak var openPrice: UILabel!
+    @IBOutlet weak var highPrice: UILabel!
+    @IBOutlet weak var lowPrice: UILabel!
+    @IBOutlet weak var wkHigh: UILabel!
+    @IBOutlet weak var wkLow: UILabel!
+    @IBOutlet weak var volume: UILabel!
+    @IBOutlet weak var avgVolume: UILabel!
+    @IBOutlet weak var mktCap: UILabel!
+    @IBOutlet weak var prRatio: UILabel!
+    @IBOutlet weak var div: UILabel!
+    
+    @IBOutlet weak var followButton: Button!
+    
+    // News
+    @IBOutlet weak var newsTable: UITableView!
+    
+    
+    // IBActions
+    @IBAction func buyPressed(_ sender: Any) {
+    }
+    
+    
+    @IBAction func followPressed(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.newsTable.dataSource = self
+        self.newsTable.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    
+
 
 }

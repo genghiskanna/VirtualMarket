@@ -7,5 +7,6 @@ target 'VirtualMarket' do
 
   # Pods for VirtualMarket
 	pod 'SwiftyJSON'
+	pod 'Alamofire'
 
 end

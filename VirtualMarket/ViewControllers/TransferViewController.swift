@@ -10,6 +10,10 @@ import UIKit
 
 class TransferViewController: UIViewController, UITextFieldDelegate {
 
+    // labels 
+    
+    
+    
     @IBOutlet weak var amountField: TextField!
     
     @IBAction func closePressed(_ sender: Any) {
