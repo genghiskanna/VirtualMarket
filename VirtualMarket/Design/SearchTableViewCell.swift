@@ -14,7 +14,7 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var stockCompany: UILabel!
     @IBOutlet weak var stockMarket: UILabel!
     
-    func configureCell(stock: Dictionary<String,Any> , market: String) -> UITableViewCell{
+    func configureCell(_ stock: Dictionary<String,Any> , market: String) -> UITableViewCell{
         
         self.stockName.text = stock["Symbol"] as! String
         self.stockCompany.text = stock["Name"] as! String

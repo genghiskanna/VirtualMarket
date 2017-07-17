@@ -10,7 +10,7 @@ import Foundation
 
 class SearchJSON: NSObject {
     
-    private class func SearchMarket(json: NSArray, text: String) -> NSArray{
+    fileprivate class func SearchMarket(_ json: NSArray, text: String) -> NSArray{
         
         var searchResults = Array<Any>()
         
@@ -33,7 +33,7 @@ class SearchJSON: NSObject {
     }
     
     
-    class func SearchStock(text: String) -> Dictionary<String,NSArray>{
+    class func SearchStock(_ text: String) -> Dictionary<String,NSArray>{
         
         var searchResult: Dictionary<String,NSArray> = ["empty":[1,2,3]]
         
@@ -42,7 +42,7 @@ class SearchJSON: NSObject {
         let nasdaqPath = Bundle.main.url(forResource: "nasdaq", withExtension: "json")!
         let nasdaqData = try? Data(contentsOf: nasdaqPath)
         let nasdaq = try? JSONSerialization.jsonObject(with:nasdaqData!, options: .mutableContainers) as! NSArray
-        if let nasdaqResults = SearchMarket(json: nasdaq!, text: text) as? NSArray{
+        if let nasdaqResults = SearchMarket(nasdaq!, text: text) as? NSArray{
             print(nasdaqResults.count)
             if nasdaqResults.count != 0 {
                 searchResult.updateValue(nasdaqResults, forKey: "NASDAQ")
@@ -54,7 +54,7 @@ class SearchJSON: NSObject {
         let nysePath = Bundle.main.url(forResource: "nyse", withExtension: "json")!
         let nyseData = try? Data(contentsOf: nysePath)
         let nyse = try? JSONSerialization.jsonObject(with:nyseData!, options: .mutableContainers) as! NSArray
-        if let nyseResults = SearchMarket(json: nyse!, text: text) as? NSArray{
+        if let nyseResults = SearchMarket(nyse!, text: text) as? NSArray{
             if nyseResults.count != 0{
                 searchResult.updateValue(nyseResults, forKey: "NYSE")
             }
@@ -65,7 +65,7 @@ class SearchJSON: NSObject {
         let amexPath = Bundle.main.url(forResource: "amex", withExtension: "json")!
         let amexData = try? Data(contentsOf: amexPath)
         let amex = try? JSONSerialization.jsonObject(with:amexData!, options: .mutableContainers) as! NSArray
-        if let amexResults = SearchMarket(json: amex!, text: text) as? NSArray{
+        if let amexResults = SearchMarket(amex!, text: text) as? NSArray{
             
             if amexResults.count != 0{
                 searchResult.updateValue(amexResults, forKey: "AMSE")

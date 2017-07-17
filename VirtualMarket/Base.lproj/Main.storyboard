@@ -1580,7 +1580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNJ-YH-z3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.5999999999999" y="-172.71364317841082"/>
+            <point key="canvasLocation" x="1036" y="-84"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="xWI-Qe-YHT">
@@ -2208,7 +2208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZS1-6m-rwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1877.5999999999999" y="-70.164917541229386"/>
+            <point key="canvasLocation" x="1685" y="-56"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="sOs-fG-uvt">
@@ -2293,6 +2293,7 @@
                                             <outlet property="stockCompany" destination="8z2-Tl-Mie" id="6MI-nG-dDk"/>
                                             <outlet property="stockMarket" destination="IHZ-Ax-Quw" id="UVw-z2-lX3"/>
                                             <outlet property="stockName" destination="t9f-PZ-Ash" id="Pu5-ns-OuV"/>
+                                            <segue destination="g9E-Dd-Hqv" kind="show" identifier="searchSegue" id="qCE-hm-1a1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2933,7 +2934,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iEt-k1-3Uu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.5999999999999" y="1237.7811094452775"/>
+            <point key="canvasLocation" x="169" y="-1784"/>
         </scene>
         <!--Buy Sell View Controller-->
         <scene sceneID="Kmv-96-sIh">

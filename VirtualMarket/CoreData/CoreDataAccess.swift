@@ -20,12 +20,12 @@ public func allStocksUnderWatch() -> Array<Any> {
     return Array()
 }
 
-public func specificStock(forStockName: String) -> Any {
+public func specificStock(_ forStockName: String) -> Any {
     
     return 1
 }
 
-public func specificStock(forDate: Date) -> Any {
+public func specificStock(_ forDate: Date) -> Any {
     
     return 1
 }
@@ -40,7 +40,7 @@ public func getPortfolioValue() -> Float {
     return 0.0
 }
 
-public func insertStock(stockName: String, orderType: String, quantity: Int64, priceBought:Float, worthBefore: Float, status: String) {
+public func insertStock(_ stockName: String, orderType: String, quantity: Int64, priceBought:Float, worthBefore: Float, status: String) {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let stock = Stock(context: context)

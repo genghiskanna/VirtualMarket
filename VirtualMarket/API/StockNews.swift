@@ -10,9 +10,9 @@ import UIKit
 import Alamofire
 import AlamofireRSSParser
 
-class NewsApi: NSObject {
+class StockNews: NSObject {
     
-    class func getNews(forStockName: String) -> Dictionary<String,String>{
+    class func getNews(_ forStockName: String) -> Dictionary<String,String>{
         
         let url = "https://news.google.com/news?q=" + forStockName + "&output=rss"
         

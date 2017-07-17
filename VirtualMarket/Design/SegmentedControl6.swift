@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable class SegmentedControl6: UIControl{
     
     
-    private var labels = [UILabel]()
+    fileprivate var labels = [UILabel]()
     let thumbView = UIView()
     var labelStrings = ["1D","7D","1M","3M","6M","1Y","ALL"]
     var selectedIndex :Int?

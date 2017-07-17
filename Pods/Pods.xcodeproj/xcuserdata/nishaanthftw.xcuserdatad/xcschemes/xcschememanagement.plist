@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireRSSParser.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-VirtualMarket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,12 +27,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>079DC3350C5BFDD4AB2ABCEA6D3DE7A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>14F99C5D0AD7EEAFFFA6A949D3B7E0FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>325F9247427803D8192D45506756A285</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AF49B2FE8C15C1EFB77C39F552FF356</key>
 		<dict>
 			<key>primary</key>
 			<true/>

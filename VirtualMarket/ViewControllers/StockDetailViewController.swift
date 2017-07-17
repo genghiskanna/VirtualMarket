@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class StockDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    // Data 
+    open var stock: String!
 
     // label
     @IBOutlet weak var stockName: UILabel!
@@ -49,12 +53,29 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         self.newsTable.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        stock = stockNameG
+        
+        //Get StockDetails
+        
+        let json = StockDetails.getAllData(stock)
+        stockName.text = json["query"]["results"]["quote"]["Name"].stringValue
+        
+        
+        //Get News
+        StockNews.getNews(stock)
+        
+        
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cell
+        return StockTableViewCell()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

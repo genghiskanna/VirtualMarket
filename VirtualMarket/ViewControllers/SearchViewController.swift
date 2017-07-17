@@ -8,6 +8,8 @@
 
 import UIKit
 
+public var stockNameG: String!
+
 class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBAction func closePressed(_ sender: Any) {
@@ -44,7 +46,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         }
         
         
-        self.stockField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        self.stockField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
 
         // Checking if the setting is dark mode
@@ -56,11 +58,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
     }
     
     
-    func textFieldDidChange(textField: UITextField){
+    func textFieldDidChange(_ textField: UITextField){
         
         self.searchResults.reloadData()
         if let text = textField.text {
-            let searchResultsA : Dictionary<String,NSArray> = SearchJSON.SearchStock(text: text.trimmingCharacters(in: CharacterSet(charactersIn: " ")))
+            let searchResultsA : Dictionary<String,NSArray> = SearchJSON.SearchStock(text.trimmingCharacters(in: CharacterSet(charactersIn: " ")))
             if searchResultsA.count != 1 {
                 print(searchResultsA.count)
                 self.searchResultsGlobal = searchResultsA
@@ -97,7 +99,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         }
     }
     
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! SearchTableViewCell
+        
+        stockNameG = cell.stockName.text!
+        
+        performSegue(withIdentifier: "searchSegue", sender: self)
+        
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -105,7 +115,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         tableView.tableFooterView = UIView()
         if self.searchResultsGlobal.count != 0 {
             if let nasdaq = self.searchResultsGlobal["NASDAQ"]{
-                cell = cell.configureCell(stock: nasdaq[indexPath.row] as! Dictionary<String,Any>, market: "NASDAQ") as! SearchTableViewCell
+                cell = cell.configureCell(nasdaq[indexPath.row] as! Dictionary<String,Any>, market: "NASDAQ") as! SearchTableViewCell
             }
         }
         
@@ -116,9 +126,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         return 1
     }
     
-    @IBAction func prepareForUnwind(segue:UIStoryboardSegue){
+    @IBAction func prepareForUnwind(_ segue:UIStoryboardSegue){
     
     }
+    
+    
+    
+    
 
     
 
