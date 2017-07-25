@@ -33,7 +33,7 @@ class StockDetails: NSObject {
         } catch {
             print("Error retrieving" + forStockName)
         }
-        return jsonData
+        return jsonData["Time Series (1min)"]
         
     }
 }

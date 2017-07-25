@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 import SwiftyJSON
 
 class StockDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -66,15 +67,27 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 let jsonPrice = StockDetails.getStockPrice(self.stock)
                 let jsonOpenClose = StockDetails.getOpenClose(self.stock)
                 
+                
+                
                 let sPrice = jsonPrice["l"].stringValue
                 let splitPrice = sPrice.components(separatedBy: ".")
                 
                 // Getting today's Date
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-mm-dd HH:mm:ss";
-                var currentData = dateFormatter.string(from: Date())
-                print(currentData.components(separatedBy: ":"))
-                currentData = currentData
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dateFormatter.timeZone = TimeZone(abbreviation: "EST")
+                var currentDateString = dateFormatter.string(from: Date())
+                let endIndex = currentDateString.index(currentDateString.endIndex, offsetBy: -2)
+                currentDateString = currentDateString.substring(to: endIndex)
+                currentDateString = currentDateString.appending("00")
+                
+                let open = jsonOpenClose[currentDateString]["1. open"].stringValue
+                let highPrice = jsonOpenClose[currentDateString]["2. high"].stringValue
+                let lowPrice = jsonOpenClose[currentDateString]["3. low"].stringValue
+                let volume = jsonOpenClose[currentDateString]["5. volume"].stringValue
+                
+                
+                
                 
                 
                 
@@ -84,7 +97,10 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                     print(self.stockName.text!)
                     self.price.text = splitPrice.first
                     self.priceFloat.text = "." + splitPrice[1]
-//                    self.openPrice.text =
+                    self.openPrice.text = open
+                    self.highPrice.text = highPrice
+                    self.lowPrice.text = lowPrice
+                    self.volume.text = volume
                 
                 }
                 sleep(1)
@@ -116,15 +132,3 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
 
 }
 
-
-extension Date {
-    
-    var zeroSeconds: Date? {
-        get {
-            let calender = Calendar.current
-            let dateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute], from: self)
-            return calender.date(from: dateComponents)
-        }
-    }
-    
-}
