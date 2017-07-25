@@ -9,5 +9,6 @@ target 'VirtualMarket' do
 	pod 'SwiftyJSON'
 	pod 'Alamofire'
 	pod 'AlamofireRSSParser'
+	pod 'SwiftDate'
 
 end

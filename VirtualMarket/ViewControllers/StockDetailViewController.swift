@@ -49,6 +49,8 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Constantly update
+        
         self.newsTable.dataSource = self
         self.newsTable.delegate = self
     }
@@ -58,13 +60,40 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         stock = stockNameG
         
         //Get StockDetails
-        
-        let json = StockDetails.getAllData(stock)
-        stockName.text = json["query"]["results"]["quote"]["Name"].stringValue
+        DispatchQueue.global(qos: .userInitiated).async {
+            while true{
+                
+                let jsonPrice = StockDetails.getStockPrice(self.stock)
+                let jsonOpenClose = StockDetails.getOpenClose(self.stock)
+                
+                let sPrice = jsonPrice["l"].stringValue
+                let splitPrice = sPrice.components(separatedBy: ".")
+                
+                // Getting today's Date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-mm-dd HH:mm:ss";
+                var currentData = dateFormatter.string(from: Date())
+                print(currentData.components(separatedBy: ":"))
+                currentData = currentData
+                
+                
+                
+                StockNews.getNews(self.stock)
+                DispatchQueue.main.async {
+                    self.stockName.text = jsonPrice["t"].stringValue
+                    print(self.stockName.text!)
+                    self.price.text = splitPrice.first
+                    self.priceFloat.text = "." + splitPrice[1]
+//                    self.openPrice.text =
+                
+                }
+                sleep(1)
+            }
+        }
         
         
         //Get News
-        StockNews.getNews(stock)
+       
         
         
     }
@@ -85,4 +114,17 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
 
 
+}
+
+
+extension Date {
+    
+    var zeroSeconds: Date? {
+        get {
+            let calender = Calendar.current
+            let dateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute], from: self)
+            return calender.date(from: dateComponents)
+        }
+    }
+    
 }

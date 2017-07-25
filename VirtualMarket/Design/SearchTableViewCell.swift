@@ -16,8 +16,8 @@ class SearchTableViewCell: UITableViewCell {
     
     func configureCell(_ stock: Dictionary<String,Any> , market: String) -> UITableViewCell{
         
-        self.stockName.text = stock["Symbol"] as! String
-        self.stockCompany.text = stock["Name"] as! String
+        self.stockName.text = stock["Symbol"] as? String
+        self.stockCompany.text = stock["Name"] as? String
         self.stockMarket.text = market
         
         if CurrentSettings.getTheme()["light"] == Colors.dark{
@@ -32,7 +32,7 @@ class SearchTableViewCell: UITableViewCell {
             self.stockCompany.textColor = Colors.dark.withAlphaComponent(0.45)
         }
         
-        return self as! UITableViewCell
+        return self as UITableViewCell
     }
 
 }

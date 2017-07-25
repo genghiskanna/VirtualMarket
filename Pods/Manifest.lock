@@ -2,18 +2,21 @@ PODS:
   - Alamofire (4.5.0)
   - AlamofireRSSParser (2.0.0):
     - Alamofire
+  - SwiftDate (4.1.2)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireRSSParser
+  - SwiftDate
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireRSSParser: bbad0689d597704025c4f101a1a31698fa2c1920
+  SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: f103dc1f374dc3fa58454772566b0527bb2d5cdb
+PODFILE CHECKSUM: 341cf9df855ac1509b1e25b277dab0f2cd268186
 
 COCOAPODS: 1.0.0
