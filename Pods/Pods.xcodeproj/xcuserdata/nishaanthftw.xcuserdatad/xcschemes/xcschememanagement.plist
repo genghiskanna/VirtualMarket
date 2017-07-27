@@ -14,12 +14,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-VirtualMarket.xcscheme</key>
+		<key>Kanna.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftDate.xcscheme</key>
+		<key>Pods-VirtualMarket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,7 +32,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>602924CDBC0C703E660579F183EC3D09</key>
+		<key>6B535F108F36F971F443054A2FB1F624</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0C84FA70595ACEA64E5D42771BFCBF8</key>
+		<key>B9126AEC09033E7F330B0E7130A72ADE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F389526A60AB86FA7C84CD793B848A43</key>
+		<key>E36052BBAA3E50F52D5E311D145E74D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

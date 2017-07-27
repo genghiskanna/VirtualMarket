@@ -20,7 +20,8 @@ class StockNews: NSObject {
             if let feed: RSSFeed = response.result.value {
                 
                 for item in feed.items{
-                    print(item.description)
+                    print(item.itemDescription)
+                    print("\n\n\n\n")
                 }
             }
         }

@@ -66,7 +66,7 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 let jsonPrice = StockDetails.getStockPrice(self.stock)
                 let jsonOpenClose = StockDetails.getOpenClose(self.stock)
-                
+                let jsonDetails = StockDetails.getStockInfo(self.stock)
                 
                 
                 let sPrice = jsonPrice["l"].stringValue
@@ -81,26 +81,37 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 currentDateString = currentDateString.substring(to: endIndex)
                 currentDateString = currentDateString.appending("00")
                 
-                let open = jsonOpenClose[currentDateString]["1. open"].stringValue
-                let highPrice = jsonOpenClose[currentDateString]["2. high"].stringValue
-                let lowPrice = jsonOpenClose[currentDateString]["3. low"].stringValue
+                // warning here
+                let open = jsonOpenClose[currentDateString]["1. open"].floatValue
+                let high = jsonOpenClose[currentDateString]["2. high"].floatValue
+                let low = jsonOpenClose[currentDateString]["3. low"].floatValue
                 let volume = jsonOpenClose[currentDateString]["5. volume"].stringValue
                 
                 
-                
-                
+                let yearHigh = jsonDetails["YearHigh"].stringValue
+                let yearLow = jsonDetails["YearLow"].stringValue
+                let dividendYield = jsonDetails["DividendYield"].stringValue
+                let peRatio = jsonDetails["PERatio"].stringValue
+                let mrktCap = jsonDetails["MarketCapitalization"].stringValue
+                let avgVolume = jsonDetails["AverageDailyVolume"].stringValue
                 
                 
                 StockNews.getNews(self.stock)
                 DispatchQueue.main.async {
+                    
                     self.stockName.text = jsonPrice["t"].stringValue
-                    print(self.stockName.text!)
                     self.price.text = splitPrice.first
                     self.priceFloat.text = "." + splitPrice[1]
-                    self.openPrice.text = open
-                    self.highPrice.text = highPrice
-                    self.lowPrice.text = lowPrice
+                    self.openPrice.text = String(format: "%.2f", open)
+                    self.highPrice.text = String(format: "%.2f", high)
+                    self.lowPrice.text = String(format: "%.2f", low)
                     self.volume.text = volume
+                    self.wkHigh.text = yearHigh
+                    self.wkLow.text = yearLow
+                    self.div.text = dividendYield
+                    self.prRatio.text = peRatio
+                    self.mktCap.text = mrktCap
+                    self.avgVolume.text = avgVolume
                 
                 }
                 sleep(1)
