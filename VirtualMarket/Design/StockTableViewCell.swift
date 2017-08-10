@@ -14,11 +14,13 @@ class StockTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfShares: UILabel!
     @IBOutlet weak var stockButton: UIButton!
     
-    func configureStockCell(_ stockName: String, shares: Int, price: Float){
+    func configureStockCell(_ stockName: String, shares: String, price: Float){
         
         self.stockName.text = stockName
-        self.numberOfShares.text = String(shares)
-        self.stockButton.titleLabel?.text = String(price)
+        self.numberOfShares.text = shares
+        if let price = StockDetails.getStockPrice(forStockName: stockName){
+            self.stockButton.setTitle(price["l"].stringValue, for: .normal)
+        }
         self.stockButton.layer.cornerRadius = 5.0
         
     }

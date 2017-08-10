@@ -23,8 +23,12 @@ class CurrentSettings{
     class func getTheme() -> Dictionary<String,UIColor>{
         
         // to get value from CoreData
+        if AppDelegate.darkMode{
+            return self.darkTheme
+        } else {
+            return self.lightTheme
+        }
         
-        return self.darkTheme
     }
     
     class func getStatusBar() -> String{

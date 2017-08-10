@@ -9,6 +9,6 @@ target 'VirtualMarket' do
 	pod 'SwiftyJSON'
 	pod 'Alamofire'
 	pod 'AlamofireRSSParser'
-	pod 'Kanna'
+	pod 'Kanna', '~> 2.1.0'
 
 end

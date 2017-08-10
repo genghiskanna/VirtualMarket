@@ -22,9 +22,13 @@ import UIKit
     }
     
     func setupView(){
-        self.layer.backgroundColor = Colors.blueDark.cgColor
+        if AppDelegate.darkMode{
+            self.layer.backgroundColor = Colors.blueDark.cgColor
+        } else {
+            self.layer.backgroundColor = Colors.light.cgColor
+        }
         self.layer.borderWidth = 2
-        self.layer.borderColor = Colors.light.cgColor
+//        self.layer.borderColor = Colors.light.cgColor
         self.layer.cornerRadius = 30.0
     }
 }

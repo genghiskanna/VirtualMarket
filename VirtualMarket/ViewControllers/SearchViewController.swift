@@ -64,7 +64,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         if let text = textField.text {
             let searchResultsA : Dictionary<String,NSArray> = SearchJSON.SearchStock(text.trimmingCharacters(in: CharacterSet(charactersIn: " ")))
             if searchResultsA.count != 1 {
-                print(searchResultsA.count)
                 self.searchResultsGlobal = searchResultsA
                 self.searchResults.isHidden = false
             }
@@ -78,6 +77,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.stockField.text = ""
+        self.searchResults.reloadData()
+    }
   
     
     

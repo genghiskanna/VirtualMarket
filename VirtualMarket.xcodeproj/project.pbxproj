@@ -10,6 +10,7 @@
 		092D75F27B2E7FEF2F621254 /* Pods_VirtualMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335870C2DD4DDA0F0C48C9D /* Pods_VirtualMarket.framework */; };
 		FC1E7B411F19DBB300C3CAB9 /* QuantityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1E7B401F19DBB300C3CAB9 /* QuantityView.xib */; };
 		FC1E7B431F19DBCC00C3CAB9 /* CustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1E7B421F19DBCC00C3CAB9 /* CustomKeyboard.xib */; };
+		FC37E4CA1F2A2F4300900A4B /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37E4C91F2A2F4300900A4B /* NewsTableViewCell.swift */; };
 		FC4E66491F1B337400458B92 /* ReportStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E66481F1B337400458B92 /* ReportStockTableViewCell.swift */; };
 		FC4E664E1F1B7BD700458B92 /* CoreDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E664D1F1B7BD700458B92 /* CoreDataAccess.swift */; };
 		FC4E66501F1BDAC600458B92 /* StockNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E664F1F1BDAC600458B92 /* StockNews.swift */; };
@@ -48,6 +49,7 @@
 		FCF29C1F1F0ABA4000965D83 /* nasdaq.json in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C1C1F0ABA4000965D83 /* nasdaq.json */; };
 		FCF29C201F0ABA4000965D83 /* nyse.json in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C1D1F0ABA4000965D83 /* nyse.json */; };
 		FCF29C231F0ABA8600965D83 /* SearchJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C221F0ABA8600965D83 /* SearchJSON.swift */; };
+		FCF4C3171F2C9E0700C38642 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4C3161F2C9E0700C38642 /* ChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +71,7 @@
 		C81218020F802637E7A86CF3 /* Pods-VirtualMarket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualMarket.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualMarket/Pods-VirtualMarket.release.xcconfig"; sourceTree = "<group>"; };
 		FC1E7B401F19DBB300C3CAB9 /* QuantityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuantityView.xib; path = Design/xib/QuantityView.xib; sourceTree = "<group>"; };
 		FC1E7B421F19DBCC00C3CAB9 /* CustomKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomKeyboard.xib; path = Design/xib/CustomKeyboard.xib; sourceTree = "<group>"; };
+		FC37E4C91F2A2F4300900A4B /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsTableViewCell.swift; path = Design/NewsTableViewCell.swift; sourceTree = "<group>"; };
 		FC4E66481F1B337400458B92 /* ReportStockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportStockTableViewCell.swift; path = Design/ReportStockTableViewCell.swift; sourceTree = "<group>"; };
 		FC4E664D1F1B7BD700458B92 /* CoreDataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataAccess.swift; path = VirtualMarket/CoreData/CoreDataAccess.swift; sourceTree = "<group>"; };
 		FC4E664F1F1BDAC600458B92 /* StockNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockNews.swift; path = API/StockNews.swift; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 		FCF29C1C1F0ABA4000965D83 /* nasdaq.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = nasdaq.json; path = Data/nasdaq.json; sourceTree = "<group>"; };
 		FCF29C1D1F0ABA4000965D83 /* nyse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = nyse.json; path = Data/nyse.json; sourceTree = "<group>"; };
 		FCF29C221F0ABA8600965D83 /* SearchJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchJSON.swift; path = API/SearchJSON.swift; sourceTree = "<group>"; };
+		FCF4C3161F2C9E0700C38642 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,8 @@
 		FC7E82661F096C23001333A5 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				FCF4C3161F2C9E0700C38642 /* ChartView.swift */,
+				FC37E4C91F2A2F4300900A4B /* NewsTableViewCell.swift */,
 				FC4E66481F1B337400458B92 /* ReportStockTableViewCell.swift */,
 				FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */,
 				FCA1D2401F1A0BDB00003264 /* SegmentedControl2.swift */,
@@ -405,6 +411,7 @@
 				FCA1D2491F1A96FD00003264 /* TransferViewController.swift in Sources */,
 				FC7E826D1F096DC0001333A5 /* CurrentSettings.swift in Sources */,
 				FCA1D2451F1A968D00003264 /* AccountViewController.swift in Sources */,
+				FCF4C3171F2C9E0700C38642 /* ChartView.swift in Sources */,
 				FCA1D2471F1A96CF00003264 /* MarketViewController.swift in Sources */,
 				FC4E66501F1BDAC600458B92 /* StockNews.swift in Sources */,
 				FCA1D24B1F1A971B00003264 /* SettingsViewController.swift in Sources */,
@@ -421,6 +428,7 @@
 				FC7E82501F0961C5001333A5 /* AppDelegate.swift in Sources */,
 				FC7E826B1F096CD1001333A5 /* CustomNavigationBar.swift in Sources */,
 				FCA1D2431F1A151200003264 /* SegmentedControl6.swift in Sources */,
+				FC37E4CA1F2A2F4300900A4B /* NewsTableViewCell.swift in Sources */,
 				FC4FDFD11F0C063D00CB09A1 /* SearchTableViewCell.swift in Sources */,
 				FC4E664E1F1B7BD700458B92 /* CoreDataAccess.swift in Sources */,
 				FC4FDFC91F0BC5E300CB09A1 /* TextField.swift in Sources */,

@@ -50,7 +50,7 @@ Parse XML
 @param encoding the document encoding
 @param options  a ParserOption
 */
-public func XML(xml: String, url: String?, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func XML(_ xml: String, url: String?, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     switch option {
     case .xmlParseUseLibxml(let opt):
         return libxmlXMLDocument(xml: xml, url: url, encoding: encoding, option: opt.rawValue)
@@ -59,26 +59,26 @@ public func XML(xml: String, url: String?, encoding: String.Encoding, option: Pa
     }
 }
 
-public func XML(xml: String, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
-    return XML(xml: xml, url: nil, encoding: encoding, option: option)
+public func XML(_ xml: String, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+    return XML(xml, url: nil, encoding: encoding, option: option)
 }
 
 // NSData
-public func XML(xml: Data, url: String?, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func XML(_ xml: Data, url: String?, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     if let xmlStr = String(data: xml, encoding: encoding) {
-        return XML(xml: xmlStr, url: url, encoding: encoding, option: option)
+        return XML(xmlStr, url: url, encoding: encoding, option: option)
     }
     return nil
 }
 
-public func XML(xml: Data, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
-    return XML(xml: xml, url: nil, encoding: encoding, option: option)
+public func XML(_ xml: Data, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+    return XML(xml, url: nil, encoding: encoding, option: option)
 }
 
 // NSURL
-public func XML(url: URL, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func XML(_ url: URL, encoding: String.Encoding, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     if let data = try? Data(contentsOf: url) {
-        return XML(xml: data, url: url.absoluteString, encoding: encoding, option: option)
+        return XML(data, url: url.absoluteString, encoding: encoding, option: option)
     }
     return nil
 }
@@ -87,27 +87,27 @@ public func XML(url: URL, encoding: String.Encoding, option: ParseOption = kDefa
 // unavailable functions
 //-------------------------------------------------------------
 @available(*, unavailable, message: "Use XML(xml: String, url: String?, encoding: String.Encoding, option: ParseOption). The type of the second argument has been changed to String.Encoding from UInt.")
-public func XML(xml: String, url: String?, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func XML(_ xml: String, url: String?, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     return nil
 }
 
 @available(*, unavailable, message: "Use XML(xml: String, encoding: String.Encoding, option: ParseOption). The type of the second argument has been changed to String.Encoding from UInt.")
-public func XML(xml: String, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func XML(_ xml: String, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     return nil
 }
 
 @available(*, unavailable, message: "Use XML(xml: Data, url: String?, encoding: String.Encoding, option: ParseOption). The type of the first argument has been changed to Data and the type of the second argument has been changed to String.Encoding from UInt.")
-public func XML(xml: NSData, url: String?, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) ->  XMLDocument? {
+public func XML(_ xml: Data, url: String?, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) ->  XMLDocument? {
     return nil
 }
 
 @available(*, unavailable, message: "Use XML(xml: Data, encoding: String.Encoding, option: ParseOption). The type of the first argument has been changed to Data and the type of the second argument has been changed to String.Encoding from UInt.")
-public func XML(xml: NSData, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func XML(_ xml: Data, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     return nil
 }
 
 @available(*, unavailable, message: "Use XML(url: URL, encoding: String.Encoding, option: ParseOption). The type of the second argument has been changed to String.Encoding from UInt.")
-public func XML(url: URL, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func XML(_ url: URL, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     return nil
 }
 
@@ -119,7 +119,7 @@ Parse HTML
 @param encoding the document encoding
 @param options  a ParserOption
 */
-public func HTML(html: String, url: String?, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
+public func HTML(_ html: String, url: String?, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
     switch option {
     case .htmlParseUseLibxml(let opt):
         return libxmlHTMLDocument(html: html, url: url, encoding: encoding, option: opt.rawValue)
@@ -128,26 +128,26 @@ public func HTML(html: String, url: String?, encoding: String.Encoding, option: 
     }
 }
 
-public func HTML(html: String, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
-    return HTML(html: html, url: nil, encoding: encoding, option: option)
+public func HTML(_ html: String, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
+    return HTML(html, url: nil, encoding: encoding, option: option)
 }
 
 // NSData
-public func HTML(html: Data, url: String?, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
+public func HTML(_ html: Data, url: String?, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
     if let htmlStr = String(data: html, encoding: encoding) {
-        return HTML(html: htmlStr, url: url, encoding: encoding, option: option)
+        return HTML(htmlStr, url: url, encoding: encoding, option: option)
     }
     return nil
 }
 
-public func HTML(html: Data, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
-    return HTML(html: html, url: nil, encoding: encoding, option: option)
+public func HTML(_ html: Data, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
+    return HTML(html, url: nil, encoding: encoding, option: option)
 }
 
 // NSURL
-public func HTML(url: URL, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
+public func HTML(_ url: URL, encoding: String.Encoding, option: ParseOption = kDefaultHtmlParseOption) -> HTMLDocument? {
     if let data = try? Data(contentsOf: url) {
-        return HTML(html: data, url: url.absoluteString, encoding: encoding, option: option)
+        return HTML(data, url: url.absoluteString, encoding: encoding, option: option)
     }
     return nil
 }
@@ -156,27 +156,27 @@ public func HTML(url: URL, encoding: String.Encoding, option: ParseOption = kDef
 // unavailable functions
 //-------------------------------------------------------------
 @available(*, unavailable, message: "Use HTML(html: String, url: String?, encoding: String.Encoding, option: ParseOption). The type of the second argument has been changed to String.Encoding from UInt.")
-public func HTML(html: String, url: String?, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func HTML(_ html: String, url: String?, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     return nil
 }
 
 @available(*, unavailable, message: "Use HTML(html: String, encoding: String.Encoding, option: ParseOption). The type of the second argument has been changed to String.Encoding from UInt.")
-public func HTML(html: String, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func HTML(_ html: String, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     return nil
 }
 
 @available(*, unavailable, message: "Use HTML(html: Data, url: String?, encoding: String.Encoding, option: ParseOption). The type of the first argument has been changed to Data and the type of the second argument has been changed to String.Encoding from UInt.")
-public func HTML(html: NSData, url: String?, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) ->  XMLDocument? {
+public func HTML(_ html: Data, url: String?, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) ->  XMLDocument? {
     return nil
 }
 
 @available(*, unavailable, message: "Use HTML(html: Data, encoding: String.Encoding, option: ParseOption). The type of the first argument has been changed to Data and the type of the second argument has been changed to String.Encoding from UInt.")
-public func HTML(html: NSData, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func HTML(_ html: Data, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     return nil
 }
 
 @available(*, unavailable, message: "Use HTML(url: URL, encoding: String.Encoding, option: ParseOption). The type of the second argument has been changed to String.Encoding from UInt.")
-public func HTML(url: URL, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
+public func HTML(_ url: URL, encoding: UInt, option: ParseOption = kDefaultXmlParseOption) -> XMLDocument? {
     return nil
 }
 
@@ -233,7 +233,7 @@ public protocol XMLElement: SearchableNode {
 /**
 XMLDocument
 */
-public protocol XMLDocument: class, SearchableNode {
+public protocol XMLDocument: SearchableNode {
 }
 
 /**
@@ -337,7 +337,7 @@ public enum XPathObject {
 }
 
 extension XPathObject {
-    internal init(document: XMLDocument?, docPtr: xmlDocPtr, object: xmlXPathObject) {
+    internal init(docPtr: xmlDocPtr, object: xmlXPathObject) {
         switch object.type {
         case XPATH_NODESET:
             let nodeSet = object.nodesetval
@@ -350,7 +350,7 @@ extension XPathObject {
             let size = Int((nodeSet?.pointee.nodeNr)!)
             for i in 0 ..< size {
                 let node: xmlNodePtr = nodeSet!.pointee.nodeTab[i]!
-                let htmlNode = libxmlHTMLNode(document: document, docPtr: docPtr, node: node)
+                let htmlNode = libxmlHTMLNode(docPtr: docPtr, node: node)
                 nodes.append(htmlNode)
             }
             self = .NodeSet(nodeset: XMLNodeSet(nodes: nodes))

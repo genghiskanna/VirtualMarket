@@ -10,24 +10,22 @@ import UIKit
 import Alamofire
 import AlamofireRSSParser
 
-class StockNews: NSObject {
-    
-    class func getNews(_ forStockName: String) -> Dictionary<String,String>{
+    func stockNews(_ forStockName: String, completionHandler: @escaping (RSSFeed, Error?) -> ()){
         
         let url = "https://news.google.com/news?q=" + forStockName + "&output=rss"
         
         Alamofire.request(url).responseRSS() { (response) -> Void in
             if let feed: RSSFeed = response.result.value {
-                
-                for item in feed.items{
-                    print(item.itemDescription)
-                    print("\n\n\n\n")
-                }
+                completionHandler(feed, nil)
             }
         }
-        
-        return Dictionary(dictionaryLiteral: ("hola","hola"))
     }
     
-}
+    
+    func getNews(forStockName: String, completionHandler: @escaping (RSSFeed, Error?) -> ()) {
+        stockNews(forStockName, completionHandler: completionHandler)
+    }
+
+
+
 

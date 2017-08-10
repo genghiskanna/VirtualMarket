@@ -20,7 +20,7 @@ class SearchJSON: NSObject {
                 let name = (stockD["Name"] as! String).lowercased()
                 if ((symbol.range(of: text.lowercased()) != nil) || (name.range(of: text.lowercased()) != nil)){
                     searchResults.append(stockD)
-                    print(symbol)
+                    
                 }
             }
         }
@@ -43,7 +43,7 @@ class SearchJSON: NSObject {
         let nasdaqData = try? Data(contentsOf: nasdaqPath)
         let nasdaq = try? JSONSerialization.jsonObject(with:nasdaqData!, options: .mutableContainers) as! NSArray
         if let nasdaqResults = SearchMarket(nasdaq!, text: text) as? NSArray{
-            print(nasdaqResults.count)
+            
             if nasdaqResults.count != 0 {
                 searchResult.updateValue(nasdaqResults, forKey: "NASDAQ")
             }

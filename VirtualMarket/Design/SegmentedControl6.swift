@@ -8,15 +8,20 @@
 
 import UIKit
 
+protocol SegmentedControl6Delegate {
+    func changedIndex(selectedIndex index:Int)
+}
+
 @IBDesignable class SegmentedControl6: UIControl{
     
+    var selectedIndex :Int?
+    var delegate: SegmentedControl6Delegate? = nil
     
     fileprivate var labels = [UILabel]()
-    let thumbView = UIView()
-    var labelStrings = ["1D","7D","1M","3M","6M","1Y","ALL"]
-    var selectedIndex :Int?
-    var xSkip = 0
-    var color = UIColor(red: 26.0/255.0, green: 128.0/255.0, blue: 168.0/255.0, alpha: 1.0)
+    fileprivate let thumbView = UIView()
+    fileprivate var labelStrings = ["1D","7D","1M","3M","6M","1Y","ALL"]
+    fileprivate var xSkip = 0
+    fileprivate var color = UIColor(red: 26.0/255.0, green: 128.0/255.0, blue: 168.0/255.0, alpha: 1.0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +35,7 @@ import UIKit
     
     
     
-    func setupViewAndLabels(){
+    fileprivate func setupViewAndLabels(){
         
         
         //setting up view
@@ -39,12 +44,14 @@ import UIKit
         self.layer.borderWidth = 2.0
         self.layer.cornerRadius = 5.0
         self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: UIScreen.main.bounds.width - (self.frame.origin.x * 2), height: self.frame.height)
-        //        print(UIScreen.main.bounds.width - (self.frame.origin.x * 2))
+        
         
         
         
         var i = 0
         xSkip = Int(self.frame.size.width) / self.labelStrings.count
+        
+        
         //setting up labels
         for labelText in labelStrings{
             
@@ -67,10 +74,6 @@ import UIKit
             i+=1
             
         }
-        //setting up thumbView
-        
-        
-        
     }
     
 
@@ -82,7 +85,10 @@ import UIKit
         for i in 0..<labels.count{
             labels[i].textColor = self.color
             if labels[i].frame.contains(touchL){
-                print(self.frame.width)
+                self.selectedIndex = i
+                if delegate != nil{
+                    delegate!.changedIndex(selectedIndex: self.selectedIndex!)
+                }
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.2, options: .allowAnimatedContent, animations: {
                     self.labels[i].textColor = .white
                     self.thumbView.frame = CGRect(x: CGFloat(i * self.xSkip), y: 0, width: self.frame.width / CGFloat(self.labels.count), height: self.frame.height)
@@ -94,6 +100,8 @@ import UIKit
         }
         return false
     }
+    
+    
     
 }
 

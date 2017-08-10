@@ -32,7 +32,7 @@ import libxml2
 
 #if os(Linux)
 typealias AKTextCheckingResult = TextCheckingResult
-typealias AKRegularExpression  = NSRegularExpression
+typealias AKRegularExpression  = RegularExpression
 #else
 typealias AKRegularExpression  = NSRegularExpression
 typealias AKTextCheckingResult = NSTextCheckingResult
@@ -113,7 +113,7 @@ private func firstMatch(_ pattern: String) -> (String) -> AKTextCheckingResult? 
     }
 }
 
-private func nth(prefix: String, a: Int, b: Int) -> String {
+private func nth(_ prefix: String, a: Int, b: Int) -> String {
     let sibling = "\(prefix)-sibling::*"
     if a == 0 {
         return "count(\(sibling)) = \(b-1)"
@@ -128,21 +128,21 @@ private func nth(prefix: String, a: Int, b: Int) -> String {
 }
 
 // a(n) + b | a(n) - b
-private func nth_child(a: Int, b: Int) -> String {
-    return nth(prefix: "preceding", a: a, b: b)
+private func nth_child(_ a: Int, b: Int) -> String {
+    return nth("preceding", a: a, b: b)
 }
 
-private func nth_last_child(a: Int, b: Int) -> String {
-    return nth(prefix: "following", a: a, b: b)
+private func nth_last_child(_ a: Int, b: Int) -> String {
+    return nth("following", a: a, b: b)
 }
 
 private let matchBlank        = firstMatch("^\\s*|\\s$")
 private let matchElement      = firstMatch("^([a-z0-9\\*_-]+)((\\|)([a-z0-9\\*_-]+))?")
 private let matchClassId      = firstMatch("^([#.])([a-z0-9\\*_-]+)")
 private let matchAttr1        = firstMatch("^\\[([^\\]]*)\\]")
-private let matchAttr2        = firstMatch("^\\[\\s*([^~\\|\\^\\$\\*=\\s]+)\\s*([~\\|\\^\\$\\*]?=)\\s*(.*)\\s*\\]")
+private let matchAttr2        = firstMatch("^\\[\\s*([^~\\|\\^\\$\\*=\\s]+)\\s*([~\\|\\^\\$\\*]?=)\\s*([^\"]*)\\s*\\]")
 private let matchAttrN        = firstMatch("^:not\\((.*?\\)?)\\)")
-private let matchPseudo       = firstMatch("^:([\'\"()a-z0-9_+-]+)")
+private let matchPseudo       = firstMatch("^:([\'()a-z0-9_+-]+)")
 private let matchCombinator   = firstMatch("^\\s*([\\s>+~,])\\s*")
 private let matchSubNthChild  = firstMatch("^(nth-child|nth-last-child)\\(\\s*(odd|even|\\d+)\\s*\\)")
 private let matchSubNthChildN = firstMatch("^(nth-child|nth-last-child)\\(\\s*(-?\\d*)n(\\+\\d+)?\\s*\\)")
