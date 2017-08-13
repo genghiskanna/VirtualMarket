@@ -11,7 +11,7 @@ import SwiftyJSON
 class StockDetails: NSObject {
     
     open static var jsonData: JSON?
-    
+    open static var priceUnderWatch: JSON?
     enum StockRange {
         case oneDay
         case oneWeek
@@ -20,6 +20,28 @@ class StockDetails: NSObject {
         case sixMonth
         case oneYear
         case max
+    }
+    
+    class func getStockPriceUnderWatch() -> JSON?{
+        var searchStock = ""
+        if priceUnderWatch == nil{
+            if let stocks = allStocksUnderWatch(){
+                for stock in stocks{
+                    if searchStock.characters.count == 0{
+                        searchStock.append(stock.name!)
+                    } else {
+                        searchStock.append("," + stock.name!)
+                    }
+                }
+            }
+            
+            if let currentPriceString = try String(data: Data(contentsOf: URL(string: "https://finance.google.com/finance/info?client=ig&q=" + searchStock)!) , encoding: .utf8)?.replacingOccurrences(of: "/", with: "") {
+                priceUnderWatch = JSON.init(parseJSON: currentPriceString)
+            }
+            
+        } else {
+            
+        }
     }
     
     class func getStockPrice(forStockName stockName: String) -> JSON?{

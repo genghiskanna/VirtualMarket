@@ -35,7 +35,7 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var openPrice: UILabel!
     @IBOutlet weak var highPrice: UILabel!
     @IBOutlet weak var lowPrice: UILabel!
-    @IBOutlet weak var wkHigh: UILabel!
+    @IBOutlet weak var wkHigh: UILabel!  
     @IBOutlet weak var wkLow: UILabel!
     @IBOutlet weak var volume: UILabel!
     @IBOutlet weak var avgVolume: UILabel!
@@ -117,9 +117,9 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         
         // update Values
-        updateStockPrice(delay: 1)
-        updateDayStats(delay: 5)
-        updateLongStats(delay: 30)
+        updateStockPrice(delay: 60)
+        updateDayStats(delay: 120)
+        updateLongStats()
         updateChart(inRange: .oneDay)
     }
     
@@ -132,15 +132,26 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 if let jsonPrice = StockDetails.getStockPrice(forStockName: self.stock) {
                     
                     let sPrice = jsonPrice["l"].stringValue
-                    let splitPrice = sPrice.components(separatedBy: ".")
+                    if sPrice.characters.count != 0 {
+                        let splitPrice = sPrice.components(separatedBy: ".")
 
-                    
-                    DispatchQueue.main.async {
                         
-                        self.stockName.text = jsonPrice["t"].stringValue
-                        self.price.text = splitPrice.first
-                        // fatal error: Index out of range occure
-                        self.priceFloat.text = "." + splitPrice[1]
+                        DispatchQueue.main.async {
+                            
+                            self.stockName.text = jsonPrice["t"].stringValue
+                            self.price.text = splitPrice.first
+                            if jsonPrice["c"].stringValue.contains("+"){
+                                self.change.textColor = Colors.materialGreen
+                                self.change.text = jsonPrice["c"].stringValue
+                            } else {
+                                self.change.textColor = Colors.materialRed
+                                self.change.text = jsonPrice["c"].stringValue
+                            }
+                            // fatal error: Index out of range occure
+                            print(splitPrice)
+                            self.priceFloat.text = "." + splitPrice[1]
+                            
+                        }
                     }
                 }
                 sleep(time)
@@ -195,7 +206,6 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
             // main thread
             DispatchQueue.main.async {
-                print("called")
                 print(prices)
                 print(dates)
                 self.chart.x = dates
@@ -280,11 +290,11 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    func updateLongStats(delay time: UInt32){
+    func updateLongStats(){
         
         DispatchQueue.global(qos: .userInitiated).async {
             
-            while true{
+      
                 
                 if let jsonDetails = StockDetails.getStockInfo(forStockName: self.stock){
                 
@@ -306,8 +316,6 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                         self.avgVolume.text = avgVolume
                         self.newsTable.reloadData()
                     }
-                }
-                sleep(time)
             }
         }
 
@@ -328,7 +336,6 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
         if let news = self.newsFeed{
-            print("\n\n\n\nnews table view\n\n\n\n")
             
             return cell.configureCell(newsFeed: news.items[indexPath.row])
         }

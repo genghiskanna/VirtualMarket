@@ -11,6 +11,8 @@ import CoreData
 
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
+    
     // Labels
     @IBOutlet weak var netWorthLabel: UILabel!
     @IBOutlet weak var netWorth: UILabel!
@@ -38,15 +40,17 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.stockTableView.dataSource = self
         
         
+        
 
-        updateStocks()
+        
         
     }
     
     func updateStocks(){
         DispatchQueue.global(qos: .userInitiated).async {
             while true{
-                sleep(1)
+                sleep(60)
+                
                 self.stockTableView.reloadData()
             }
         }
@@ -67,6 +71,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // WARNING to change to show absolute price as well as percentage
         self.change.text = String(describing: getROI())
+        updateStocks()
      }
     
     
@@ -147,7 +152,21 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! StockTableViewCell
+        
+        stockNameG = cell.stockName.text!
+        performSegue(withIdentifier: "homeSegue", sender: self)
+        
+        
+    }
     
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! StockTableViewCell
+        cell.isSelected = false
+        cell.isHighlighted = false
+        
+    }
     
     
     

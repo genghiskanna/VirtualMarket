@@ -1259,6 +1259,7 @@
                                                                     <outlet property="numberOfShares" destination="ENa-gQ-HYn" id="E2U-Pm-JqS"/>
                                                                     <outlet property="stockButton" destination="dWa-Jg-Kgq" id="b1m-Gk-XNH"/>
                                                                     <outlet property="stockName" destination="Kyh-V8-UfG" id="oMw-It-oL7"/>
+                                                                    <segue destination="g9E-Dd-Hqv" kind="show" identifier="homeSegue" id="mGU-ME-rl2"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
@@ -3161,4 +3162,7 @@
         <image name="Front Chevron " width="13" height="22"/>
         <image name="close" width="25" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mGU-ME-rl2"/>
+    </inferredMetricsTieBreakers>
 </document>
