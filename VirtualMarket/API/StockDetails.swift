@@ -24,7 +24,7 @@ class StockDetails: NSObject {
     
     class func getStockPriceUnderWatch() -> JSON?{
         var searchStock = ""
-        if priceUnderWatch == nil{
+        do {
             if let stocks = allStocksUnderWatch(){
                 for stock in stocks{
                     if searchStock.characters.count == 0{
@@ -38,10 +38,11 @@ class StockDetails: NSObject {
             if let currentPriceString = try String(data: Data(contentsOf: URL(string: "https://finance.google.com/finance/info?client=ig&q=" + searchStock)!) , encoding: .utf8)?.replacingOccurrences(of: "/", with: "") {
                 priceUnderWatch = JSON.init(parseJSON: currentPriceString)
             }
-            
-        } else {
-            
+        } catch {
+            print("Error retreiving all ")
         }
+        
+        return priceUnderWatch
     }
     
     class func getStockPrice(forStockName stockName: String) -> JSON?{
@@ -130,4 +131,12 @@ class StockDetails: NSObject {
         }
         
     }
+//    
+//    class func getMarketOpen(forStockName stockName:String)-> Bool{
+//        'h:mm a zzz'
+//        if let currentPriceString = try String(data: Data(contentsOf: URL(string: "https://finance.google.com/finance/info?client=ig&q=" + stockName)!) , encoding: .utf8)?.replacingOccurrences(of: "/", with: "").replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "") {
+//            var tempJson = JSON.init(parseJSON: currentPriceString)
+//        }
+//        let date = tempJson[']
+//    }
 }

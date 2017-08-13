@@ -2,21 +2,24 @@ PODS:
   - Alamofire (4.5.0)
   - AlamofireRSSParser (2.0.0):
     - Alamofire
+  - iCarousel (1.8.3)
   - Kanna (2.1.1)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireRSSParser
+  - iCarousel
   - Kanna (~> 2.1.0)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireRSSParser: bbad0689d597704025c4f101a1a31698fa2c1920
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 0f0f96dc61d71370ec4e4bc5ff3c4db8d3143292
+PODFILE CHECKSUM: a286efddcf37bb8f563b9257a379b08ecab1665a
 
 COCOAPODS: 1.0.0

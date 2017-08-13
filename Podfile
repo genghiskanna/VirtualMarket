@@ -10,5 +10,6 @@ target 'VirtualMarket' do
 	pod 'Alamofire'
 	pod 'AlamofireRSSParser'
 	pod 'Kanna', '~> 2.1.0'
+	pod 'iCarousel'
 
 end

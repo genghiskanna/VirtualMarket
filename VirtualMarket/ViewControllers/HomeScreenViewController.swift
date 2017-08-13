@@ -8,8 +8,10 @@
 
 import UIKit
 import CoreData
+import iCarousel
 
-class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDelegate, iCarouselDataSource {
 
     
     
@@ -30,6 +32,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     @IBOutlet weak var segmentedControl2: SegmentedControl!
+    @IBOutlet weak var carouselView: iCarousel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,9 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.stockTableView.delegate = self
         self.stockTableView.dataSource = self
         
+        self.carouselView.delegate = self
+        self.carouselView.dataSource = self
+        self.carouselView.type = .timeMachine
         
         
 
@@ -46,11 +52,10 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    func updateStocks(){
+    func updateStocks(delay time: UInt32){
         DispatchQueue.global(qos: .userInitiated).async {
             while true{
-                sleep(60)
-                
+                sleep(time)
                 self.stockTableView.reloadData()
             }
         }
@@ -71,16 +76,17 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // WARNING to change to show absolute price as well as percentage
         self.change.text = String(describing: getROI())
-        updateStocks()
+        
+        updateStocks(delay: 60)
      }
     
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if CurrentSettings.getStatusBar() == "dark"{
-            return .default
+        if CurrentSettings.getStatusBar() == "light"{
+            return .lightContent
             
         } else {
-            return .lightContent
+            return .default
             
         }
     }
@@ -102,6 +108,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.netWorthCent.textColor = color
         self.change.textColor = Colors.materialGreen
     }
+    
     
     func setEmptyIndicator(){
         if let stocks = allStocksUnderWatch(){
@@ -139,9 +146,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as! StockTableViewCell
         if let stocks = allStocksUnderWatch(){
-        let stock = stocks[indexPath.row]
-            print(stocks.count)
-            print(stock.status!)
+            let stock = stocks[indexPath.row]
             if stock.status! == "following"{
                 cell.configureStockCell(stock.name!, shares: "Following", price: 123.0)
             } else {
@@ -167,6 +172,23 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.isHighlighted = false
         
     }
+    
+    
+    // MARK iCarousel
+    
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        if let view = Bundle.main.loadNibNamed("QuickNewsView", owner: self, options: nil)?[0]{
+            return view as! QuickNewsView
+        }
+        let view1 = UIView()
+        view1.backgroundColor = .red
+        return view1
+    }
+    
+    func numberOfItems(in carousel: iCarousel) -> Int {
+        return 10
+    }
+    
     
     
     

@@ -42,6 +42,7 @@
 		FCA1D2511F1A979100003264 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2501F1A979100003264 /* StockDetailViewController.swift */; };
 		FCA1D2531F1A97B300003264 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2521F1A97B300003264 /* BuySellViewController.swift */; };
 		FCA1D2551F1AFE5600003264 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */; };
+		FCD1C45C1F408E6100891BF5 /* QuickNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1C45B1F408E6100891BF5 /* QuickNewsView.swift */; };
 		FCF29C141F09FF3300965D83 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C131F09FF3300965D83 /* FloatingView.swift */; };
 		FCF29C161F0A048700965D83 /* OrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C151F0A048700965D83 /* OrderView.xib */; };
 		FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C181F0A49AC00965D83 /* StockDetails.swift */; };
@@ -105,6 +106,7 @@
 		FCA1D2501F1A979100003264 /* StockDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockDetailViewController.swift; path = ViewControllers/StockDetailViewController.swift; sourceTree = "<group>"; };
 		FCA1D2521F1A97B300003264 /* BuySellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuySellViewController.swift; path = ViewControllers/BuySellViewController.swift; sourceTree = "<group>"; };
 		FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockTableViewCell.swift; path = Design/StockTableViewCell.swift; sourceTree = "<group>"; };
+		FCD1C45B1F408E6100891BF5 /* QuickNewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickNewsView.swift; path = Design/xib/QuickNewsView.swift; sourceTree = "<group>"; };
 		FCF29C131F09FF3300965D83 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatingView.swift; path = Design/FloatingView.swift; sourceTree = "<group>"; };
 		FCF29C151F0A048700965D83 /* OrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderView.xib; path = Design/xib/OrderView.xib; sourceTree = "<group>"; };
 		FCF29C181F0A49AC00965D83 /* StockDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockDetails.swift; path = API/StockDetails.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA1D23E1F19F28300003264 /* QuickNewsView.xib */,
+				FCD1C45B1F408E6100891BF5 /* QuickNewsView.swift */,
 				FCA1D22C1F19E07300003264 /* StopPrice.xib */,
 				FC1E7B421F19DBCC00C3CAB9 /* CustomKeyboard.xib */,
 				FC1E7B401F19DBB300C3CAB9 /* QuantityView.xib */,
@@ -416,6 +419,7 @@
 				FC4E66501F1BDAC600458B92 /* StockNews.swift in Sources */,
 				FCA1D24B1F1A971B00003264 /* SettingsViewController.swift in Sources */,
 				FCA1D24F1F1A976E00003264 /* StatisticsViewController.swift in Sources */,
+				FCD1C45C1F408E6100891BF5 /* QuickNewsView.swift in Sources */,
 				FCA1D2411F1A0BDB00003264 /* SegmentedControl2.swift in Sources */,
 				FC7E82651F096A6A001333A5 /* Colors.swift in Sources */,
 				FCA1D2551F1AFE5600003264 /* StockTableViewCell.swift in Sources */,

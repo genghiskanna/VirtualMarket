@@ -1173,9 +1173,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZA-ES-Lw5" customClass="FloatingView" customModule="VirtualMarket" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="292" width="355" height="200"/>
                                                 <subviews>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHU-CC-8J0">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ouq-gE-Z5A" customClass="iCarousel">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="200"/>
-                                                    </scrollView>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Stock in your portfolio for news." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG8-AE-YZN">
                                                         <rect key="frame" x="8" y="89" width="339" height="11"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -1185,13 +1186,13 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="oHU-CC-8J0" secondAttribute="bottom" id="Deb-IR-13U"/>
-                                                    <constraint firstAttribute="trailing" secondItem="oHU-CC-8J0" secondAttribute="trailing" id="EWi-Zu-KLy"/>
-                                                    <constraint firstItem="oHU-CC-8J0" firstAttribute="top" secondItem="FZA-ES-Lw5" secondAttribute="top" id="F6W-X8-2EN"/>
+                                                    <constraint firstItem="Ouq-gE-Z5A" firstAttribute="leading" secondItem="FZA-ES-Lw5" secondAttribute="leading" id="1to-82-pyN"/>
+                                                    <constraint firstItem="Ouq-gE-Z5A" firstAttribute="top" secondItem="FZA-ES-Lw5" secondAttribute="top" id="4zR-Ic-9dh"/>
                                                     <constraint firstItem="yG8-AE-YZN" firstAttribute="top" secondItem="FZA-ES-Lw5" secondAttribute="top" constant="89" id="LXI-aE-V1u"/>
                                                     <constraint firstAttribute="trailing" secondItem="yG8-AE-YZN" secondAttribute="trailing" constant="8" id="SPk-3g-D4J"/>
-                                                    <constraint firstItem="oHU-CC-8J0" firstAttribute="leading" secondItem="FZA-ES-Lw5" secondAttribute="leading" id="Ucp-W3-WrX"/>
                                                     <constraint firstAttribute="height" constant="200" id="YcH-GR-5f2"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Ouq-gE-Z5A" secondAttribute="bottom" id="b0R-4m-PvO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ouq-gE-Z5A" secondAttribute="trailing" id="gBm-bW-AWb"/>
                                                     <constraint firstItem="yG8-AE-YZN" firstAttribute="leading" secondItem="FZA-ES-Lw5" secondAttribute="leading" constant="8" id="yoK-5t-W4z"/>
                                                 </constraints>
                                             </view>
@@ -1332,12 +1333,12 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="carouselView" destination="Ouq-gE-Z5A" id="hv7-08-9Tn"/>
                         <outlet property="change" destination="0D4-zE-pdY" id="DID-fu-cPt"/>
                         <outlet property="netWorth" destination="svq-fr-eX7" id="NKh-zL-BPv"/>
                         <outlet property="netWorthCent" destination="jfu-17-z7t" id="Jmb-Yq-xon"/>
                         <outlet property="netWorthLabel" destination="XKa-n2-MlX" id="Ks8-a4-OAk"/>
                         <outlet property="newsEmpty" destination="yG8-AE-YZN" id="JQG-oh-hrA"/>
-                        <outlet property="newsScrollView" destination="oHU-CC-8J0" id="tOJ-YI-gQe"/>
                         <outlet property="orderScrollView" destination="DvZ-TS-49D" id="FfF-gc-N7K"/>
                         <outlet property="pendingOrderEmpty" destination="hjl-dJ-UGb" id="Ti1-ed-aZ8"/>
                         <outlet property="portfolioEmpty" destination="HGf-k7-7hw" id="elC-FN-dUQ"/>
