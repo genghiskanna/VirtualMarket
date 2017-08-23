@@ -34,11 +34,8 @@ public func allPendingOrders() -> Array<Any>{
 public func allStocksUnderWatch() -> Array<Stock>? {
     var stocks: Array<Stock>?
     do {
-//        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
         stocks = try context.fetch(Stock.fetchRequest())
-        for stock in stocks!{
-            print(stock.name)
-        }
+        
     } catch {
         print("Error Fetching Data")
     }

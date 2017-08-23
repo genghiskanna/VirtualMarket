@@ -26,7 +26,6 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var priceFloat: UILabel!
     @IBOutlet weak var change: UILabel!
-    
     @IBOutlet weak var priceChart: UILabel!
     @IBOutlet weak var dateChart: UILabel!
     

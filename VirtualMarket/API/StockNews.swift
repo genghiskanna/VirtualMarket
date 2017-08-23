@@ -7,24 +7,20 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireRSSParser
+import FeedKit
 
-    func stockNews(_ forStockName: String, completionHandler: @escaping (RSSFeed, Error?) -> ()){
-        
-        let url = "https://news.google.com/news?q=" + forStockName + "&output=rss"
-        
-        Alamofire.request(url).responseRSS() { (response) -> Void in
-            if let feed: RSSFeed = response.result.value {
-                completionHandler(feed, nil)
-            }
-        }
-    }
+
+func stockNews(forStockName stockName: String) -> FeedParser?{
     
+    let url = URL(string: "https://feeds.finance.yahoo.com/rss/2.0/headline?s=" + stockName + "&lang=en-US")
     
-    func getNews(forStockName: String, completionHandler: @escaping (RSSFeed, Error?) -> ()) {
-        stockNews(forStockName, completionHandler: completionHandler)
-    }
+    return FeedParser(URL: url!)
+}
+
+
+
+
+
 
 
 

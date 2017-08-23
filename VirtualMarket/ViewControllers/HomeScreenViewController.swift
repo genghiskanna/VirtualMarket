@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 import iCarousel
+// URL
 
+var currentUrlForNews = "https://www.apple.com"
 
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDelegate, iCarouselDataSource {
 
@@ -44,7 +46,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.carouselView.delegate = self
         self.carouselView.dataSource = self
-        self.carouselView.type = .timeMachine
+        self.carouselView.type = .linear
         
         
 
@@ -178,7 +180,12 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         if let view = Bundle.main.loadNibNamed("QuickNewsView", owner: self, options: nil)?[0]{
-            return view as! QuickNewsView
+            let newsView = view as! QuickNewsView
+            newsView.companyTitle.text = stockNameG
+            newsView.newsTitle.text = AppDelegate.news?.items?[index].title
+            newsView.newsBody.text = AppDelegate.news?.items?[index].description
+            
+            return view as! UIView
         }
         let view1 = UIView()
         view1.backgroundColor = .red
@@ -186,8 +193,29 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func numberOfItems(in carousel: iCarousel) -> Int {
-        return 10
+        if let len = AppDelegate.news?.items?.count{
+            return len
+        }
+        
+        return 0
     }
+    
+    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
+        if let link = AppDelegate.news?.items?[index].link{
+            if link.contains("https"){
+                print(currentUrlForNews)
+                currentUrlForNews = link
+            } else {
+                currentUrlForNews = link.replacingOccurrences(of: "http", with: "https")
+                print(currentUrlForNews)
+            }
+            
+        }
+        performSegue(withIdentifier: "NewsSegue", sender: self)
+        
+    }
+    
+   
     
     
     

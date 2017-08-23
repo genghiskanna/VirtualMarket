@@ -43,6 +43,7 @@
 		FCA1D2531F1A97B300003264 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2521F1A97B300003264 /* BuySellViewController.swift */; };
 		FCA1D2551F1AFE5600003264 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */; };
 		FCD1C45C1F408E6100891BF5 /* QuickNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1C45B1F408E6100891BF5 /* QuickNewsView.swift */; };
+		FCE54B2C1F42225800A0C1AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE54B2B1F42225800A0C1AC /* WebViewController.swift */; };
 		FCF29C141F09FF3300965D83 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C131F09FF3300965D83 /* FloatingView.swift */; };
 		FCF29C161F0A048700965D83 /* OrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C151F0A048700965D83 /* OrderView.xib */; };
 		FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C181F0A49AC00965D83 /* StockDetails.swift */; };
@@ -107,6 +108,7 @@
 		FCA1D2521F1A97B300003264 /* BuySellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuySellViewController.swift; path = ViewControllers/BuySellViewController.swift; sourceTree = "<group>"; };
 		FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockTableViewCell.swift; path = Design/StockTableViewCell.swift; sourceTree = "<group>"; };
 		FCD1C45B1F408E6100891BF5 /* QuickNewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickNewsView.swift; path = Design/xib/QuickNewsView.swift; sourceTree = "<group>"; };
+		FCE54B2B1F42225800A0C1AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ViewControllers/WebViewController.swift; sourceTree = "<group>"; };
 		FCF29C131F09FF3300965D83 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatingView.swift; path = Design/FloatingView.swift; sourceTree = "<group>"; };
 		FCF29C151F0A048700965D83 /* OrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderView.xib; path = Design/xib/OrderView.xib; sourceTree = "<group>"; };
 		FCF29C181F0A49AC00965D83 /* StockDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockDetails.swift; path = API/StockDetails.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		FC7E82691F096C79001333A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCE54B2B1F42225800A0C1AC /* WebViewController.swift */,
 				FCA1D2441F1A968D00003264 /* AccountViewController.swift */,
 				FCA1D2461F1A96CF00003264 /* MarketViewController.swift */,
 				FCA1D2481F1A96FD00003264 /* TransferViewController.swift */,
@@ -436,6 +439,7 @@
 				FC4FDFD11F0C063D00CB09A1 /* SearchTableViewCell.swift in Sources */,
 				FC4E664E1F1B7BD700458B92 /* CoreDataAccess.swift in Sources */,
 				FC4FDFC91F0BC5E300CB09A1 /* TextField.swift in Sources */,
+				FCE54B2C1F42225800A0C1AC /* WebViewController.swift in Sources */,
 				FC9FA6E61F192BAA002435BC /* Button.swift in Sources */,
 				FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */,
 			);
