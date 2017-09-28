@@ -10,9 +10,10 @@ import UIKit
 
 class QuickNewsView: UIView {
     @IBOutlet weak var newsTitle: UILabel!
-    @IBOutlet weak var companyTitle: UILabel!
+    
     @IBOutlet weak var newsBody: UILabel!
     
+    @IBOutlet weak var readMore: UILabel!
 
     
     

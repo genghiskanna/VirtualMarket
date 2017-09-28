@@ -13,9 +13,11 @@ import iCarousel
 
 var currentUrlForNews = "https://www.apple.com"
 
-class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDelegate, iCarouselDataSource {
+class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDelegate, iCarouselDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    // DATA
     
+    fileprivate var pendingOrder = Array<Stock>()
     
     // Labels
     @IBOutlet weak var netWorthLabel: UILabel!
@@ -28,13 +30,16 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var portfolioEmpty: UILabel!
     
     
-    @IBOutlet weak var orderScrollView: UIScrollView!
+    
     @IBOutlet weak var newsScrollView: UIScrollView!
     @IBOutlet weak var stockTableView: UITableView!
     
     
     @IBOutlet weak var segmentedControl2: SegmentedControl!
     @IBOutlet weak var carouselView: iCarousel!
+    
+    @IBOutlet weak var orderCollections: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +54,18 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.carouselView.type = .linear
         
         
-
+        self.orderCollections.backgroundColor = Colors.light
+        self.orderCollections.layer.cornerRadius = 30.0
         
+        
+
+        updatePendingOrder()
+        
+    }
+    
+    func updatePendingOrder(){
+        pendingOrder = allPendingOrders(buy: true)
+        print(pendingOrder.count)
         
     }
     
@@ -62,6 +77,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
+  
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -130,6 +146,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK Uitableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let stocks = allStocksUnderWatch() {
+            print(stocks.count)
+            print("Gala")
             if stocks.count == 0{
                 tableView.isHidden = true
                 return 0
@@ -148,6 +166,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as! StockTableViewCell
         if let stocks = allStocksUnderWatch(){
+            
             let stock = stocks[indexPath.row]
             if stock.status! == "following"{
                 cell.configureStockCell(stock.name!, shares: "Following", price: 123.0)
@@ -179,11 +198,16 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK iCarousel
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        
+        // News
+    
         if let view = Bundle.main.loadNibNamed("QuickNewsView", owner: self, options: nil)?[0]{
             let newsView = view as! QuickNewsView
-            newsView.companyTitle.text = stockNameG
-            newsView.newsTitle.text = AppDelegate.news?.items?[index].title
-            newsView.newsBody.text = AppDelegate.news?.items?[index].description
+//            newsView.companyTitle.text = stockNameG
+            
+            newsView.newsTitle.text = AppDelegate.stockData[index].news[0].title
+            newsView.newsBody.text = AppDelegate.stockData[index].news[0].source
+            newsView.readMore.textColor = Colors.teal
             
             return view as! UIView
         }
@@ -193,8 +217,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func numberOfItems(in carousel: iCarousel) -> Int {
-        if let len = AppDelegate.news?.items?.count{
-            return len
+        if carousel == carouselView{
+            return AppDelegate.stockData.count
         }
         
         return 0
@@ -216,6 +240,23 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
    
+    // MARK UICollectionView
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "orderCollection", for: indexPath) as! OrderCollectionViewCell
+        cell.configureCell(stockName: pendingOrder[indexPath.row].name!, orderType: pendingOrder[indexPath.row].orderType!)
+        
+        cell.layer.cornerRadius = 30.0
+        cell.backgroundColor = Colors.materialGreen
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pendingOrder.count
+    }
+    
     
     
     

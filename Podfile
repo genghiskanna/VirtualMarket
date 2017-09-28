@@ -13,5 +13,8 @@ target 'VirtualMarket' do
 	pod 'iCarousel'
 	pod 'FeedKit'
 	pod 'M13Checkbox'  
+	pod "TextFieldEffects"
+	pod 'IHKeyboardAvoiding'
+	pod 'SCLAlertView'
 
 end

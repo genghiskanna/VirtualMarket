@@ -53,11 +53,11 @@ internal class M13CheckboxController {
             if markType == newValue {
                 return
             }
-            setMarkType(type: markType, animated: false)
+            setMarkType(markType, animated: false)
         }
     }
     
-    func setMarkType(type: M13Checkbox.MarkType, animated: Bool) {
+    func setMarkType(_ type: M13Checkbox.MarkType, animated: Bool) {
         var newPathGenerator: M13CheckboxPathGenerator? = nil
         if type != markType {
             switch type {

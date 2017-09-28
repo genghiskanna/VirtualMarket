@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IHKeyboardAvoiding.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kanna.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,7 +39,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TextFieldEffects.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -46,6 +61,62 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>27DF038293EFB3C09346DC04925B97C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30F6CA7D00E3F53E3ABB2298E0EF5D87</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3634ABA74A6F41DB3C7516A583373EE8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39A204FCB78FFA83E996C40FF3B4AC11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6B535F108F36F971F443054A2FB1F624</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AF49B2FE8C15C1EFB77C39F552FF356</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C92F648B3DA8BE3B2B26BAD8AF1EAEC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D1E481A5E532DFC58E8BDDB0A73B0322</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD5EE42307A9CE387AA5BB649CEE8AC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FAD8A6F528BBFD08E6E10D9E3B3AD36F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

@@ -10,12 +10,14 @@ import UIKit
 import CoreData
 import FeedKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     static var darkMode = Bool()
     open static var news : RSSFeed?
+    open static var stockData = [StockDataSource]()
     
 
 
@@ -26,11 +28,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
 //        DispatchQueue.global(qos: .userInitiated).async {
-            AppDelegate.news = stockNews(forStockName: "AAPL")?.parse().rssFeed
+//            AppDelegate.news = stockNews(forStockName: "AAPL")?.parse().rssFeed
 //        }
         
         
         
+        if let stocks = allStocksUnderWatch(){
+            for stock in stocks{
+                var new = StockDataSource()
+                new.name = stock.name!
+                AppDelegate.stockData.append(new)
+            }
+        }
+        stockNews()
+        StockDetails.getStockPriceUnderWatch()
+        
+        // Update Stocks Quotes Perodically
+        DispatchQueue.global(qos: .userInitiated).async {
+            while true{
+                sleep(60)
+                StockDetails.getStockPriceUnderWatch()
+            }
+        }
+        
+        for temp in AppDelegate.stockData{
+            print(temp.name)
+        }
+        
+        
+
         
         
         print("News Fetched")

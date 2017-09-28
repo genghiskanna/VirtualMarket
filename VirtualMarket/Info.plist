@@ -36,5 +36,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>CircularAirPro-Light</string>
+		<string>CircularAirPro-Book</string>
+	</array>
 </dict>
 </plist>

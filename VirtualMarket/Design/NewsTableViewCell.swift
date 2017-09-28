@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Kanna
-import AlamofireRSSParser
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -16,8 +14,8 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var news: UILabel!
     
     
-    open func configureCell(newsFeed: RSSItem) -> UITableViewCell{
-        self.newsTitle.text = newsFeed.title
+    open func configureCell(title:String, source: String) -> UITableViewCell{
+        self.newsTitle.text = title
         return self as UITableViewCell
     }
 }

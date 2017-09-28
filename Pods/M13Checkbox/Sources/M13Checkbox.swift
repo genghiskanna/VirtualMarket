@@ -380,7 +380,7 @@ open class M13Checkbox: UIControl {
             newManager.animationGenerator.animationDuration = controller.animationGenerator.animationDuration
             newManager.state = controller.state
             newManager.enableMorphing = controller.enableMorphing
-            newManager.setMarkType(type: controller.markType, animated: false)
+            newManager.setMarkType(controller.markType, animated: false)
             
             // Set up the inital state.
             for aLayer in newManager.layersToDisplay {
@@ -467,8 +467,8 @@ open class M13Checkbox: UIControl {
     }
     
     /// Set the mark type with the option of animating the change.
-    open func setMarkType(markType: MarkType, animated: Bool) {
-        controller.setMarkType(type: markType, animated: animated)
+    open func setMarkType(_ markType: MarkType, animated: Bool) {
+        controller.setMarkType(markType, animated: animated)
     }
     
     /// The stroke width of the box.

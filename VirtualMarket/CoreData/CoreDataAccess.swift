@@ -11,25 +11,21 @@ import UIKit
 
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-public func allPendingOrders() -> Array<Any>{
-    var stocks = Array<Any>()
-    var pendingStocks = Array<Any>()
+
+public func allPendingOrders(buy:Bool) -> Array<Stock>{
+    let pending = buy ? "pendingBuy" : "pendingSell"
+    let predicate = NSPredicate(format: "status == %@",pending)
+    var stocks = Array<Stock>()
     do {
         let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
-        stocks = try context.fetch(request)
+        request.predicate = predicate
+        stocks = try context.fetch(request) as! Array<Stock>
     } catch {
-        print("Error Fetching Data")
+        print("Error Fetching Pending Orders From Core Data")
     }
-    
-    for stock in stocks {
-        let tempStock = stock as! NSManagedObject
-        if String(describing: tempStock.value(forKey: "status")) == "pending" {
-            pendingStocks.append(stock)
-        }
-    }
-    
-    return pendingStocks
+    return stocks
 }
+
 
 public func allStocksUnderWatch() -> Array<Stock>? {
     var stocks: Array<Stock>?
@@ -37,7 +33,7 @@ public func allStocksUnderWatch() -> Array<Stock>? {
         stocks = try context.fetch(Stock.fetchRequest())
         
     } catch {
-        print("Error Fetching Data")
+        print("Error Fetching All Stocks")
     }
     
     return stocks
@@ -47,25 +43,31 @@ public func allStocksUnderWatch() -> Array<Stock>? {
 public func getStockStatus(forStockName stockName:String) -> String?{
     let predicate = NSPredicate(format: "name == %@", stockName)
     var stocks: Array<Stock>
+    var finalStatus = ""
     do {
         let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
         request.predicate = predicate
         
         stocks = try context.fetch(request) as! Array<Stock>
         if stocks.count != 0{
-            if let type = stocks[0].status{
-                return type
+            for stock in stocks{
+                print(stock.name!)
+                print(stock.status!)
+                print("Hola")
+                if let status = stock.status{
+                    return status
+                }
             }
         }
     } catch {
-        print("Error Fetching Data")
+        print("Error Fetching status for \(stockName)")
     }
     
-    return nil
+    return finalStatus
 }
 
 
-public func deleteStock(forStockName stockName:String){
+public func isStockBought(forStockName stockName:String) -> Bool{
     let predicate = NSPredicate(format: "name == %@", stockName)
     var stocks: Array<Stock>
     do {
@@ -74,18 +76,21 @@ public func deleteStock(forStockName stockName:String){
         
         stocks = try context.fetch(request) as! Array<Stock>
         if stocks.count != 0{
-            if let type = stocks[0].status{
-                if type.contains("following"){
-                    context.delete(stocks[0])
-                    try context.save()
+            for stock in stocks{
+                if let status = stock.status{
+                    print(status)
+                    if status.contains("bought"){
+                        return true
+                    }
                 }
             }
         }
     } catch {
-        print("Error Fetching Data")
+        print("Error Fetching status BuyOrSell for \(stockName)")
     }
+    print("Gal Gadot")
+    return false
 }
-
 
 
 public func specificStock(forStockName stockName: String) -> Any {
@@ -93,15 +98,51 @@ public func specificStock(forStockName stockName: String) -> Any {
     return 1
 }
 
+
 public func specificStock(boughtDate forDate: Date) -> Any {
     
     return 1
 }
 
+
 public func getBuyingPower() -> Float {
+    
+    
+    var user: Array<User>
+    do {
+        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        user = try context.fetch(request) as! Array<User>
+        if user.count != 0{
+            print("Hello")
+            return user[0].tradingAccount
+        }
+    } catch {
+        print("Error Fetching Data")
+    }
+    
     
     return 0.0
 }
+
+public func changeBuyingPower(value: Float) {
+    var user: Array<User>
+    do {
+        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        user = try context.fetch(request) as! Array<User>
+        if user.count != 0{
+            print(user[0].tradingAccount)
+            print(value)
+            user[0].tradingAccount += value
+        }
+        
+        try context.save()
+    } catch {
+        print("Error Changing Buying Power")
+    }
+}
+
 
 public func getDarkUser(){
     var mode = false
@@ -117,11 +158,13 @@ public func getDarkUser(){
     AppDelegate.darkMode = mode
 }
 
+
 public func getROI() -> Float {
     
     let user = User(context: context)
     return user.rateOI
 }
+
 
 public func getPortfolioValue() -> Float {
     var account = Float(1.0)
@@ -135,17 +178,34 @@ public func getPortfolioValue() -> Float {
     return account
 }
 
-public func insertStock(_ stockName: String, orderType: String?, quantity: Int64?, priceBought:Float?, worthBefore: Float?, status: String) {
+
+
+
+// MARK Insert Functions
+
+public func insertStock(_ stockName: String, orderType: String?, quantity: Int64?, priceBought:Float?, worthBefore: Float?, stopLoss:Float?, status: String) {
     
     
     let stock = Stock(context: context)
+    // Deleting Following Stocks
+    deleteStock(forStockName: stockName)
     if orderType != nil{
         stock.name = stockName
         stock.orderType = orderType!
         stock.quantity = quantity!
+        // Price Bought
         stock.priceBought = priceBought!
         stock.worthBefore = worthBefore!
         stock.status = status
+        
+        if stopLoss != nil{
+            stock.stopLoss = stopLoss!
+        }
+        
+        if orderType!.contains("arket"){
+            stock.status = "Bought"
+            changeBuyingPower(value: -(Float(stock.quantity) * stock.priceBought))
+        }
     } else {
         stock.name = stockName
         stock.status = status
@@ -153,14 +213,45 @@ public func insertStock(_ stockName: String, orderType: String?, quantity: Int64
     
     do {
         try context.save()
+        
     } catch {
-        print("Error Saving \(error.localizedDescription)")
+        print("Error Saving \(error.localizedDescription) to Core Data")
     }
 }
 
 
 
-// onetime functions
+
+// MARK Delete Functions
+
+public func deleteStock(forStockName stockName:String){
+    let predicate = NSPredicate(format: "name == %@", stockName)
+    var stocks: Array<Stock>
+    do {
+        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
+        request.predicate = predicate
+        
+        stocks = try context.fetch(request) as! Array<Stock>
+        if stocks.count != 0{
+            for stock in stocks{
+                if let type = stock.status{
+                    // Deleting stocks with status 'following' only because others shouldn't be removed
+                    if type.contains("following"){
+                        context.delete(stock)
+                        try context.save()
+                    }
+                }
+            }
+        }
+    } catch {
+        print("Error Deleting \(stockName) from CoreData 'Following'")
+    }
+}
+
+
+
+
+// MARK onetime functions
 
 public func createUser(){
     let user = User(context: context)

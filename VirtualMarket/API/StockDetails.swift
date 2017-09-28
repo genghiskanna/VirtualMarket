@@ -11,6 +11,7 @@ import SwiftyJSON
 class StockDetails: NSObject {
     
     open static var jsonData: JSON?
+    
     open static var priceUnderWatch: JSON?
     enum StockRange {
         case oneDay
@@ -22,8 +23,10 @@ class StockDetails: NSObject {
         case max
     }
     
-    class func getStockPriceUnderWatch() -> JSON?{
+    class func getStockPriceUnderWatch(){
         var searchStock = ""
+        
+        // Getting Stock Quote Data
         do {
             if let stocks = allStocksUnderWatch(){
                 for stock in stocks{
@@ -34,30 +37,106 @@ class StockDetails: NSObject {
                     }
                 }
             }
+            if let url = URL(string:"https://api.iextrading.com/1.0/stock/market/batch?symbols=" + searchStock + "&types=quote"){
+                if let currentPriceString = try String(data: Data(contentsOf: url), encoding: .utf8){
+                    priceUnderWatch = JSON.init(parseJSON: currentPriceString)
+                    
+                }
+            }
+        } catch {
+            print("Error retreiving  getStockPriceUnderWatch")
+        }
+        
+        
+        
+        // updating stocks
+        
+        if let stocks = allStocksUnderWatch(){
             
-            if let currentPriceString = try String(data: Data(contentsOf: URL(string: "https://finance.google.com/finance/info?client=ig&q=" + searchStock)!) , encoding: .utf8)?.replacingOccurrences(of: "/", with: "") {
-                priceUnderWatch = JSON.init(parseJSON: currentPriceString)
+            for stock in stocks{
+                var loop = 0
+                print(stock.name!)
+                print(loop)
+                print(AppDelegate.stockData[loop].name)
+                print(AppDelegate.stockData.count)
+                while loop < AppDelegate.stockData.count{
+                    
+                    if stock.name!.contains(AppDelegate.stockData[loop].name){
+                        print(stock.name!)
+                        if let stockTemp = priceUnderWatch?[stock.name!]["quote"]{
+                            AppDelegate.stockData[loop].quote.price = stockTemp["latestPrice"].stringValue
+                            AppDelegate.stockData[loop].quote.change = stockTemp["change"].stringValue
+                            AppDelegate.stockData[loop].quote.changePercent = stockTemp["changePercent"].stringValue
+                            AppDelegate.stockData[loop].quote.avgVolume = stockTemp["avgTotalVolume"].stringValue
+                            AppDelegate.stockData[loop].quote.wkHigh = stockTemp["week52High"].stringValue
+                            AppDelegate.stockData[loop].quote.wkLow = stockTemp["week52Low"].stringValue
+                            AppDelegate.stockData[loop].quote.peRatio = stockTemp["peRatio"].stringValue
+                            AppDelegate.stockData[loop].quote.name = stockTemp["companyName"].stringValue
+                            AppDelegate.stockData[loop].quote.marketCap = stockTemp["marketCap"].stringValue
+                            AppDelegate.stockData[loop].quote.volume = stockTemp["latestVolume"].stringValue
+                            
+                            
+                            print(AppDelegate.stockData[loop].quote)
+                            
+                            
+                        }
+                        
+                    }
+                    loop += 1
+                }
+                
             }
-        } catch {
-            print("Error retreiving all ")
         }
         
-        return priceUnderWatch
+        
+        
+        
+        
     }
     
-    class func getStockPrice(forStockName stockName: String) -> JSON?{
+    
+    class func getStockPrice(stockName: String) -> StockDataSource?{
         
+        var tempStock = StockDataSource()
+        
+        // Getting Stock Quote Data
         do {
-            if let currentPriceString = try String(data: Data(contentsOf: URL(string: "https://finance.google.com/finance/info?client=ig&q=" + stockName)!) , encoding: .utf8)?.replacingOccurrences(of: "/", with: "").replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "") {
-                jsonData = JSON.init(parseJSON: currentPriceString)
+            
+            if let url = URL(string:"https://api.iextrading.com/1.0/stock/market/batch?symbols=" + stockName + "&types=quote"){
+                if let currentPriceString = try String(data: Data(contentsOf: url), encoding: .utf8){
+                    priceUnderWatch = JSON.init(parseJSON: currentPriceString)
+                    
+                }
             }
         } catch {
-            print("Error retrieving" + stockName)
+            print("Error retreiving  getStockPriceUnderWatch")
         }
-        return jsonData
+        
+       
+        
+        if let stockTemp = priceUnderWatch?[stockName]["quote"]{
+            
+            
+            
+            tempStock.quote.price = stockTemp["latestPrice"].stringValue
+            tempStock.quote.change = stockTemp["change"].stringValue
+            tempStock.quote.changePercent = stockTemp["changePercent"].stringValue
+            tempStock.quote.avgVolume = stockTemp["avgTotalVolume"].stringValue
+            tempStock.quote.wkHigh = stockTemp["week52High"].stringValue
+            tempStock.quote.wkLow = stockTemp["week52Low"].stringValue
+            tempStock.quote.peRatio = stockTemp["peRatio"].stringValue
+            tempStock.quote.name = stockTemp["companyName"].stringValue
+            tempStock.quote.marketCap = stockTemp["marketCap"].stringValue
+            tempStock.quote.volume = stockTemp["latestVolume"].stringValue
+        
+        }
+        print(tempStock)
+        return tempStock;
+        
     }
     
     
+
     
     class func getOpenClose(forStockName stockName: String) -> JSON?{
         
@@ -69,20 +148,6 @@ class StockDetails: NSObject {
             print("Error retrieving" + stockName)
         }
         return jsonData?["Time Series (1min)"]
-    }
-    
-    
-    
-    
-    class func getStockInfo(forStockName stockName: String) -> JSON? {
-        do {
-            if let currentPriceString = try String(data: Data(contentsOf: URL(string:"https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + stockName + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")!) , encoding: .utf8) {
-                jsonData = JSON.init(parseJSON: currentPriceString)
-            }
-        } catch {
-            print("Error retrieving" + stockName)
-        }
-        return jsonData?["query"]["results"]["quote"]
     }
     
     

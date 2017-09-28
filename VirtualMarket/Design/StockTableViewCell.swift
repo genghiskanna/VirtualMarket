@@ -18,16 +18,13 @@ class StockTableViewCell: UITableViewCell {
         
         self.stockName.text = stockName
         self.numberOfShares.text = shares
-        if let priceJson = StockDetails.getStockPriceUnderWatch(){
-            for (_,json) in priceJson{
-                if json["t"].stringValue == stockName{
-                    self.stockButton.setTitle(json["l"].stringValue, for: .normal)
-                    if json["c"].stringValue.contains("-"){
-                        self.stockButton.backgroundColor = Colors.materialRed
-                    } else {
-                        self.stockButton.backgroundColor = Colors.materialGreen
-                    }
-                }
+        if let stockTemp = getStockPrice(forStockName: stockName){
+            print(stockTemp)
+            self.stockButton.setTitle(stockTemp.quote.price, for: .normal)
+            if stockTemp.quote.change.contains("-"){
+                self.stockButton.backgroundColor = Colors.materialRed
+            } else {
+                self.stockButton.backgroundColor = Colors.materialGreen
             }
         }
         self.stockButton.layer.cornerRadius = 5.0

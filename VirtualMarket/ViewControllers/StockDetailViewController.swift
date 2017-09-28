@@ -17,7 +17,9 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // Data 
     
-    open var stock: String!
+    var stockNews: StockDataSource!
+    var stock: String!
+    
     var indexDetails = [StockDetails.StockRange.oneDay, StockDetails.StockRange.oneWeek, StockDetails.StockRange.oneMonth,StockDetails.StockRange.threeMonth,StockDetails.StockRange.sixMonth,StockDetails.StockRange.oneYear,StockDetails.StockRange.max]
     var graphLayers = [CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer()]
 
@@ -63,13 +65,14 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // IBActions
     @IBAction func buyPressed(_ sender: Any) {
+        performSegue(withIdentifier: "buySegue", sender: self)
     }
     
     
     @IBAction func followPressed(_ sender: Any) {
         if self.stock != nil{
             if self.followButton.title(for: .normal) == "Follow"{
-                insertStock(self.stock!, orderType: nil, quantity: nil, priceBought: nil, worthBefore: nil, status: "following")
+                insertStock(self.stock!, orderType: nil, quantity: nil, priceBought: nil, worthBefore: nil,stopLoss: nil, status: "following")
                 self.change.text = "Following \(self.stock!)"
                 self.followButton.setTitle("UnFollow", for: .normal)
             } else {
@@ -105,14 +108,26 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewWillAppear(animated)
         stock = stockNameG
         if let status = getStockStatus(forStockName: self.stock) {
-            
             if status.contains("following"){
                 self.followButton.setTitle("UnFollow", for: .normal)
-            } else {
-                self.followButton.setTitle("Sell", for: .normal)
+            }
+            else {
+                let buySellTitle = isStockBought(forStockName: stockNameG) ? "Sell" : "Follow"
+                self.followButton.setTitle(buySellTitle, for: .normal)
             }
         }
         
+        var flag = 0
+        for stockTemp in AppDelegate.stockData{
+            if stockTemp.name.contains(stock){
+                flag = 1
+                stockNews = stockTemp
+            }
+        }
+        
+        if flag == 0{
+            stockNews = getNewsForStock(stockName: stock)
+        }
         
         
         // update Values
@@ -128,28 +143,30 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         DispatchQueue.global(qos: .userInitiated).async {
             
             while true{
-                if let jsonPrice = StockDetails.getStockPrice(forStockName: self.stock) {
-                    
-                    let sPrice = jsonPrice["l"].stringValue
-                    if sPrice.characters.count != 0 {
-                        let splitPrice = sPrice.components(separatedBy: ".")
+                if let stockTemp = getStockPrice(forStockName: self.stock) {
+                    if let sPrice = stockTemp.quote.price{
+                        if sPrice.characters.count != 0 {
+                            let splitPrice = sPrice.components(separatedBy: ".")
 
-                        
-                        DispatchQueue.main.async {
                             
-                            self.stockName.text = jsonPrice["t"].stringValue
-                            self.price.text = splitPrice.first
-                            if jsonPrice["c"].stringValue.contains("+"){
-                                self.change.textColor = Colors.materialGreen
-                                self.change.text = jsonPrice["c"].stringValue
-                            } else {
-                                self.change.textColor = Colors.materialRed
-                                self.change.text = jsonPrice["c"].stringValue
+                            DispatchQueue.main.async {
+                                
+                                self.stockName.text = stockTemp.name
+                                self.price.text = splitPrice.first
+                                
+                                if stockTemp.quote.change.contains("+"){
+                                    self.change.textColor = Colors.materialGreen
+                                } else {
+                                    self.change.textColor = Colors.materialRed
+                                }
+                                self.change.text = stockTemp.quote.change
+
+                                
+                                // fatal error: Index out of range occure
+                                print(splitPrice)
+                                self.priceFloat.text = "." + splitPrice[1]
+                                
                             }
-                            // fatal error: Index out of range occure
-                            print(splitPrice)
-                            self.priceFloat.text = "." + splitPrice[1]
-                            
                         }
                     }
                 }
@@ -205,8 +222,8 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
             // main thread
             DispatchQueue.main.async {
-                print(prices)
-                print(dates)
+                prices = prices.reversed()
+                dates = dates.reversed()
                 self.chart.x = dates
                 self.chart.y = prices
                 var divison = 26
@@ -262,23 +279,30 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     dateFormatter.timeZone = TimeZone(abbreviation: "EST")
-                    var currentDateString = dateFormatter.string(from: Date())
+                    
+                    var currentDate = Date()
+                    
+                    // subtracting 10 minutes for added delay
+                    currentDate = currentDate.addingTimeInterval(-60*10)
+                    
+                    var currentDateString = dateFormatter.string(from: currentDate)
                     let endIndex = currentDateString.index(currentDateString.endIndex, offsetBy: -2)
                     currentDateString = currentDateString.substring(to: endIndex)
                     currentDateString = currentDateString.appending("00")
+                    print(currentDateString)
                     
                     // warning here
                     let open = jsonOpenClose[currentDateString]["1. open"].floatValue
                     let high = jsonOpenClose[currentDateString]["2. high"].floatValue
                     let low = jsonOpenClose[currentDateString]["3. low"].floatValue
-                    let volume = jsonOpenClose[currentDateString]["5. volume"].stringValue
+                    let volume = jsonOpenClose[currentDateString]["5. volume"].intValue
             
                     DispatchQueue.main.async {
             
                         self.openPrice.text = String(format: "%.2f", open)
                         self.highPrice.text = String(format: "%.2f", high)
                         self.lowPrice.text = String(format: "%.2f", low)
-                        self.volume.text = volume
+                        self.volume.text = volume.abbreviated
                     }
                 }
                 sleep(time)
@@ -291,56 +315,35 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     func updateLongStats(){
         
-        DispatchQueue.global(qos: .userInitiated).async {
-            
-      
-                
-                if let jsonDetails = StockDetails.getStockInfo(forStockName: self.stock){
-                
-                
-                    let yearHigh = jsonDetails["YearHigh"].stringValue
-                    let yearLow = jsonDetails["YearLow"].stringValue
-                    let dividendYield = jsonDetails["DividendYield"].stringValue
-                    let peRatio = jsonDetails["PERatio"].stringValue
-                    let mrktCap = jsonDetails["MarketCapitalization"].stringValue
-                    let avgVolume = jsonDetails["AverageDailyVolume"].stringValue
-                    
-                    DispatchQueue.main.async {
-
-                        self.wkHigh.text = yearHigh
-                        self.wkLow.text = yearLow
-                        self.div.text = dividendYield
-                        self.prRatio.text = peRatio
-                        self.mktCap.text = mrktCap
-                        self.avgVolume.text = avgVolume
-                        self.newsTable.reloadData()
-                    }
+        if let stockTemp = getStockPrice(forStockName: stock){
+    
+            self.wkHigh.text = stockTemp.quote.wkHigh
+            self.wkLow.text = stockTemp.quote.wkLow
+            self.div.text = stockTemp.quote.div
+            self.prRatio.text = stockTemp.quote.peRatio
+            if let avgVolumeI = Int(stockTemp.quote.avgVolume){
+                self.avgVolume.text = avgVolumeI.abbreviated
             }
+        
+            if let mrktCap = Int(stockTemp.quote.marketCap){
+                self.mktCap.text = mrktCap.abbreviated
+            }
+            
+            self.newsTable.reloadData()
         }
-
     }
     
     
     // MARK: Update Tables
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let news = self.newsFeed{
-            return news.items.count
-        } else {
-            return 0
-        }
-        
+        return stockNews.news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
-        if let news = self.newsFeed{
-            
-            return cell.configureCell(newsFeed: news.items[indexPath.row])
-        }
         
-        return UITableViewCell()
-        
+        return cell.configureCell(title: stockNews.news[indexPath.row].title, source: stockNews.news[indexPath.row].source)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -366,6 +369,23 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     func changedIndex(selectedIndex index: Int) {
         self.updateChart(inRange: indexDetails[index])
     }
+    
+    //MARK segue
+    //MARK segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segues")
+        if segue.identifier == "buySegue"{
+            
+            let vc = segue.destination as! BuySellViewController
+            
+
+            vc.price = self.price.text! + self.priceFloat.text!
+            
+                
+            
+        }
+    }
+
     
     
 

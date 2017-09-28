@@ -73,39 +73,51 @@ protocol ChartViewDelegate{
                 skip += skipElement
             }
         }
-        xSkip = Int(frame.width) / Int(self.x.count)
         
-        var i = 0
-        print(Int(self.x.count))
-        for _ in x{
-            xRaw.append(i * xSkip)
-            i += 1
-        }
-        i = 0
-        
-        if let min = y.min(), let max = y.max() {
-            for price in y{
-                let value = ((price - min)/(max - min)) * Float(frame.height - 50.00)
-                
-                // Do not Delete this line (Shifts the Value at the Right Side)
-                yRaw.append(Int(self.frame.height - CGFloat(value)))
+        // error frequently crashing 
+        do {
+//            print("In chart Gal")
+//            guard Int(frame.width) < Int(self.x.count) else {
+//                print("In chart Gal")
+//                return
+//            }
+            if Int(self.x.count) != 0{
+                xSkip = Int(frame.width) / Int(self.x.count)
             }
+            var i = 0
+            print(Int(self.x.count))
+            for _ in x{
+                xRaw.append(i * xSkip)
+                i += 1
+            }
+            i = 0
+            
+            if let min = y.min(), let max = y.max() {
+                for price in y{
+                    let value = ((price - min)/(max - min)) * Float(frame.height - 50.00)
+                    
+                    // Do not Delete this line (Shifts the Value at the Right Side)
+                    yRaw.append(Int(self.frame.height - CGFloat(value)))
+                }
+            }
+            
+            let line = UIBezierPath()
+            line.removeAllPoints()
+            line.move(to: CGPoint(x: 0, y: yRaw[0]))
+            for i in 1..<yRaw.count {
+                line.addLine(to: CGPoint(x: xRaw[i], y: yRaw[i]))
+            }
+            line.lineWidth = 1
+            
+            graphLayer.path = line.cgPath
+            graphLayer.strokeColor = Colors.teal.cgColor
+            graphLayer.fillColor = UIColor.clear.cgColor
+            graphLayer.borderColor  = UIColor.clear.cgColor
+            graphLayer.borderWidth = 0.0
+            self.layer.addSublayer(graphLayer)
+        } catch{
+                print("Error in skip")
         }
-        
-        let line = UIBezierPath()
-        line.removeAllPoints()
-        line.move(to: CGPoint(x: 0, y: yRaw[0]))
-        for i in 1..<yRaw.count {
-            line.addLine(to: CGPoint(x: xRaw[i], y: yRaw[i]))
-        }
-        line.lineWidth = 1
-        
-        graphLayer.path = line.cgPath
-        graphLayer.strokeColor = UIColor.red.cgColor
-        graphLayer.fillColor = UIColor.clear.cgColor
-        graphLayer.borderColor  = UIColor.clear.cgColor
-        graphLayer.borderWidth = 0.0
-        self.layer.addSublayer(graphLayer)
         
     }
     
