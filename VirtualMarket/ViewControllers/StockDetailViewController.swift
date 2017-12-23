@@ -14,7 +14,6 @@ import Kanna
 class StockDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ChartViewDelegate, SegmentedControl6Delegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    
     // Data 
     
     var stockNews: StockDataSource!
@@ -54,6 +53,16 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var segmentControl: SegmentedControl6!
     @IBOutlet weak var chart: ChartView!
+    
+    
+    // Recent Orders
+    @IBOutlet weak var RecentOrderTableView: UITableView!
+    @IBOutlet weak var orderLabel: UILabel!
+    @IBOutlet weak var orderHeightConstraint: NSLayoutConstraint!
+    
+    // REcent Orders DataSource
+    var orders = [Stock]()
+    
     
     // current graph
    
@@ -97,6 +106,8 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         self.newsTable.dataSource = self
         self.newsTable.delegate = self
+        self.RecentOrderTableView.dataSource = self
+        self.RecentOrderTableView.delegate = self
         self.chart.delegate = self
         self.segmentControl.delegate = self
         
@@ -107,6 +118,9 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         stock = stockNameG
+        orders = allOrders(stockName: stock)
+        self.RecentOrderTableView.rowHeight = 60.0
+        
         if let status = getStockStatus(forStockName: self.stock) {
             if status.contains("following"){
                 self.followButton.setTitle("UnFollow", for: .normal)
@@ -117,18 +131,8 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
             }
         }
         
-        var flag = 0
-        for stockTemp in AppDelegate.stockData{
-            if stockTemp.name.contains(stock){
-                flag = 1
-                stockNews = stockTemp
-            }
-        }
         
-        if flag == 0{
-            stockNews = getNewsForStock(stockName: stock)
-        }
-        
+        stockNews = getNewsForStock(stockName: stock)
         
         // update Values
         updateStockPrice(delay: 60)
@@ -143,12 +147,15 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         DispatchQueue.global(qos: .userInitiated).async {
             
             while true{
-                if let stockTemp = getStockPrice(forStockName: self.stock) {
+                if let stockTemp = StockDetails.getStockPrice(stockName: self.stock) {
+                    print("123")
                     if let sPrice = stockTemp.quote.price{
+                        print("1232")
+                        print(stockTemp)
+                        print(StockDetails.getStockPrice(stockName: self.stock))
                         if sPrice.characters.count != 0 {
+                            print("1234")
                             let splitPrice = sPrice.components(separatedBy: ".")
-
-                            
                             DispatchQueue.main.async {
                                 
                                 self.stockName.text = stockTemp.name
@@ -160,8 +167,6 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                                     self.change.textColor = Colors.materialRed
                                 }
                                 self.change.text = stockTemp.quote.change
-
-                                
                                 // fatal error: Index out of range occure
                                 print(splitPrice)
                                 self.priceFloat.text = "." + splitPrice[1]
@@ -304,6 +309,8 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
                         self.lowPrice.text = String(format: "%.2f", low)
                         self.volume.text = volume.abbreviated
                     }
+                } else {
+                    print("Open Close Date Problem")
                 }
                 sleep(time)
             }
@@ -315,7 +322,7 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     func updateLongStats(){
         
-        if let stockTemp = getStockPrice(forStockName: stock){
+        if let stockTemp = StockDetails.getStockPrice(stockName: stock){
     
             self.wkHigh.text = stockTemp.quote.wkHigh
             self.wkLow.text = stockTemp.quote.wkLow
@@ -337,13 +344,23 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: Update Tables
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stockNews.news.count
+        if tableView == newsTable{
+            return stockNews.news.count
+        } else {
+            return orders.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
+        if tableView == newsTable{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
         
-        return cell.configureCell(title: stockNews.news[indexPath.row].title, source: stockNews.news[indexPath.row].source)
+            return cell.configureCell(title: stockNews.news[indexPath.row].title, source: stockNews.news[indexPath.row].source)
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! RecentOrderTableViewCell
+            
+            return cell.configureCell(stock: orders[indexPath.row])
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -370,7 +387,6 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         self.updateChart(inRange: indexDetails[index])
     }
     
-    //MARK segue
     //MARK segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("segues")

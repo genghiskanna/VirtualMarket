@@ -59,7 +59,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
 
-        updatePendingOrder()
+        
         
     }
     
@@ -83,18 +83,15 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
         setLabelColor()
         setEmptyIndicator()
-        
+        updatePendingOrder()
         self.view.backgroundColor = CurrentSettings.getTheme()["light"]
-        
-        let netWorth = String(describing: getPortfolioValue())
+        let netWorth = String(getTotalStockValue() + getBuyingPower() + getAccountValue())
         let sPrice = netWorth.components(separatedBy: ".")
-        
         self.netWorth.text = sPrice.first
         self.netWorthCent.text = "." + sPrice[1]
         
         // WARNING to change to show absolute price as well as percentage
         self.change.text = String(describing: getROI())
-        
         updateStocks(delay: 60)
      }
     
@@ -145,9 +142,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK Uitableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let stocks = allStocksUnderWatch() {
-            print(stocks.count)
-            print("Gala")
+        if let stocks = allGroupedStocksUnderWatch() {
             if stocks.count == 0{
                 tableView.isHidden = true
                 return 0
@@ -165,15 +160,13 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as! StockTableViewCell
-        if let stocks = allStocksUnderWatch(){
-            
+        if let stocks = allGroupedStocksUnderWatch(){
             let stock = stocks[indexPath.row]
             if stock.status! == "following"{
-                cell.configureStockCell(stock.name!, shares: "Following", price: 123.0)
+                cell.configureStockCell(stock.name!, shares: "Following")
             } else {
-                cell.configureStockCell(stock.name!, shares: "12", price: 123.0)
+                cell.configureStockCell(stock.name!, shares: ("\(getGroupedStockQuantity(stockName: stock.name!)) SHARES"))
             }
-            
         }
         return cell
     }
@@ -205,8 +198,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             let newsView = view as! QuickNewsView
 //            newsView.companyTitle.text = stockNameG
             
-            newsView.newsTitle.text = AppDelegate.stockData[index].news[0].title
-            newsView.newsBody.text = AppDelegate.stockData[index].news[0].source
+            newsView.newsTitle.text = AppDelegate.stockData["AAPL"]?.news[0].title
+            newsView.newsBody.text = AppDelegate.stockData["AAPL"]?.news[0].source
             newsView.readMore.textColor = Colors.teal
             
             return view as! UIView
@@ -245,7 +238,12 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "orderCollection", for: indexPath) as! OrderCollectionViewCell
-        cell.configureCell(stockName: pendingOrder[indexPath.row].name!, orderType: pendingOrder[indexPath.row].orderType!)
+        
+        if pendingOrder[indexPath.row].status!.contains("ell"){
+            cell.configureCell(stockName: pendingOrder[indexPath.row].name!, orderType: pendingOrder[indexPath.row].orderType!,buyOrSell: "S")
+        } else {
+            cell.configureCell(stockName: pendingOrder[indexPath.row].name!, orderType: pendingOrder[indexPath.row].orderType!,buyOrSell: "B")
+        }
         
         cell.layer.cornerRadius = 30.0
         cell.backgroundColor = Colors.materialGreen
@@ -254,6 +252,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(pendingOrder.count)
         return pendingOrder.count
     }
     

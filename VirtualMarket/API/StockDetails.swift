@@ -46,92 +46,68 @@ class StockDetails: NSObject {
         } catch {
             print("Error retreiving  getStockPriceUnderWatch")
         }
-        
-        
-        
         // updating stocks
         
         if let stocks = allStocksUnderWatch(){
             
             for stock in stocks{
-                var loop = 0
-                print(stock.name!)
-                print(loop)
-                print(AppDelegate.stockData[loop].name)
-                print(AppDelegate.stockData.count)
-                while loop < AppDelegate.stockData.count{
-                    
-                    if stock.name!.contains(AppDelegate.stockData[loop].name){
-                        print(stock.name!)
-                        if let stockTemp = priceUnderWatch?[stock.name!]["quote"]{
-                            AppDelegate.stockData[loop].quote.price = stockTemp["latestPrice"].stringValue
-                            AppDelegate.stockData[loop].quote.change = stockTemp["change"].stringValue
-                            AppDelegate.stockData[loop].quote.changePercent = stockTemp["changePercent"].stringValue
-                            AppDelegate.stockData[loop].quote.avgVolume = stockTemp["avgTotalVolume"].stringValue
-                            AppDelegate.stockData[loop].quote.wkHigh = stockTemp["week52High"].stringValue
-                            AppDelegate.stockData[loop].quote.wkLow = stockTemp["week52Low"].stringValue
-                            AppDelegate.stockData[loop].quote.peRatio = stockTemp["peRatio"].stringValue
-                            AppDelegate.stockData[loop].quote.name = stockTemp["companyName"].stringValue
-                            AppDelegate.stockData[loop].quote.marketCap = stockTemp["marketCap"].stringValue
-                            AppDelegate.stockData[loop].quote.volume = stockTemp["latestVolume"].stringValue
-                            
-                            
-                            print(AppDelegate.stockData[loop].quote)
-                            
-                            
-                        }
-                        
-                    }
-                    loop += 1
-                }
                 
+                if let stockTemp = priceUnderWatch?[stock.name!]["quote"]{
+                    AppDelegate.stockData[stock.name!]?.quote.price = stockTemp["latestPrice"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.change = stockTemp["change"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.changePercent = stockTemp["changePercent"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.avgVolume = stockTemp["avgTotalVolume"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.wkHigh = stockTemp["week52High"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.wkLow = stockTemp["week52Low"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.peRatio = stockTemp["peRatio"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.name = stockTemp["companyName"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.marketCap = stockTemp["marketCap"].stringValue
+                    AppDelegate.stockData[stock.name!]?.quote.volume = stockTemp["latestVolume"].stringValue
+                }
             }
         }
-        
-        
-        
-        
         
     }
     
     
     class func getStockPrice(stockName: String) -> StockDataSource?{
-        
-        var tempStock = StockDataSource()
-        
-        // Getting Stock Quote Data
-        do {
+        print("GO")
+        if AppDelegate.stockData[stockName] == nil{
+            print("GO22")
+            var tempStock = StockDataSource()
             
-            if let url = URL(string:"https://api.iextrading.com/1.0/stock/market/batch?symbols=" + stockName + "&types=quote"){
-                if let currentPriceString = try String(data: Data(contentsOf: url), encoding: .utf8){
-                    priceUnderWatch = JSON.init(parseJSON: currentPriceString)
-                    
+            // Getting Stock Quote Data
+            do {
+                if let url = URL(string:"https://api.iextrading.com/1.0/stock/" + stockName + "/quote"){
+                    if let currentPriceString = try String(data: Data(contentsOf: url), encoding: .utf8){
+                        priceUnderWatch = JSON.init(parseJSON: currentPriceString)
+                    }
                 }
+            } catch {
+                print("Error retreiving  getStockPrice \(stockName)")
             }
-        } catch {
-            print("Error retreiving  getStockPriceUnderWatch")
+            
+            if let stockTemp = priceUnderWatch{
+                tempStock.name = stockName
+                print(stockTemp)
+                print(stockTemp["latestPrice"].stringValue)
+                tempStock.quote.price = stockTemp["latestPrice"].stringValue
+                tempStock.quote.change = stockTemp["change"].stringValue
+                tempStock.quote.changePercent = stockTemp["changePercent"].stringValue
+                tempStock.quote.avgVolume = stockTemp["avgTotalVolume"].stringValue
+                tempStock.quote.wkHigh = stockTemp["week52High"].stringValue
+                tempStock.quote.wkLow = stockTemp["week52Low"].stringValue
+                tempStock.quote.peRatio = stockTemp["peRatio"].stringValue
+                tempStock.quote.name = stockTemp["companyName"].stringValue
+                tempStock.quote.marketCap = stockTemp["marketCap"].stringValue
+                tempStock.quote.volume = stockTemp["latestVolume"].stringValue
+            
+            }
+            return tempStock
+        } else {
+            print("GO11")
+            return AppDelegate.stockData[stockName]
         }
-        
-       
-        
-        if let stockTemp = priceUnderWatch?[stockName]["quote"]{
-            
-            
-            
-            tempStock.quote.price = stockTemp["latestPrice"].stringValue
-            tempStock.quote.change = stockTemp["change"].stringValue
-            tempStock.quote.changePercent = stockTemp["changePercent"].stringValue
-            tempStock.quote.avgVolume = stockTemp["avgTotalVolume"].stringValue
-            tempStock.quote.wkHigh = stockTemp["week52High"].stringValue
-            tempStock.quote.wkLow = stockTemp["week52Low"].stringValue
-            tempStock.quote.peRatio = stockTemp["peRatio"].stringValue
-            tempStock.quote.name = stockTemp["companyName"].stringValue
-            tempStock.quote.marketCap = stockTemp["marketCap"].stringValue
-            tempStock.quote.volume = stockTemp["latestVolume"].stringValue
-        
-        }
-        print(tempStock)
-        return tempStock;
         
     }
     

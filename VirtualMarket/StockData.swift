@@ -62,23 +62,3 @@ struct ChartValue{
     var prices: [Float]
     var date: [Date]
 }
-
-
-
-// Self Help Functions
-
-func getStockPrice(forStockName: String) -> StockDataSource?{
-    if AppDelegate.stockData.count != 0{
-        for stockTemp in AppDelegate.stockData{
-            
-            if forStockName.contains(stockTemp.name){
-                return stockTemp
-            }
-        }
-    }
-    
-    if let tempStock = StockDetails.getStockPrice(stockName: forStockName){
-        return tempStock
-    }
-    return nil
-}

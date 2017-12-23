@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,20 +23,36 @@
                         <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stop Limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCx-kM-ha5">
-                    <rect key="frame" x="7" y="44" width="47" height="8"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop Limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCx-kM-ha5">
+                    <rect key="frame" x="7" y="41" width="47" height="11"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="9"/>
                     <color key="textColor" red="0.97638529539108276" green="0.97652524709701538" blue="0.97635477781295776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N60-KX-1ou">
+                    <rect key="frame" x="26" y="6" width="8" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="8" id="Wv1-Lb-N44"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.049476939209603041" green="0.25686072335025378" blue="0.01975780500923778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="BCx-kM-ha5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="7" id="VXt-VG-l1Q"/>
+                <constraint firstItem="N60-KX-1ou" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dYX-8n-DX8"/>
+                <constraint firstAttribute="bottom" secondItem="BCx-kM-ha5" secondAttribute="bottom" constant="8" id="diI-5Q-ZTq"/>
+                <constraint firstAttribute="trailing" secondItem="BCx-kM-ha5" secondAttribute="trailing" constant="6" id="gwg-fG-jQC"/>
+                <constraint firstItem="BCx-kM-ha5" firstAttribute="top" secondItem="N60-KX-1ou" secondAttribute="bottom" constant="20" id="sM1-Cc-Owb"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="orderStatus2" destination="N60-KX-1ou" id="Hdw-WV-3fR"/>
                 <outlet property="orderType" destination="BCx-kM-ha5" id="I5f-1X-q7y"/>
                 <outlet property="stockName" destination="63Z-K7-X98" id="IYz-ro-WNJ"/>
             </connections>

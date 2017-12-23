@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     static var darkMode = Bool()
     open static var news : RSSFeed?
-    open static var stockData = [StockDataSource]()
+    open static var stockData = [String:StockDataSource]()
     
 
 
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for stock in stocks{
                 var new = StockDataSource()
                 new.name = stock.name!
-                AppDelegate.stockData.append(new)
+                AppDelegate.stockData.updateValue(new, forKey: stock.name!)
             }
         }
         stockNews()
@@ -48,12 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             while true{
                 sleep(60)
                 StockDetails.getStockPriceUnderWatch()
+                executeOrders()
             }
         }
         
-        for temp in AppDelegate.stockData{
-            print(temp.name)
-        }
+    
         
         
 

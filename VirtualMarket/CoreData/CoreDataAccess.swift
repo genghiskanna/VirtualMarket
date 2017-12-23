@@ -13,7 +13,7 @@ let context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
 
 
 public func allPendingOrders(buy:Bool) -> Array<Stock>{
-    let pending = buy ? "pendingBuy" : "pendingSell"
+    let pending = "pendingBuy"
     let predicate = NSPredicate(format: "status == %@",pending)
     var stocks = Array<Stock>()
     do {
@@ -26,11 +26,31 @@ public func allPendingOrders(buy:Bool) -> Array<Stock>{
     return stocks
 }
 
+public func allOrders(stockName: String) -> Array<Stock>{
+    let order = "Market"
+    let predicate1 = NSPredicate(format: "name == %@",stockName)
+    let predicate2 = NSPredicate(format: "orderType != %@",order)
+    
+    let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1,predicate2])
+    var stocks = [Stock]()
+    
+    do {
+        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
+        request.predicate = compoundPredicate
+        stocks = try context.fetch(request) as! Array<Stock>
+    } catch {
+        print("Error Fetching All Orders for \(stockName) From Core Data")
+    }
+    
+    return stocks
+}
+
 
 public func allStocksUnderWatch() -> Array<Stock>? {
     var stocks: Array<Stock>?
     do {
         stocks = try context.fetch(Stock.fetchRequest())
+        print(stocks)
         
     } catch {
         print("Error Fetching All Stocks")
@@ -39,6 +59,57 @@ public func allStocksUnderWatch() -> Array<Stock>? {
     return stocks
 }
 
+public func allGroupedStocksUnderWatch() -> Array<Stock>? {
+    var tempStocks = [Stock]()
+    var tempNames = [String]()
+    do {
+        if let stocks:[Stock] = try context.fetch(Stock.fetchRequest()){
+            for stock in stocks{
+                if !tempNames.contains(stock.name!){
+                    tempNames.append(stock.name!)
+                    tempStocks.append(stock)
+                }
+            }
+        }
+    } catch {
+        print("Error Fetching All Stocks")
+    }
+    
+    return tempStocks
+}
+
+public func getGroupedStockQuantity(stockName: String) -> Int64 {
+    var stocks: Array<Stock>?
+    var sum = Int64(0)
+    do {
+        stocks = try context.fetch(Stock.fetchRequest())
+        for stock in stocks! {
+            if stock.name!.contains(stockName){
+                sum += stock.quantity
+            }
+        }
+        
+    } catch {
+        print("Error Fetching All Stocks")
+    }
+    return sum
+}
+
+public func allStocksBought() -> Array<Stock>? {
+    
+    let bought = "bought"
+    let predicate = NSPredicate(format: "status == %@",bought)
+    var stocks = Array<Stock>()
+    do {
+        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
+        request.predicate = predicate
+        stocks = try context.fetch(request) as! Array<Stock>
+    } catch {
+        print("Error Fetching  Bought Stocks From Core Data")
+    }
+    return stocks
+    
+}
 
 public func getStockStatus(forStockName stockName:String) -> String?{
     let predicate = NSPredicate(format: "name == %@", stockName)
@@ -105,41 +176,174 @@ public func specificStock(boughtDate forDate: Date) -> Any {
 }
 
 
+
+// Buying Power
 public func getBuyingPower() -> Float {
-    
-    
-    var user: Array<User>
+    var users: Array<User>
     do {
         let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         
-        user = try context.fetch(request) as! Array<User>
-        if user.count != 0{
-            print("Hello")
-            return user[0].tradingAccount
+        users = try context.fetch(request) as! Array<User>
+        if users.count != 0{
+            for user in users{
+                if let name = user.name{
+                    if name.contains("Jogendra"){
+                        return user.tradingAccount
+                    }
+                }
+            }
         }
     } catch {
         print("Error Fetching Data")
     }
-    
-    
-    return 0.0
+    return -1.0
 }
 
 public func changeBuyingPower(value: Float) {
-    var user: Array<User>
+    var users: Array<User>
     do {
         let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         
-        user = try context.fetch(request) as! Array<User>
-        if user.count != 0{
-            print(user[0].tradingAccount)
-            print(value)
-            user[0].tradingAccount += value
+        users = try context.fetch(request) as! Array<User>
+        if users.count != 0{
+            for user in users{
+                if let name = user.name{
+                    if name.contains("Jogendra"){
+                        user.tradingAccount += value
+                    }
+                }
+            }
+        }
+        try context.save()
+    } catch {
+        print("Error Changing Buying Power")
+    }
+}
+
+
+
+// Account
+public func getAccountValue() -> Float {
+    var users: Array<User>
+    do {
+        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        users = try context.fetch(request) as! Array<User>
+        if users.count != 0{
+            for user in users{
+                if let name = user.name{
+                    if name.contains("Jogendra"){
+                        return user.account
+                    }
+                }
+            }
+        }
+    } catch {
+        print("Error Fetching Data")
+    }
+    return -1.0
+}
+
+public func changeAccountValue(value: Float) {
+    var users: Array<User>
+    do {
+        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        users = try context.fetch(request) as! Array<User>
+        if users.count != 0{
+            for user in users{
+                if let name = user.name{
+                    if name.contains("Jogendra"){
+                        user.account += value
+                    }
+                }
+            }
         }
         
         try context.save()
     } catch {
         print("Error Changing Buying Power")
+    }
+}
+
+// PortFolio Value
+public func getTotalStockValue() -> Float {
+    var sum = Float(0.0)
+    if let stocks = allStocksBought(){
+        for stock in stocks{
+            StockDetails.getStockPriceUnderWatch()
+            if let stockPrice = AppDelegate.stockData[stock.name!]?.quote.price{
+                if let price = Float(stockPrice){
+                    sum += price * Float(stock.quantity)
+                }
+            }
+        }
+    }
+    
+    return sum
+}
+
+// Order Updates
+public func executeOrders(){
+    var stocks: Array<Stock>
+    do {
+        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
+
+        stocks = try context.fetch(request) as! Array<Stock>
+        if stocks.count != 0{
+            for stock in stocks{
+                if (stock.orderType != nil){
+                    switch(stock.orderType!){
+                        case "Limit":
+                            if let sPrice = AppDelegate.stockData[stock.name!]?.quote.price{
+                                if let price = Float(sPrice){
+                                    if price <= stock.limitPrice{
+                                        stock.status = "bought"
+                                        stock.priceBought = price
+                                        stock.worthBefore = getAccountValue() + getBuyingPower()
+                                    }
+                                }
+                            }
+                        case "Stop Loss":
+                            if let sPrice = AppDelegate.stockData[stock.name!]?.quote.price{
+                                if let price = Float(sPrice){
+                                    if price >= stock.stopLoss{
+                                        stock.status = "bought"
+                                        stock.priceBought = price
+                                        stock.worthBefore = getAccountValue() + getBuyingPower()
+                                    }
+                                }
+                            }
+                    
+                        case "Stop Limit":
+                            if let sPrice = AppDelegate.stockData[stock.name!]?.quote.price{
+                                if let price = Float(sPrice){
+                                    if price >= stock.stopLoss{
+                                        stock.priceCrossedLimit = true
+                                        stock.status = "bought"
+                                        stock.priceBought = price
+                                        stock.worthBefore = getAccountValue() + getBuyingPower()
+                                    }
+                                    
+                                    if stock.priceCrossedLimit {
+                                        if price <= stock.limitPrice {
+                                            stock.status = "bought"
+                                            stock.priceBought = price
+                                            stock.worthBefore = getAccountValue() + getBuyingPower()
+                                        }
+                                    }
+                                }
+                            }
+                        default:
+                            print("Unexpected OrderType in executeOrder")
+                    }
+                }
+            }
+        }
+
+        try context.save()
+    } catch {
+        print("Error Saving Context in ExecuteOrder")
     }
 }
 
@@ -166,21 +370,6 @@ public func getROI() -> Float {
 }
 
 
-public func getPortfolioValue() -> Float {
-    var account = Float(1.0)
-    do {
-        let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        let user = try context.fetch(request)[0] as! NSManagedObject
-        account = user.value(forKey: "account") as! Float
-    } catch {
-        print("Error Fetching Data")
-    }
-    return account
-}
-
-
-
-
 // MARK Insert Functions
 
 public func insertStock(_ stockName: String, orderType: String?, quantity: Int64?, priceBought:Float?, worthBefore: Float?, stopLoss:Float?, status: String) {
@@ -190,22 +379,27 @@ public func insertStock(_ stockName: String, orderType: String?, quantity: Int64
     // Deleting Following Stocks
     deleteStock(forStockName: stockName)
     if orderType != nil{
+        stock.status = status
+        switch orderType!{
+            case "Market":
+                stock.status = "bought"
+                changeBuyingPower(value: -(Float(stock.quantity) * stock.priceBought))
+                stock.dateBought = Date() as NSDate
+            case "Limit":
+                stock.limitPrice = priceBought!
+            case "Stop Loss":
+                stock.stopLoss = priceBought!
+            case "Stop Limit":
+                stock.limitPrice = priceBought!
+                stock.stopLoss = stopLoss!
+                stock.priceCrossedLimit = false
+            default:
+                print("Unexpected Switch Data Type")
+        }
         stock.name = stockName
         stock.orderType = orderType!
         stock.quantity = quantity!
-        // Price Bought
-        stock.priceBought = priceBought!
         stock.worthBefore = worthBefore!
-        stock.status = status
-        
-        if stopLoss != nil{
-            stock.stopLoss = stopLoss!
-        }
-        
-        if orderType!.contains("arket"){
-            stock.status = "Bought"
-            changeBuyingPower(value: -(Float(stock.quantity) * stock.priceBought))
-        }
     } else {
         stock.name = stockName
         stock.status = status
@@ -259,6 +453,7 @@ public func createUser(){
     user.rateOI = Float(0.0)
     user.darkMode = false
     user.tradingAccount = Float(0.0)
+    user.name = "Jogendra"
     do {
         try context.save()
     } catch  {

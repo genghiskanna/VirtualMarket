@@ -22,6 +22,7 @@
 		FC4FDFD11F0C063D00CB09A1 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FDFD01F0C063D00CB09A1 /* SearchTableViewCell.swift */; };
 		FC5DBCFA1F7030DC00F0EDFF /* CircularAirPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC5DBCF91F7030DC00F0EDFF /* CircularAirPro-Light.ttf */; };
 		FC5DBCFC1F70325600F0EDFF /* CircularAirPro-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC5DBCFB1F70325600F0EDFF /* CircularAirPro-Book.ttf */; };
+		FC5FF84B1F83E21C004796F0 /* RecentOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FF84A1F83E21C004796F0 /* RecentOrderTableViewCell.swift */; };
 		FC73B5921F4F0CCD00EE70DF /* ButtonOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC73B5911F4F0CCD00EE70DF /* ButtonOrder.swift */; };
 		FC7E82501F0961C5001333A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E824F1F0961C5001333A5 /* AppDelegate.swift */; };
 		FC7E82551F0961C5001333A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7E82531F0961C5001333A5 /* Main.storyboard */; };
@@ -90,6 +91,7 @@
 		FC4FDFD01F0C063D00CB09A1 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = Design/SearchTableViewCell.swift; sourceTree = "<group>"; };
 		FC5DBCF91F7030DC00F0EDFF /* CircularAirPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularAirPro-Light.ttf"; sourceTree = "<group>"; };
 		FC5DBCFB1F70325600F0EDFF /* CircularAirPro-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularAirPro-Book.ttf"; sourceTree = "<group>"; };
+		FC5FF84A1F83E21C004796F0 /* RecentOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecentOrderTableViewCell.swift; path = VirtualMarket/Design/RecentOrderTableViewCell.swift; sourceTree = "<group>"; };
 		FC73B5911F4F0CCD00EE70DF /* ButtonOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonOrder.swift; path = Design/ButtonOrder.swift; sourceTree = "<group>"; };
 		FC7E824C1F0961C5001333A5 /* VirtualMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7E824F1F0961C5001333A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		FC7E82431F0961C5001333A5 = {
 			isa = PBXGroup;
 			children = (
+				FC5FF84A1F83E21C004796F0 /* RecentOrderTableViewCell.swift */,
 				FC7E824E1F0961C5001333A5 /* VirtualMarket */,
 				FC7E824D1F0961C5001333A5 /* Products */,
 				E5AD2F77B8F8519B14AF1022 /* Pods */,
@@ -442,6 +445,7 @@
 				FCA1D24F1F1A976E00003264 /* StatisticsViewController.swift in Sources */,
 				FCD1C45C1F408E6100891BF5 /* QuickNewsView.swift in Sources */,
 				FCA1D2411F1A0BDB00003264 /* SegmentedControl2.swift in Sources */,
+				FC5FF84B1F83E21C004796F0 /* RecentOrderTableViewCell.swift in Sources */,
 				FC7E82651F096A6A001333A5 /* Colors.swift in Sources */,
 				FCA1D2551F1AFE5600003264 /* StockTableViewCell.swift in Sources */,
 				FCA1D24D1F1A975200003264 /* ReportViewController.swift in Sources */,

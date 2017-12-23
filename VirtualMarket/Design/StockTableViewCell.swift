@@ -14,12 +14,11 @@ class StockTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfShares: UILabel!
     @IBOutlet weak var stockButton: UIButton!
     
-    func configureStockCell(_ stockName: String, shares: String, price: Float){
+    func configureStockCell(_ stockName: String, shares: String){
         
         self.stockName.text = stockName
         self.numberOfShares.text = shares
-        if let stockTemp = getStockPrice(forStockName: stockName){
-            print(stockTemp)
+        if let stockTemp = StockDetails.getStockPrice(stockName: stockName){
             self.stockButton.setTitle(stockTemp.quote.price, for: .normal)
             if stockTemp.quote.change.contains("-"){
                 self.stockButton.backgroundColor = Colors.materialRed

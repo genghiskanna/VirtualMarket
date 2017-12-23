@@ -11,7 +11,9 @@ import UIKit
 class AccountViewController: UIViewController {
 
     
+    @IBOutlet weak var portfolioValue: UILabel!
     @IBOutlet weak var buyingPowerLabel: UILabel!
+    @IBOutlet weak var account: UILabel!
     
     @IBAction func closePressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -21,6 +23,11 @@ class AccountViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.buyingPowerLabel.text = String(getBuyingPower())
+        self.account.text = String(getAccountValue())
+        self.portfolioValue.text = String(getTotalStockValue())
+        print(getBuyingPower())
+        print(getAccountValue())
+        print(getTotalStockValue())
         
     }
     override func viewDidLoad() {

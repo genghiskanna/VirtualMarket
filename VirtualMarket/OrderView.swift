@@ -12,6 +12,7 @@ class OrderView: UIView{
     
     @IBOutlet weak var stockName: UIButton!
     @IBOutlet weak var orderType: UILabel!
+    @IBOutlet weak var status: UILabel!
     
     
 }

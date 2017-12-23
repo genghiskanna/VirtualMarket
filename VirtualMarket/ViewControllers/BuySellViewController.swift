@@ -56,7 +56,6 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     
     @IBAction func orderPressed(_ sender: Any) {
-        
         let appearance = SCLAlertView.SCLAppearance(
             kTitleFont: UIFont(name: "CircularAirPro", size: 20)!,
             kTextFont: UIFont(name: "CircularAirPro", size: 14)!,
@@ -64,23 +63,21 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             showCloseButton: false,
             showCircularIcon: false
         )
-        
         let alertView = SCLAlertView(appearance: appearance)
-        
+        let alertWrongView = SCLAlertView(appearance: appearance)
         if currentStock.quantity != nil{
             if Float(self.currentStock.price) * Float(self.currentStock.quantity) < getBuyingPower(){
-                
-                
                 alertView.addButton("Cancel Order", backgroundColor: Colors.materialRed, textColor: Colors.light, showDurationStatus: false, action: {})
                 
                 alertView.addButton("Confirm Order", backgroundColor: Colors.materialGreen, textColor: Colors.light, showDurationStatus: true, action: {
-                    insertStock(self.currentStock.stockName, orderType: self.currentStock.orderType, quantity: Int64(self.currentStock.quantity), priceBought: Float(self.currentStock.price), worthBefore: getBuyingPower(), stopLoss: self.currentStock.stopLoss, status: "pending")
-                    print("Inserted")
+                    if self.checkOrderValidity(){
+                        insertStock(self.currentStock.stockName, orderType: self.currentStock.orderType, quantity: Int64(self.currentStock.quantity), priceBought: Float(self.currentStock.price), worthBefore: getBuyingPower(), stopLoss: self.currentStock.stopLoss, status: "pendingBuy")
+                    } else {
+                        alertWrongView.addButton("I'll Check", backgroundColor: Colors.teal, textColor: Colors.light, showDurationStatus: false, action: {})
+                        _ = alertWrongView.showCustom("Wrong Price", subTitle: "You might have given wrong combination of price.Check Help to Know More.", color: Colors.teal, icon: UIImage())
+                    }
                 })
-                
                 var subTitle = ""
-                print(currentStock.quantity)
-                print("Hola")
                 switch currentStock.orderType {
                     
                     case "Market":
@@ -91,6 +88,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     
                     case "Limit":
                         
+                            // error force unwrap alternative
                             subTitle = "\(currentStock.quantity!) Shares of \((currentStock.stockName)!) at \(currentStock.price!) . valid \(currentStock.validity!). Limit Price at \(currentStock.price!)"
                         
                         break
@@ -312,13 +310,6 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     
-    
-    
-    
-    
-    
-    
-    
     // MARK PickerView
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -341,20 +332,11 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         changeView(order:data[row])
     }
     
-    
-    
-    
-    
-    
-    
-    
     // MARK TextField
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
-    
-    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
@@ -367,138 +349,129 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     
-    
-    
     func textFieldDidChange(_ textField: UITextField){
         
         if textField == numberOfShares && numberOfShares.text?.characters.count != 0{
-            
             switch currentStock.orderType {
             // error occurred "fatal error: unexpectedly found nil while unwrapping an Optional value"
                 
-            case "Market":
-                if let amount = self.numberOfShares.text{
-                    if let amountFloat = Float(amount),let priceFloat=Float(price){
-                        self.totalAmount.text = String(describing: (amountFloat * priceFloat))
-                        currentStock.price = priceFloat
-                        currentStock.quantity = Int(amountFloat)
-                    }
-                }
-                break
-                
-            case "Limit":
-                if let limitPrice = self.priceInput.text, let amount = self.numberOfShares.text{
-                    if let limitPriceFloat = Float(limitPrice), let amountFloat = Float(amount),let priceFloat=Float(price){
-                        if limitPriceFloat < priceFloat{
-                            self.totalAmount.text = String(describing: (amountFloat * limitPriceFloat))
-                            currentStock.price = limitPriceFloat
+                case "Market":
+                    if let amount = self.numberOfShares.text{
+                        if let amountFloat = Float(amount),let priceFloat = Float(price){
+                            self.totalAmount.text = String(describing: (amountFloat * priceFloat))
+                            currentStock.price = priceFloat
                             currentStock.quantity = Int(amountFloat)
                         }
                     }
-                }
-                break
+                    break
                 
-            case "Stop Loss":
-                
-                // when current price reaches stop loss (buy) the order is executed
-                if let stopLoss = self.stopLimitInput.text, let amount = self.numberOfShares.text{
-                    if let stopLossFloat = Float(stopLoss), let amountFloat = Float(amount), let priceFloat = Float(price){
-                        if stopLossFloat < priceFloat{
-                            self.totalAmount.text = String(describing: (amountFloat * stopLossFloat))
-                            currentStock.price = stopLossFloat
-                            currentStock.quantity = Int(amountFloat)
+                case "Limit":
+                    if let limitPrice = self.priceInput.text, let amount = self.numberOfShares.text{
+                        if let limitPriceFloat = Float(limitPrice), let amountFloat = Float(amount),let priceFloat=Float(price){
+                            if limitPriceFloat < priceFloat{
+                                self.totalAmount.text = String(describing: (amountFloat * limitPriceFloat))
+                                currentStock.price = limitPriceFloat
+                                currentStock.quantity = Int(amountFloat)
+                                print(currentStock.price)
+                                print("Et tue Brute")
+                            }
                         }
                     }
-                }
-                break
+                    break
                 
-            case "Stop Limit":
-                // when current price reaches stop loss (buy) and again reaches the limit price it sells
-                
-                if let stopLoss = self.stopLimitInput.text, let limitPrice = self.priceInput.text, let amount = self.numberOfShares.text{
-                    if let stopLossFloat = Float(stopLoss), let limitPriceFloat = Float(limitPrice), let amountFloat = Float(amount), let priceFloat = Float(price){
-                        if stopLossFloat > priceFloat && limitPriceFloat < stopLossFloat{
-                            self.totalAmount.text = String(describing: (amountFloat * limitPriceFloat))
-                            currentStock.price = limitPriceFloat
-                            currentStock.stopLoss = stopLossFloat
-                            currentStock.quantity = Int(amountFloat)
+                case "Stop Loss":
+                    
+                    // when current price reaches stop loss (buy) the order is executed
+                    if let stopLoss = self.priceInput.text, let amount = self.numberOfShares.text{
+                        if let stopLossFloat = Float(stopLoss), let amountFloat = Float(amount), let priceFloat = Float(price){
+                            if stopLossFloat < priceFloat{
+                                self.totalAmount.text = String(describing: (amountFloat * stopLossFloat))
+                                currentStock.price = stopLossFloat
+                                currentStock.quantity = Int(amountFloat)
+                            }
                         }
                     }
-                }
-                break
+                    break
                 
-            default:
-                print("Wrong Choice in \\_('^')_//")
-            }
-            
+                case "Stop Limit":
+                    
+                    // when current price reaches stop loss (buy) and again reaches the limit price it sells
+                    if let stopLoss = self.stopLimitInput.text, let limitPrice = self.priceInput.text, let amount = self.numberOfShares.text{
+                        if let stopLossFloat = Float(stopLoss), let limitPriceFloat = Float(limitPrice), let amountFloat = Float(amount), let priceFloat = Float(price){
+                            if stopLossFloat > priceFloat && limitPriceFloat < stopLossFloat{
+                                self.totalAmount.text = String(describing: (amountFloat * limitPriceFloat))
+                                currentStock.price = limitPriceFloat
+                                currentStock.stopLoss = stopLossFloat
+                                currentStock.quantity = Int(amountFloat)
+                            }
+                        }
+                    }
+                    break
+                
+                default:
+                    print("Wrong Choice in \\_('^')_//")
+                }
         }
         
-        if textField == stopLimitInput{
-            if let stopLoss = textField.text{
-                if let stopLossFloat = Float(stopLoss){
-                    currentStock.stopLoss = stopLossFloat
-                }
-            }
-        }
-        
-        if textField == priceInput{
-            if let limitPrice = textField.text{
-                if let limitPriceFloat = Float(limitPrice){
-                    currentStock.price = limitPriceFloat
-                }
-            }
-        }
+//        if textField == stopLimitInput{
+//            if let stopLoss = textField.text{
+//                if let stopLossFloat = Float(stopLoss){
+//                    currentStock.stopLoss = stopLossFloat
+//                }
+//            }
+//        }
+//        
+//        if textField == priceInput{
+//            if let limitPrice = textField.text{
+//                if let limitPriceFloat = Float(limitPrice){
+//                    currentStock.price = limitPriceFloat
+//                }
+//            }
+//        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.scrollView.isScrollEnabled = true
     }
     
-    
-    
-    
-    
-    
     // MARK Order Utilities
     
     func checkOrderValidity() -> Bool{
-        
         if (Float(totalAmount.text!)!) < getBuyingPower(){
-
             switch currentStock.orderType {
-               
                 case "Limit":
                     if let limitPrice = self.priceInput.text{
                         if let limitPriceFloat = Float(limitPrice){
-                            if limitPriceFloat < currentStock.price{
+                            if limitPriceFloat < Float(currentPrice.text!)!{
+                                print("HELLO")
                                 return true
                             }
                         }
                     }
-                    break
+                
                     
                 case "Stop Loss":
                     // when current price reaches stop loss (buy) the order is executed
-                    if let stopLoss = self.stopLimitInput.text{
+                    if let stopLoss = self.priceInput.text{
                         if let stopLossFloat = Float(stopLoss){
-                            if stopLossFloat > currentStock.price{
+                            if stopLossFloat > Float(currentPrice.text!)!{
                                 return true
                             }
                         }
                     }
-                    break
+                
                     
                 case "Stop Limit":
                     // when current price reaches stop loss (buy) and again reaches the limit price it sells
                     
                     if let stopLoss = self.stopLimitInput.text, let limitPrice = self.priceInput.text{
                         if let stopLossFloat = Float(stopLoss), let limitPriceFloat = Float(limitPrice){
-                            if stopLossFloat > currentStock.price && limitPriceFloat < stopLossFloat{
+                            if stopLossFloat > Float(currentPrice.text!)! && limitPriceFloat < stopLossFloat{
                                 return true
                             }
                         }
                     }
-                    break
+                
                     
                 default:
                     print("Wrong Choice in \\_('^')_//")
