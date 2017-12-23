@@ -67,12 +67,12 @@ class XMLFeedParser: NSObject, XMLParserDelegate, FeedParserProtocol {
      The XML Parser
      
      */
-    let xmlParser: XMLParser
+    @objc let xmlParser: XMLParser
     
     
     // MARK: - Initializers
     
-    required init(data: Data) {
+    @objc required init(data: Data) {
         self.xmlParser = XMLParser(data: data)
         super.init()
         self.xmlParser.delegate = self
@@ -146,7 +146,7 @@ class XMLFeedParser: NSObject, XMLParserDelegate, FeedParserProtocol {
         
     }
     
-    var parsingError: NSError?
+    @objc var parsingError: NSError?
     
     
 }

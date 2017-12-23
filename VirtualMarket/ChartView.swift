@@ -16,26 +16,26 @@ protocol ChartViewDelegate{
 @IBDesignable class ChartView: UIView {
     
     // output 
-    var price = Float()
-    var date = Date()
+    @objc var price = Float()
+    @objc var date = Date()
     
     var delegate: ChartViewDelegate? = nil
     
     // Dataset
-    var x = Array<Date>()
-    var y = Array<Float>()
+    @objc var x = Array<Date>()
+    @objc var y = Array<Float>()
     
     // Scale
-    var xSkip = Int()
-    var xRaw = Array<Int>()
-    var yRaw = Array<Int>()
+    @objc var xSkip = Int()
+    @objc var xRaw = Array<Int>()
+    @objc var yRaw = Array<Int>()
     
     // Guideline
-    let lineLayer = CAShapeLayer()
-    let lineLayerS = CAShapeLayer()
+    @objc let lineLayer = CAShapeLayer()
+    @objc let lineLayerS = CAShapeLayer()
     
     
-    public var divisions = 26
+    @objc public var divisions = 26
     
     
     
@@ -57,7 +57,7 @@ protocol ChartViewDelegate{
     }
     
     
-    public func drawGraph(divisons totalDivisions: Int, layerToDraw graphLayer: CAShapeLayer){
+    @objc public func drawGraph(divisons totalDivisions: Int, layerToDraw graphLayer: CAShapeLayer){
         self.isMultipleTouchEnabled = true
         
         yRaw.removeAll()

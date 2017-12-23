@@ -71,16 +71,16 @@ extension Alamofire.DataRequest {
     a custom-created instance of this class with configuration properties set into `responseRSS` (see the commented out overload above)
 */
 open class AlamofireRSSParser: NSObject, XMLParserDelegate {
-    var parser: XMLParser? = nil
+    @objc var parser: XMLParser? = nil
     var feed: RSSFeed? = nil
-    var parsingItems: Bool = false
+    @objc var parsingItems: Bool = false
     
     var currentItem: RSSItem? = nil
-    var currentString: String!
-    var currentAttributes: [String: String]? = nil
-    var parseError: NSError? = nil
+    @objc var currentString: String!
+    @objc var currentAttributes: [String: String]? = nil
+    @objc var parseError: NSError? = nil
     
-    open var data: Data? = nil {
+    @objc open var data: Data? = nil {
         didSet {
             if let data = data {
                 self.parser = XMLParser(data: data)
@@ -95,7 +95,7 @@ open class AlamofireRSSParser: NSObject, XMLParserDelegate {
         super.init()
     }
     
-    init(data: Data) {
+    @objc init(data: Data) {
         self.parser = XMLParser(data: data)
         super.init()
         

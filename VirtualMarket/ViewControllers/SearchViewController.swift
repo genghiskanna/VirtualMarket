@@ -58,7 +58,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
     }
     
     
-    func textFieldDidChange(_ textField: UITextField){
+    @objc func textFieldDidChange(_ textField: UITextField){
         
         self.searchResults.reloadData()
         if let text = textField.text {

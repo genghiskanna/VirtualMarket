@@ -32,7 +32,7 @@ import Foundation
  */
 class ISO8601DateFormatter: DateFormatter {
     
-    let dateFormats = [
+    @objc let dateFormats = [
         "yyyy-mm-dd'T'hh:mm",
         "yyyy-MM-dd'T'HH:mm:ssZZZZZ",
         "yyyy-MM-dd'T'HH:mm:ss.SSZZZZZ",

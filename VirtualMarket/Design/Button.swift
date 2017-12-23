@@ -22,7 +22,7 @@ import UIKit
         setupButton()
     }
     
-    func setupButton(){
+    @objc func setupButton(){
         backgroundColor = Colors.teal
         layer.borderColor = Colors.teal.cgColor
         layer.borderWidth = 1.0

@@ -14,7 +14,7 @@ class StockTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfShares: UILabel!
     @IBOutlet weak var stockButton: UIButton!
     
-    func configureStockCell(_ stockName: String, shares: String){
+    @objc func configureStockCell(_ stockName: String, shares: String){
         
         self.stockName.text = stockName
         self.numberOfShares.text = shares

@@ -15,7 +15,7 @@ import FeedKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    static var darkMode = Bool()
+    @objc static var darkMode = Bool()
     open static var news : RSSFeed?
     open static var stockData = [String:StockDataSource]()
     
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: NSPersistentContainer = {
+    @objc lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "VirtualMarket")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data Saving support
 
-    func saveContext () {
+    @objc func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

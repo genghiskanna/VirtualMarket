@@ -12,7 +12,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var stockName: UILabel!
     @IBOutlet weak var orderType: UILabel!
     
-    func configureCell(stockName name:String, orderType type:String,buyOrSell buyOrSell:String){
+    @objc func configureCell(stockName name:String, orderType type:String,buyOrSell:String){
         self.stockName.text = name
         self.orderType.text = type + " \(buyOrSell)"
         

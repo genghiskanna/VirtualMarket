@@ -32,7 +32,7 @@ import Foundation
  */
 class RFC822DateFormatter: DateFormatter {
     
-    let dateFormats = [
+    @objc let dateFormats = [
         "EEE, d MMM yyyy HH:mm:ss zzz",
         "EEE, d MMM yyyy HH:mm zzz"
     ]

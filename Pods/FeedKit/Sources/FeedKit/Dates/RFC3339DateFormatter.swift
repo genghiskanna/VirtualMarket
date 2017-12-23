@@ -32,7 +32,7 @@ import Foundation
  */
 class RFC3339DateFormatter: DateFormatter {
     
-    let dateFormats = [
+    @objc let dateFormats = [
         "yyyy-MM-dd'T'HH:mm:ssZZZZZ",
         "yyyy-MM-dd'T'HH:mm:ss.SSZZZZZ",
         "yyyy-MM-dd'T'HH:mm:ss-SS:ZZ"

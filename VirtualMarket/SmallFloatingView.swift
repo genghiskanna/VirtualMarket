@@ -23,7 +23,7 @@ import UIKit
         setupView()
     }
     
-    func setupView(){
+    @objc func setupView(){
         self.layer.backgroundColor = Colors.light.cgColor
         self.layer.cornerRadius = 5.0
     }

@@ -262,20 +262,20 @@ open class M13Checkbox: UIControl {
     //----------------------------
     
     /// The object to return from `value` when the checkbox is checked.
-    open var checkedValue: Any?
+    @objc open var checkedValue: Any?
     
     /// The object to return from `value` when the checkbox is unchecked.
-    open var uncheckedValue: Any?
+    @objc open var uncheckedValue: Any?
     
     /// The object to return from `value` when the checkbox is mixed.
-    open var mixedValue: Any?
+    @objc open var mixedValue: Any?
     
     /**
      Returns one of the three "value" properties depending on the checkbox state.
      - returns: The value coresponding to the checkbox state.
      - note: This is a convenience method so that if one has a large group of checkboxes, it is not necessary to write: if (someCheckbox == thatCheckbox) { if (someCheckbox.checkState == ...
      */
-    open var value: Any? {
+    @objc open var value: Any? {
         switch checkState {
         case .unchecked:
             return uncheckedValue
@@ -329,7 +329,7 @@ open class M13Checkbox: UIControl {
      - parameter animated: Whether or not to animate the change. Defaults to false.
      - note: If the checkbox is mixed, it will return to the unchecked state.
      */
-    open func toggleCheckState(_ animated: Bool = false) {
+    @objc open func toggleCheckState(_ animated: Bool = false) {
         switch checkState {
         case .checked:
             setCheckState(.unchecked, animated: animated)
@@ -408,7 +408,7 @@ open class M13Checkbox: UIControl {
     // MARK: - UIControl
     //----------------------------
     
-    func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+    @objc func handleLongPress(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began || sender.state == .changed {
             isSelected = true
         } else {

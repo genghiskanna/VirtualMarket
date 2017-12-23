@@ -7,8 +7,6 @@ target 'VirtualMarket' do
 
   # Pods for VirtualMarket
 	pod 'SwiftyJSON'
-	pod 'Alamofire'
-	pod 'AlamofireRSSParser'
 	pod 'Kanna', '~> 2.1.0'
 	pod 'iCarousel'
 	pod 'FeedKit'

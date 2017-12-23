@@ -26,7 +26,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     var currentStock = StockData()
     
-    public var price = String()
+    @objc public var price = String()
     
     @IBOutlet weak var optionalViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeCurrent: UIButton!
@@ -159,7 +159,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     
-    var data = ["Market","Limit","Stop Loss","Stop Limit"]
+    @objc var data = ["Market","Limit","Stop Loss","Stop Limit"]
     
     
     
@@ -198,7 +198,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     // MARK utility
     
-    func initUI(){
+    @objc func initUI(){
         self.today.toggleCheckState()
         self.today.stateChangeAnimation = .expand(.fill)
         self.untilCancelled.stateChangeAnimation = .expand(.fill)
@@ -207,7 +207,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     
-    func initTextFields(){
+    @objc func initTextFields(){
         // TextField Initialization
         self.numberOfShares.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.priceInput.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -233,7 +233,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
     }
     
-    func changeView(order orderType:String){
+    @objc func changeView(order orderType:String){
         switch orderType {
             
             case "Market":
@@ -290,7 +290,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     
-    func markChanged(_ checkbox:M13Checkbox){
+    @objc func markChanged(_ checkbox:M13Checkbox){
         print("In")
         if checkbox == today{
             if checkbox.checkState == .checked{
@@ -305,7 +305,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     
-    func donePressed(){
+    @objc func donePressed(){
         self.view.endEditing(true)
     }
     
@@ -349,7 +349,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     
-    func textFieldDidChange(_ textField: UITextField){
+    @objc func textFieldDidChange(_ textField: UITextField){
         
         if textField == numberOfShares && numberOfShares.text?.characters.count != 0{
             switch currentStock.orderType {
@@ -436,7 +436,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     // MARK Order Utilities
     
-    func checkOrderValidity() -> Bool{
+    @objc func checkOrderValidity() -> Bool{
         if (Float(totalAmount.text!)!) < getBuyingPower(){
             switch currentStock.orderType {
                 case "Limit":

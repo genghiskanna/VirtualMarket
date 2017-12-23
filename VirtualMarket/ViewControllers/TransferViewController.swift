@@ -96,7 +96,7 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-    func customizeDone(){
+    @objc func customizeDone(){
         self.amountField.backgroundColor = .clear
         self.amountField.textColor = Colors.dark
         let toolBar = UIToolbar()
@@ -107,7 +107,7 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func donePressed(){
+    @objc func donePressed(){
         self.view.endEditing(true)
     }
     

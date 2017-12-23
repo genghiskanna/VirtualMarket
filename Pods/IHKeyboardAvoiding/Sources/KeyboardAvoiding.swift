@@ -20,13 +20,13 @@ import UIKit
     private static var lastNotification: Foundation.Notification?
     private static var updatedConstraints = [NSLayoutConstraint]()
     private static var updatedConstraintConstants = [CGFloat]()
-    private(set) static var isKeyboardVisible = false
+    @objc private(set) static var isKeyboardVisible = false
     private static var avoidingViewUsesAutoLayout = false
     private static var triggerViews = [UIView]()
     
-    public static var buffer: CGFloat = 0.0
-    public static var paddingForCurrentAvoidingView: CGFloat = 0.0
-    public static var padding: CGFloat = 0.0 {
+    @objc public static var buffer: CGFloat = 0.0
+    @objc public static var paddingForCurrentAvoidingView: CGFloat = 0.0
+    @objc public static var padding: CGFloat = 0.0 {
         willSet {
             if self.paddingForCurrentAvoidingView == newValue {
                 // if paddingCurrent has been set explicitly, dont reset it
@@ -34,8 +34,8 @@ import UIKit
             }
         }
     }
-    public static var keyboardAvoidingMode = KeyboardAvoidingMode.minimum
-    public static var avoidingBlock: ((Bool, CGFloat, CGFloat, UIViewAnimationOptions)->Void)? {
+    @objc public static var keyboardAvoidingMode = KeyboardAvoidingMode.minimum
+    @objc public static var avoidingBlock: ((Bool, CGFloat, CGFloat, UIViewAnimationOptions)->Void)? {
         willSet {
             self.initialise()
         }
@@ -47,7 +47,7 @@ import UIKit
         }
     }
     private static var _avoidingView: UIView?
-    public static var avoidingView: UIView? {
+    @objc public static var avoidingView: UIView? {
         get {
             return _avoidingView
         }
@@ -56,7 +56,7 @@ import UIKit
         }
     }
     
-    class func didChange(_ notification: Foundation.Notification) {
+    @objc class func didChange(_ notification: Foundation.Notification) {
         var isKeyBoardShowing = false
         // isKeyBoardShowing and is it merged and docked.
         
@@ -233,7 +233,7 @@ import UIKit
     }
     
     // publicly, the triggerView is reqiured if the avoidingView isn't nil
-    public class func setAvoidingView(_ avoidingView: UIView?, withTriggerView triggerView: UIView) {
+    @objc public class func setAvoidingView(_ avoidingView: UIView?, withTriggerView triggerView: UIView) {
         self.setAvoidingView(avoidingView, withOptionalTriggerView: triggerView)
     }
     
@@ -257,17 +257,17 @@ import UIKit
         self.deinitialise()
     }
     
-    public class func addTriggerView(_ triggerView: UIView) {
+    @objc public class func addTriggerView(_ triggerView: UIView) {
         self.triggerViews.append(triggerView)
     }
     
-    public class func removeTriggerView(_ triggerView: UIView) {
+    @objc public class func removeTriggerView(_ triggerView: UIView) {
         if let index = triggerViews.index(of: triggerView) as Int! {
             self.triggerViews.remove(at: index)
         }
     }
     
-    public class func removeAll() {
+    @objc public class func removeAll() {
         self.triggerViews.removeAll()
         self.avoidingView = nil
         self.avoidingBlock = nil
@@ -290,11 +290,11 @@ import UIKit
     
     // MARK: - Helpers
     
-    class func isLandscape() -> Bool {
+    @objc class func isLandscape() -> Bool {
         return UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)
     }
     
-    class func applicationDidEnterBackground(_ notification: Foundation.Notification) {
+    @objc class func applicationDidEnterBackground(_ notification: Foundation.Notification) {
         // Autolayout is reset when app goes into background, so we need to dismiss the keyboard too
         UIApplication.shared.windows.first?.rootViewController?.view.endEditing(true)
     }

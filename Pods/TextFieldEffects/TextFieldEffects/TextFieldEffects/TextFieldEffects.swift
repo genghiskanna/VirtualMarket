@@ -41,19 +41,19 @@ open class TextFieldEffects : UITextField {
     /**
     UILabel that holds all the placeholder information
     */
-    open let placeholderLabel = UILabel()
+    @objc open let placeholderLabel = UILabel()
     
     /**
     Creates all the animations that are used to leave the textfield in the "entering text" state.
     */
-    open func animateViewsForTextEntry() {
+    @objc open func animateViewsForTextEntry() {
         fatalError("\(#function) must be overridden")
     }
     
     /**
     Creates all the animations that are used to leave the textfield in the "display input text" state.
     */
-    open func animateViewsForTextDisplay() {
+    @objc open func animateViewsForTextDisplay() {
         fatalError("\(#function) must be overridden")
     }
     
@@ -67,11 +67,11 @@ open class TextFieldEffects : UITextField {
     
     - parameter rect:	The portion of the view’s bounds that needs to be updated.
     */
-    open func drawViewsForRect(_ rect: CGRect) {
+    @objc open func drawViewsForRect(_ rect: CGRect) {
         fatalError("\(#function) must be overridden")
     }
     
-    open func updateViewsForBoundsChange(_ bounds: CGRect) {
+    @objc open func updateViewsForBoundsChange(_ bounds: CGRect) {
         fatalError("\(#function) must be overridden")
     }
     
@@ -110,14 +110,14 @@ open class TextFieldEffects : UITextField {
     /**
     The textfield has started an editing session.
     */
-    open func textFieldDidBeginEditing() {
+    @objc open func textFieldDidBeginEditing() {
         animateViewsForTextEntry()
     }
     
     /**
     The textfield has ended an editing session.
     */
-    open func textFieldDidEndEditing() {
+    @objc open func textFieldDidEndEditing() {
         animateViewsForTextDisplay()
     }
     

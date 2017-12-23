@@ -22,7 +22,7 @@ import UIKit
         setupBar()
     }
     
-    func setupBar(){
+    @objc func setupBar(){
         self.backgroundColor = CurrentSettings.getTheme()["light"]
         self.textColor = CurrentSettings.getTheme()["dark"]
         self.layer.borderColor = Colors.teal.cgColor

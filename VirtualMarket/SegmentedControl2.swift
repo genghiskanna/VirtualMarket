@@ -12,11 +12,11 @@ import UIKit
     
     
     fileprivate var labels = [UILabel]()
-    let thumbView = UIView()
-    var labelStrings = ["Stocks","Commodity"]
+    @objc let thumbView = UIView()
+    @objc var labelStrings = ["Stocks","Commodity"]
     var selectedIndex :Int?
-    var xSkip = 0
-    var color = UIColor(red: 26.0/255.0, green: 128.0/255.0, blue: 168.0/255.0, alpha: 1.0)
+    @objc var xSkip = 0
+    @objc var color = UIColor(red: 26.0/255.0, green: 128.0/255.0, blue: 168.0/255.0, alpha: 1.0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +30,7 @@ import UIKit
     
 
     
-    func setupViewAndLabels(){
+    @objc func setupViewAndLabels(){
         
         
         //setting up view

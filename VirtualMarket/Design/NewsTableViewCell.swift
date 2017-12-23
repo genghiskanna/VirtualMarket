@@ -14,7 +14,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var news: UILabel!
     
     
-    open func configureCell(title:String, source: String) -> UITableViewCell{
+    @objc open func configureCell(title:String, source: String) -> UITableViewCell{
         self.newsTitle.text = title
         return self as UITableViewCell
     }

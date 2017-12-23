@@ -68,13 +68,13 @@ public enum SCLActionType {
 // Button sub-class
 open class SCLButton: UIButton {
     var actionType = SCLActionType.none
-    var target:AnyObject!
-    var selector:Selector!
-    var action:(()->Void)!
-    var customBackgroundColor:UIColor?
-    var customTextColor:UIColor?
-    var initialTitle:String!
-    var showDurationStatus:Bool=false
+    @objc var target:AnyObject!
+    @objc var selector:Selector!
+    @objc var action:(()->Void)!
+    @objc var customBackgroundColor:UIColor?
+    @objc var customTextColor:UIColor?
+    @objc var initialTitle:String!
+    @objc var showDurationStatus:Bool=false
     
     public init() {
         super.init(frame: CGRect.zero)
@@ -202,29 +202,29 @@ open class SCLAlertView: UIViewController {
     var appearance: SCLAppearance!
     
     // UI Colour
-    var viewColor = UIColor()
+    @objc var viewColor = UIColor()
     
     // UI Options
-    open var iconTintColor: UIColor?
-    open var customSubview : UIView?
+    @objc open var iconTintColor: UIColor?
+    @objc open var customSubview : UIView?
     
 
     
     // Members declaration
-    var baseView = UIView()
-    var labelTitle = UILabel()
-    var viewText = UITextView()
-    var contentView = UIView()
-    var circleBG = UIView(frame:CGRect(x:0, y:0, width:kCircleHeightBackground, height:kCircleHeightBackground))
-    var circleView = UIView()
-    var circleIconView : UIView?
+    @objc var baseView = UIView()
+    @objc var labelTitle = UILabel()
+    @objc var viewText = UITextView()
+    @objc var contentView = UIView()
+    @objc var circleBG = UIView(frame:CGRect(x:0, y:0, width:kCircleHeightBackground, height:kCircleHeightBackground))
+    @objc var circleView = UIView()
+    @objc var circleIconView : UIView?
     var duration: TimeInterval!
-    var durationStatusTimer: Timer!
-    var durationTimer: Timer!
-    var dismissBlock : DismissBlock?
+    @objc var durationStatusTimer: Timer!
+    @objc var durationTimer: Timer!
+    @objc var dismissBlock : DismissBlock?
     fileprivate var inputs = [UITextField]()
     fileprivate var input = [UITextView]()
-    internal var buttons = [SCLButton]()
+    @objc internal var buttons = [SCLButton]()
     fileprivate var selfReference: SCLAlertView?
     
     public init(appearance: SCLAppearance) {
@@ -388,7 +388,7 @@ open class SCLAlertView: UIViewController {
         }
     }
     
-    open func addTextField(_ title:String?=nil)->UITextField {
+    @objc open func addTextField(_ title:String?=nil)->UITextField {
         // Update view height
         appearance.setkWindowHeight(appearance.kWindowHeight + appearance.kTextFieldHeight)
         // Add text field
@@ -407,7 +407,7 @@ open class SCLAlertView: UIViewController {
         return txt
     }
     
-    open func addTextView()->UITextView {
+    @objc open func addTextView()->UITextView {
         // Update view height
         appearance.setkWindowHeight(appearance.kWindowHeight + appearance.kTextViewdHeight)
         // Add text view
@@ -423,7 +423,7 @@ open class SCLAlertView: UIViewController {
         return txt
     }
     
-    @discardableResult
+    @objc @discardableResult
     open func addButton(_ title:String, backgroundColor:UIColor? = nil, textColor:UIColor? = nil, showDurationStatus:Bool=false, action:@escaping ()->Void)->SCLButton {
         let btn = addButton(title, backgroundColor: backgroundColor, textColor: textColor, showDurationStatus: showDurationStatus)
         btn.actionType = SCLActionType.closure
@@ -434,7 +434,7 @@ open class SCLAlertView: UIViewController {
         return btn
     }
     
-    @discardableResult
+    @objc @discardableResult
     open func addButton(_ title:String, backgroundColor:UIColor? = nil, textColor:UIColor? = nil, showDurationStatus:Bool = false, target:AnyObject, selector:Selector)->SCLButton {
         let btn = addButton(title, backgroundColor: backgroundColor, textColor: textColor, showDurationStatus: showDurationStatus)
         btn.actionType = SCLActionType.selector
@@ -464,7 +464,7 @@ open class SCLAlertView: UIViewController {
         return btn
     }
     
-    func buttonTapped(_ btn:SCLButton) {
+    @objc func buttonTapped(_ btn:SCLButton) {
         if btn.actionType == SCLActionType.closure {
             btn.action()
         } else if btn.actionType == SCLActionType.selector {
@@ -478,7 +478,7 @@ open class SCLAlertView: UIViewController {
     }
     
     
-    func buttonTapDown(_ btn:SCLButton) {
+    @objc func buttonTapDown(_ btn:SCLButton) {
         var hue : CGFloat = 0
         var saturation : CGFloat = 0
         var brightness : CGFloat = 0
@@ -489,15 +489,15 @@ open class SCLAlertView: UIViewController {
         btn.backgroundColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
     
-    func buttonRelease(_ btn:SCLButton) {
+    @objc func buttonRelease(_ btn:SCLButton) {
         btn.backgroundColor = btn.customBackgroundColor ?? viewColor
     }
     
     var tmpContentViewFrameOrigin: CGPoint?
     var tmpCircleViewFrameOrigin: CGPoint?
-    var keyboardHasBeenShown:Bool = false
+    @objc var keyboardHasBeenShown:Bool = false
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         keyboardHasBeenShown = true
         
         guard let userInfo = (notification as NSNotification).userInfo else {return}
@@ -520,7 +520,7 @@ open class SCLAlertView: UIViewController {
         self.circleBG.frame.origin.y = newBallViewFrameY
     }
     
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         if(keyboardHasBeenShown){//This could happen on the simulator (keyboard will be hidden)
             if(self.tmpContentViewFrameOrigin != nil){
                 self.contentView.frame.origin.y = self.tmpContentViewFrameOrigin!.y
@@ -536,7 +536,7 @@ open class SCLAlertView: UIViewController {
     }
     
     //Dismiss keyboard when tapped outside textfield & close SCLAlertView when hideWhenBackgroundViewIsTapped
-    func tapped(_ gestureRecognizer: UITapGestureRecognizer) {
+    @objc func tapped(_ gestureRecognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
         
         if let tappedView = gestureRecognizer.view , tappedView.hitTest(gestureRecognizer.location(in: tappedView), with: nil) == baseView && appearance.hideWhenBackgroundViewIsTapped {
@@ -666,7 +666,7 @@ open class SCLAlertView: UIViewController {
             viewText.text = subTitle
             // Adjust text view size, if necessary
             let str = subTitle as NSString
-            let attr = [NSFontAttributeName:viewText.font ?? UIFont()]
+            let attr = [NSAttributedStringKey.font:viewText.font ?? UIFont()]
             let sz = CGSize(width: appearance.kWindowWidth - 24, height:90)
             let r = str.boundingRect(with: sz, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:attr, context:nil)
             let ht = ceil(r.size.height)
@@ -792,7 +792,7 @@ open class SCLAlertView: UIViewController {
         })
     }
     
-    open func updateDurationStatus() {
+    @objc open func updateDurationStatus() {
         duration = duration.advanced(by: -1)
         for btn in buttons.filter({$0.showDurationStatus}) {
             let txt = "\(btn.initialTitle) (\(duration))"
@@ -801,7 +801,7 @@ open class SCLAlertView: UIViewController {
     }
     
     // Close SCLAlertView
-    open func hideView() {
+    @objc open func hideView() {
         UIView.animate(withDuration: 0.2, animations: {
             self.view.alpha = 0
             }, completion: { finished in
@@ -828,7 +828,7 @@ open class SCLAlertView: UIViewController {
         })
     }
     
-    func checkCircleIconImage(_ circleIconImage: UIImage?, defaultImage: UIImage) -> UIImage {
+    @objc func checkCircleIconImage(_ circleIconImage: UIImage?, defaultImage: UIImage) -> UIImage {
         if let image = circleIconImage {
             return image
         } else {
@@ -876,7 +876,7 @@ class SCLAlertViewStyleKit : NSObject {
     //    }
     
     // Drawing Methods
-    class func drawCheckmark() {
+    @objc class func drawCheckmark() {
         // Checkmark Shape Drawing
         let checkmarkShapePath = UIBezierPath()
         checkmarkShapePath.move(to: CGPoint(x: 73.25, y: 14.05))
@@ -897,7 +897,7 @@ class SCLAlertViewStyleKit : NSObject {
         checkmarkShapePath.fill()
     }
     
-    class func drawCross() {
+    @objc class func drawCross() {
         // Cross Shape Drawing
         let crossShapePath = UIBezierPath()
         crossShapePath.move(to: CGPoint(x: 10, y: 70))
@@ -911,7 +911,7 @@ class SCLAlertViewStyleKit : NSObject {
         crossShapePath.stroke()
     }
     
-    class func drawNotice() {
+    @objc class func drawNotice() {
         // Notice Shape Drawing
         let noticeShapePath = UIBezierPath()
         noticeShapePath.move(to: CGPoint(x: 72, y: 48.54))
@@ -948,7 +948,7 @@ class SCLAlertViewStyleKit : NSObject {
         noticeShapePath.fill()
     }
     
-    class func drawWarning() {
+    @objc class func drawWarning() {
         // Color Declarations
         let greyColor = UIColor(red: 0.236, green: 0.236, blue: 0.236, alpha: 1.000)
         
@@ -991,7 +991,7 @@ class SCLAlertViewStyleKit : NSObject {
         warningShapePath.fill()
     }
     
-    class func drawInfo() {
+    @objc class func drawInfo() {
         // Color Declarations
         let color0 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
         
@@ -1017,7 +1017,7 @@ class SCLAlertViewStyleKit : NSObject {
         infoShapePath.fill()
     }
     
-    class func drawEdit() {
+    @objc class func drawEdit() {
         // Color Declarations
         let color = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         
@@ -1065,7 +1065,7 @@ class SCLAlertViewStyleKit : NSObject {
     }
     
     // Generated Images
-    class var imageOfCheckmark: UIImage {
+    @objc class var imageOfCheckmark: UIImage {
         if (Cache.imageOfCheckmark != nil) {
             return Cache.imageOfCheckmark!
         }
@@ -1076,7 +1076,7 @@ class SCLAlertViewStyleKit : NSObject {
         return Cache.imageOfCheckmark!
     }
     
-    class var imageOfCross: UIImage {
+    @objc class var imageOfCross: UIImage {
         if (Cache.imageOfCross != nil) {
             return Cache.imageOfCross!
         }
@@ -1087,7 +1087,7 @@ class SCLAlertViewStyleKit : NSObject {
         return Cache.imageOfCross!
     }
     
-    class var imageOfNotice: UIImage {
+    @objc class var imageOfNotice: UIImage {
         if (Cache.imageOfNotice != nil) {
             return Cache.imageOfNotice!
         }
@@ -1098,7 +1098,7 @@ class SCLAlertViewStyleKit : NSObject {
         return Cache.imageOfNotice!
     }
     
-    class var imageOfWarning: UIImage {
+    @objc class var imageOfWarning: UIImage {
         if (Cache.imageOfWarning != nil) {
             return Cache.imageOfWarning!
         }
@@ -1109,7 +1109,7 @@ class SCLAlertViewStyleKit : NSObject {
         return Cache.imageOfWarning!
     }
     
-    class var imageOfInfo: UIImage {
+    @objc class var imageOfInfo: UIImage {
         if (Cache.imageOfInfo != nil) {
             return Cache.imageOfInfo!
         }
@@ -1120,7 +1120,7 @@ class SCLAlertViewStyleKit : NSObject {
         return Cache.imageOfInfo!
     }
     
-    class var imageOfEdit: UIImage {
+    @objc class var imageOfEdit: UIImage {
         if (Cache.imageOfEdit != nil) {
             return Cache.imageOfEdit!
         }

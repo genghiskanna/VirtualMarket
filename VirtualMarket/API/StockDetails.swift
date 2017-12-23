@@ -23,7 +23,7 @@ class StockDetails: NSObject {
         case max
     }
     
-    class func getStockPriceUnderWatch(){
+    @objc class func getStockPriceUnderWatch(){
         var searchStock = ""
         
         // Getting Stock Quote Data

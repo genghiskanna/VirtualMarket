@@ -63,13 +63,13 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    func updatePendingOrder(){
+    @objc func updatePendingOrder(){
         pendingOrder = allPendingOrders(buy: true)
         print(pendingOrder.count)
         
     }
     
-    func updateStocks(delay time: UInt32){
+    @objc func updateStocks(delay time: UInt32){
         DispatchQueue.global(qos: .userInitiated).async {
             while true{
                 sleep(time)
@@ -111,7 +111,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // UIDesign
     
-    func setLabelColor(){
+    @objc func setLabelColor(){
         var color = Colors.dark
         if AppDelegate.darkMode{
             color = Colors.light
@@ -125,7 +125,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    func setEmptyIndicator(){
+    @objc func setEmptyIndicator(){
         if let stocks = allStocksUnderWatch(){
             if stocks.count == 0{
                 self.pendingOrderEmpty.isHidden = false

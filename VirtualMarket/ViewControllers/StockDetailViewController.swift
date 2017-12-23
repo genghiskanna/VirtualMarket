@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyJSON
-import AlamofireRSSParser
 import Kanna
 
 class StockDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ChartViewDelegate, SegmentedControl6Delegate {
@@ -17,10 +16,10 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     // Data 
     
     var stockNews: StockDataSource!
-    var stock: String!
+    @objc var stock: String!
     
     var indexDetails = [StockDetails.StockRange.oneDay, StockDetails.StockRange.oneWeek, StockDetails.StockRange.oneMonth,StockDetails.StockRange.threeMonth,StockDetails.StockRange.sixMonth,StockDetails.StockRange.oneYear,StockDetails.StockRange.max]
-    var graphLayers = [CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer()]
+    @objc var graphLayers = [CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer()]
 
     // label
     @IBOutlet weak var stockName: UILabel!
@@ -47,9 +46,6 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // News
     @IBOutlet weak var newsTable: UITableView!
-
-    // News DataSource
-    var newsFeed: RSSFeed?
     
     @IBOutlet weak var segmentControl: SegmentedControl6!
     @IBOutlet weak var chart: ChartView!
@@ -61,15 +57,15 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var orderHeightConstraint: NSLayoutConstraint!
     
     // REcent Orders DataSource
-    var orders = [Stock]()
+    @objc var orders = [Stock]()
     
     
     // current graph
    
-    var currentGraph = CAShapeLayer()
+    @objc var currentGraph = CAShapeLayer()
     
     // flags 
-    var firstFlag = true
+    @objc var firstFlag = true
     
     
     // IBActions
@@ -142,7 +138,7 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    func updateStockPrice(delay time: UInt32){
+    @objc func updateStockPrice(delay time: UInt32){
         // updating fast
         DispatchQueue.global(qos: .userInitiated).async {
             
@@ -271,7 +267,7 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: Update Functions
     
-    func updateDayStats(delay time: UInt32){
+    @objc func updateDayStats(delay time: UInt32){
         
         DispatchQueue.global(qos: .userInitiated).async {
             
@@ -320,7 +316,7 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    func updateLongStats(){
+    @objc func updateLongStats(){
         
         if let stockTemp = StockDetails.getStockPrice(stockName: stock){
     
@@ -370,7 +366,7 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // Custom Delegates
     
-    func chartMoved(currentPrice price: Float, currentDate date: Date) {
+    @objc func chartMoved(currentPrice price: Float, currentDate date: Date) {
         self.priceChart.text = String(describing: price)
         
         let dateFormatter = DateFormatter()
@@ -379,11 +375,11 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         self.scrollView.isScrollEnabled = false
     }
     
-    func chartStopped() {
+    @objc func chartStopped() {
         self.scrollView.isScrollEnabled = true
     }
     
-    func changedIndex(selectedIndex index: Int) {
+    @objc func changedIndex(selectedIndex index: Int) {
         self.updateChart(inRange: indexDetails[index])
     }
     

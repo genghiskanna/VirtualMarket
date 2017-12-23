@@ -21,9 +21,10 @@ import UIKit
         self.setupBar()
     }
     
-    func setupBar(){
+    @objc func setupBar(){
         self.barTintColor = CurrentSettings.getTheme()["light"]
-        self.titleTextAttributes = [NSForegroundColorAttributeName:CurrentSettings.getTheme()["dark"]!]
+        // Warning
+        //self.titleTextAttributes = [NSAttributedStringKey.foregroundColor:CurrentSettings.getTheme()["dark"]!]
         self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: 60)
     }
 

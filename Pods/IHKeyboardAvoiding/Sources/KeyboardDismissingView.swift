@@ -10,8 +10,8 @@ import UIKit
 
 @objc public class KeyboardDismissingView: UIView {
     
-    public var dismissingBlock: (() -> Void)?
-    public var touchEndedBlock: (() -> Void)?
+    @objc public var dismissingBlock: (() -> Void)?
+    @objc public var touchEndedBlock: (() -> Void)?
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -24,7 +24,7 @@ import UIKit
         self.touchEndedBlock?()
     }
     
-    public class func resignAnyFirstResponder(_ view: UIView) -> Bool {
+    @objc public class func resignAnyFirstResponder(_ view: UIView) -> Bool {
         var hasResigned = false
         for subView in view.subviews {
             if subView.isFirstResponder {

@@ -18,7 +18,7 @@ class ReportStockTableViewCell: UITableViewCell {
     
     
     
-    func configureCell(_ stockName: String, description: String, worthBT: Float, worthAT:Float, change: Float){
+    @objc func configureCell(_ stockName: String, description: String, worthBT: Float, worthAT:Float, change: Float){
         
         self.stockName.text = stockName
         self.descriptionStock.text = description

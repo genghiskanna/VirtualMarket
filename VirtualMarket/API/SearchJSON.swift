@@ -33,7 +33,7 @@ class SearchJSON: NSObject {
     }
     
     
-    class func SearchStock(_ text: String) -> Dictionary<String,NSArray>{
+    @objc class func SearchStock(_ text: String) -> Dictionary<String,NSArray>{
         
         var searchResult: Dictionary<String,NSArray> = ["empty":[1,2,3]]
         

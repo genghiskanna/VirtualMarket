@@ -23,7 +23,7 @@ import UIKit
         setupView()
     }
     
-    func setupView(){
+    @objc func setupView(){
         if AppDelegate.darkMode{
             self.layer.backgroundColor = Colors.blueDark.cgColor
         } else {
