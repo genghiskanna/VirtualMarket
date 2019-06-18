@@ -11,8 +11,8 @@ import CoreData
 
 class CurrentSettings{
     
-    static let darkTheme = ["light":Colors.dark,"dark":Colors.light]
-    static let lightTheme = ["dark":Colors.dark,"light":Colors.light]
+    static let darkTheme = ["light":Colors.dark,"lightBase":Colors.darkBase,"dark":Colors.light,"darkBase":Colors.lightBase]
+    static let lightTheme = ["dark":Colors.dark,"darkBase":Colors.darkBase,"light":Colors.light,"lightBase":Colors.lightBase]
     struct statusTheme {
         static let dark = "dark"
         static let light = "light"
@@ -31,10 +31,5 @@ class CurrentSettings{
         
     }
     
-    class func getStatusBar() -> String{
-        
-        // to get value from CoreData
-        
-        return statusTheme.light
-    }
+   
 }

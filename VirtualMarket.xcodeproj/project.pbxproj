@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		092D75F27B2E7FEF2F621254 /* Pods_VirtualMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335870C2DD4DDA0F0C48C9D /* Pods_VirtualMarket.framework */; };
+		0C1F8F072219C31C00685103 /* ForexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F8F062219C31C00685103 /* ForexCollectionViewCell.swift */; };
+		0C3C283F2217F1A80028AA6E /* DrawSmallGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C283E2217F1A80028AA6E /* DrawSmallGraph.swift */; };
+		0C3C2841221896F10028AA6E /* NewsHomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C2840221896F10028AA6E /* NewsHomeScreenTableViewCell.swift */; };
+		0C9EEDC5221C6EA2005EE7BC /* stockSymbolData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C9EEDC4221C6EA1005EE7BC /* stockSymbolData.json */; };
+		0C9EEDC7221CDF87005EE7BC /* ForexDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9EEDC6221CDF87005EE7BC /* ForexDetails.swift */; };
 		FC0526471F50A729008F12B0 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0526451F50A729008F12B0 /* CustomAlertView.swift */; };
 		FC0526481F50A729008F12B0 /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0526461F50A729008F12B0 /* CustomAlertView.xib */; };
 		FC17F2801F5140E800F74C70 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC17F27F1F5140E800F74C70 /* OrderView.swift */; };
@@ -38,7 +43,6 @@
 		FCA1D2411F1A0BDB00003264 /* SegmentedControl2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2401F1A0BDB00003264 /* SegmentedControl2.swift */; };
 		FCA1D2431F1A151200003264 /* SegmentedControl6.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2421F1A151200003264 /* SegmentedControl6.swift */; };
 		FCA1D2451F1A968D00003264 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2441F1A968D00003264 /* AccountViewController.swift */; };
-		FCA1D2471F1A96CF00003264 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2461F1A96CF00003264 /* MarketViewController.swift */; };
 		FCA1D2491F1A96FD00003264 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2481F1A96FD00003264 /* TransferViewController.swift */; };
 		FCA1D24B1F1A971B00003264 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D24A1F1A971B00003264 /* SettingsViewController.swift */; };
 		FCA1D24D1F1A975200003264 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D24C1F1A975200003264 /* ReportViewController.swift */; };
@@ -47,15 +51,20 @@
 		FCA1D2531F1A97B300003264 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2521F1A97B300003264 /* BuySellViewController.swift */; };
 		FCA1D2551F1AFE5600003264 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */; };
 		FCD1C45C1F408E6100891BF5 /* QuickNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1C45B1F408E6100891BF5 /* QuickNewsView.swift */; };
+		FCD63F682041A496001D718A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD63F692041A496001D718A /* SwiftyJSON.framework */; };
+		FCD63F6A2041A637001D718A /* FeedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD63F712041A637001D718A /* FeedKit.framework */; };
+		FCD63F6B2041A637001D718A /* iCarousel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD63F722041A637001D718A /* iCarousel.framework */; };
+		FCD63F6C2041A637001D718A /* IHKeyboardAvoiding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD63F732041A637001D718A /* IHKeyboardAvoiding.framework */; };
+		FCD63F6D2041A637001D718A /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD63F742041A637001D718A /* Kanna.framework */; };
+		FCD63F6E2041A637001D718A /* M13Checkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD63F752041A637001D718A /* M13Checkbox.framework */; };
+		FCD63F6F2041A637001D718A /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD63F762041A637001D718A /* SCLAlertView.framework */; };
+		FCD63F702041A637001D718A /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD63F772041A637001D718A /* TextFieldEffects.framework */; };
 		FCE54B2C1F42225800A0C1AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE54B2B1F42225800A0C1AC /* WebViewController.swift */; };
 		FCEE32921F795B890047D3E5 /* StockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE32911F795B890047D3E5 /* StockData.swift */; };
 		FCEE32961F7971EA0047D3E5 /* OrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE32951F7971EA0047D3E5 /* OrderCollectionViewCell.swift */; };
 		FCF29C141F09FF3300965D83 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C131F09FF3300965D83 /* FloatingView.swift */; };
 		FCF29C161F0A048700965D83 /* OrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C151F0A048700965D83 /* OrderView.xib */; };
 		FCF29C191F0A49AC00965D83 /* StockDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C181F0A49AC00965D83 /* StockDetails.swift */; };
-		FCF29C1E1F0ABA4000965D83 /* amex.json in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C1B1F0ABA4000965D83 /* amex.json */; };
-		FCF29C1F1F0ABA4000965D83 /* nasdaq.json in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C1C1F0ABA4000965D83 /* nasdaq.json */; };
-		FCF29C201F0ABA4000965D83 /* nyse.json in Resources */ = {isa = PBXBuildFile; fileRef = FCF29C1D1F0ABA4000965D83 /* nyse.json */; };
 		FCF29C231F0ABA8600965D83 /* SearchJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF29C221F0ABA8600965D83 /* SearchJSON.swift */; };
 		FCF4C3171F2C9E0700C38642 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4C3161F2C9E0700C38642 /* ChartView.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +83,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C1F8F062219C31C00685103 /* ForexCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForexCollectionViewCell.swift; path = Design/ForexCollectionViewCell.swift; sourceTree = "<group>"; };
+		0C3C283E2217F1A80028AA6E /* DrawSmallGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSmallGraph.swift; sourceTree = "<group>"; };
+		0C3C2840221896F10028AA6E /* NewsHomeScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsHomeScreenTableViewCell.swift; path = Design/NewsHomeScreenTableViewCell.swift; sourceTree = "<group>"; };
+		0C9EEDC4221C6EA1005EE7BC /* stockSymbolData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stockSymbolData.json; sourceTree = "<group>"; };
+		0C9EEDC6221CDF87005EE7BC /* ForexDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForexDetails.swift; path = API/ForexDetails.swift; sourceTree = "<group>"; };
 		AC1AB94D1254B84007D7F395 /* Pods-VirtualMarket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualMarket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualMarket/Pods-VirtualMarket.debug.xcconfig"; sourceTree = "<group>"; };
 		C335870C2DD4DDA0F0C48C9D /* Pods_VirtualMarket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualMarket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81218020F802637E7A86CF3 /* Pods-VirtualMarket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualMarket.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualMarket/Pods-VirtualMarket.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,7 +105,7 @@
 		FC4FDFD01F0C063D00CB09A1 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = Design/SearchTableViewCell.swift; sourceTree = "<group>"; };
 		FC5DBCF91F7030DC00F0EDFF /* CircularAirPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularAirPro-Light.ttf"; sourceTree = "<group>"; };
 		FC5DBCFB1F70325600F0EDFF /* CircularAirPro-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularAirPro-Book.ttf"; sourceTree = "<group>"; };
-		FC5FF84A1F83E21C004796F0 /* RecentOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecentOrderTableViewCell.swift; path = VirtualMarket/Design/RecentOrderTableViewCell.swift; sourceTree = "<group>"; };
+		FC5FF84A1F83E21C004796F0 /* RecentOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecentOrderTableViewCell.swift; path = Design/RecentOrderTableViewCell.swift; sourceTree = "<group>"; };
 		FC73B5911F4F0CCD00EE70DF /* ButtonOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonOrder.swift; path = Design/ButtonOrder.swift; sourceTree = "<group>"; };
 		FC7E824C1F0961C5001333A5 /* VirtualMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7E824F1F0961C5001333A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +123,6 @@
 		FCA1D2401F1A0BDB00003264 /* SegmentedControl2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl2.swift; sourceTree = "<group>"; };
 		FCA1D2421F1A151200003264 /* SegmentedControl6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedControl6.swift; path = Design/SegmentedControl6.swift; sourceTree = "<group>"; };
 		FCA1D2441F1A968D00003264 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = ViewControllers/AccountViewController.swift; sourceTree = "<group>"; };
-		FCA1D2461F1A96CF00003264 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketViewController.swift; path = ViewControllers/MarketViewController.swift; sourceTree = "<group>"; };
 		FCA1D2481F1A96FD00003264 /* TransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransferViewController.swift; path = ViewControllers/TransferViewController.swift; sourceTree = "<group>"; };
 		FCA1D24A1F1A971B00003264 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ViewControllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		FCA1D24C1F1A975200003264 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportViewController.swift; path = ViewControllers/ReportViewController.swift; sourceTree = "<group>"; };
@@ -118,15 +131,20 @@
 		FCA1D2521F1A97B300003264 /* BuySellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuySellViewController.swift; path = ViewControllers/BuySellViewController.swift; sourceTree = "<group>"; };
 		FCA1D2541F1AFE5600003264 /* StockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockTableViewCell.swift; path = Design/StockTableViewCell.swift; sourceTree = "<group>"; };
 		FCD1C45B1F408E6100891BF5 /* QuickNewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickNewsView.swift; path = Design/xib/QuickNewsView.swift; sourceTree = "<group>"; };
+		FCD63F692041A496001D718A /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCD63F712041A637001D718A /* FeedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FeedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCD63F722041A637001D718A /* iCarousel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iCarousel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCD63F732041A637001D718A /* IHKeyboardAvoiding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IHKeyboardAvoiding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCD63F742041A637001D718A /* Kanna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kanna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCD63F752041A637001D718A /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCD63F762041A637001D718A /* SCLAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SCLAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCD63F772041A637001D718A /* TextFieldEffects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TextFieldEffects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE54B2B1F42225800A0C1AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ViewControllers/WebViewController.swift; sourceTree = "<group>"; };
 		FCEE32911F795B890047D3E5 /* StockData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockData.swift; sourceTree = "<group>"; };
 		FCEE32951F7971EA0047D3E5 /* OrderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderCollectionViewCell.swift; path = Design/OrderCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCF29C131F09FF3300965D83 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatingView.swift; path = Design/FloatingView.swift; sourceTree = "<group>"; };
 		FCF29C151F0A048700965D83 /* OrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderView.xib; path = Design/xib/OrderView.xib; sourceTree = "<group>"; };
 		FCF29C181F0A49AC00965D83 /* StockDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockDetails.swift; path = API/StockDetails.swift; sourceTree = "<group>"; };
-		FCF29C1B1F0ABA4000965D83 /* amex.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = amex.json; path = Data/amex.json; sourceTree = "<group>"; };
-		FCF29C1C1F0ABA4000965D83 /* nasdaq.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = nasdaq.json; path = Data/nasdaq.json; sourceTree = "<group>"; };
-		FCF29C1D1F0ABA4000965D83 /* nyse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = nyse.json; path = Data/nyse.json; sourceTree = "<group>"; };
 		FCF29C221F0ABA8600965D83 /* SearchJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchJSON.swift; path = API/SearchJSON.swift; sourceTree = "<group>"; };
 		FCF4C3161F2C9E0700C38642 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +154,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD63F6A2041A637001D718A /* FeedKit.framework in Frameworks */,
+				FCD63F6B2041A637001D718A /* iCarousel.framework in Frameworks */,
+				FCD63F6C2041A637001D718A /* IHKeyboardAvoiding.framework in Frameworks */,
+				FCD63F6D2041A637001D718A /* Kanna.framework in Frameworks */,
+				FCD63F6E2041A637001D718A /* M13Checkbox.framework in Frameworks */,
+				FCD63F6F2041A637001D718A /* SCLAlertView.framework in Frameworks */,
+				FCD63F702041A637001D718A /* TextFieldEffects.framework in Frameworks */,
+				FCD63F682041A496001D718A /* SwiftyJSON.framework in Frameworks */,
 				092D75F27B2E7FEF2F621254 /* Pods_VirtualMarket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +172,14 @@
 		410DE3A976EBB00B70E43F49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCD63F712041A637001D718A /* FeedKit.framework */,
+				FCD63F722041A637001D718A /* iCarousel.framework */,
+				FCD63F732041A637001D718A /* IHKeyboardAvoiding.framework */,
+				FCD63F742041A637001D718A /* Kanna.framework */,
+				FCD63F752041A637001D718A /* M13Checkbox.framework */,
+				FCD63F762041A637001D718A /* SCLAlertView.framework */,
+				FCD63F772041A637001D718A /* TextFieldEffects.framework */,
+				FCD63F692041A496001D718A /* SwiftyJSON.framework */,
 				C335870C2DD4DDA0F0C48C9D /* Pods_VirtualMarket.framework */,
 			);
 			name = Frameworks;
@@ -172,7 +206,6 @@
 		FC7E82431F0961C5001333A5 = {
 			isa = PBXGroup;
 			children = (
-				FC5FF84A1F83E21C004796F0 /* RecentOrderTableViewCell.swift */,
 				FC7E824E1F0961C5001333A5 /* VirtualMarket */,
 				FC7E824D1F0961C5001333A5 /* Products */,
 				E5AD2F77B8F8519B14AF1022 /* Pods */,
@@ -209,6 +242,10 @@
 		FC7E82661F096C23001333A5 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				0C3C283E2217F1A80028AA6E /* DrawSmallGraph.swift */,
+				0C1F8F062219C31C00685103 /* ForexCollectionViewCell.swift */,
+				0C3C2840221896F10028AA6E /* NewsHomeScreenTableViewCell.swift */,
+				FC5FF84A1F83E21C004796F0 /* RecentOrderTableViewCell.swift */,
 				FC0526451F50A729008F12B0 /* CustomAlertView.swift */,
 				FCEE32951F7971EA0047D3E5 /* OrderCollectionViewCell.swift */,
 				FCF4C3161F2C9E0700C38642 /* ChartView.swift */,
@@ -236,7 +273,6 @@
 			children = (
 				FCE54B2B1F42225800A0C1AC /* WebViewController.swift */,
 				FCA1D2441F1A968D00003264 /* AccountViewController.swift */,
-				FCA1D2461F1A96CF00003264 /* MarketViewController.swift */,
 				FCA1D2481F1A96FD00003264 /* TransferViewController.swift */,
 				FCA1D24A1F1A971B00003264 /* SettingsViewController.swift */,
 				FCA1D24C1F1A975200003264 /* ReportViewController.swift */,
@@ -279,6 +315,7 @@
 				FC4E664F1F1BDAC600458B92 /* StockNews.swift */,
 				FCF29C221F0ABA8600965D83 /* SearchJSON.swift */,
 				FCF29C181F0A49AC00965D83 /* StockDetails.swift */,
+				0C9EEDC6221CDF87005EE7BC /* ForexDetails.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -286,9 +323,7 @@
 		FCF29C211F0ABA4600965D83 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				FCF29C1B1F0ABA4000965D83 /* amex.json */,
-				FCF29C1C1F0ABA4000965D83 /* nasdaq.json */,
-				FCF29C1D1F0ABA4000965D83 /* nyse.json */,
+				0C9EEDC4221C6EA1005EE7BC /* stockSymbolData.json */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -300,13 +335,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC7E82611F0961C5001333A5 /* Build configuration list for PBXNativeTarget "VirtualMarket" */;
 			buildPhases = (
+				7BF66ABFD4AFCA8A79A30396 /* [CP] Check Pods Manifest.lock */,
 				AF6433C0585857CB3C5A1235 /* 📦 Check Pods Manifest.lock */,
 				FC7E82481F0961C5001333A5 /* Sources */,
 				FC7E82491F0961C5001333A5 /* Frameworks */,
 				FC7E824A1F0961C5001333A5 /* Resources */,
 				B6E1B0D1550E3A92A8E2AA04 /* 📦 Embed Pods Frameworks */,
-				5B8973C2A2BA22EF08E858B8 /* 📦 Copy Pods Resources */,
 				FCA1D23D1F19EE4500003264 /* Embed App Extensions */,
+				538E717C4D76F21AE5CA888F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -324,13 +360,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Nishaanth Kanna Ravichandran";
 				TargetAttributes = {
 					FC7E824B1F0961C5001333A5 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 4REL9XBP3N;
-						LastSwiftMigration = 0920;
+						DevelopmentTeam = 99HCB28FDZ;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -358,16 +394,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9EEDC5221C6EA2005EE7BC /* stockSymbolData.json in Resources */,
 				FC7E825D1F0961C5001333A5 /* LaunchScreen.storyboard in Resources */,
 				FC5DBCFC1F70325600F0EDFF /* CircularAirPro-Book.ttf in Resources */,
 				FCA1D23F1F19F28300003264 /* QuickNewsView.xib in Resources */,
 				FCF29C161F0A048700965D83 /* OrderView.xib in Resources */,
 				FC7E825A1F0961C5001333A5 /* Assets.xcassets in Resources */,
-				FCF29C1F1F0ABA4000965D83 /* nasdaq.json in Resources */,
 				FC5DBCFA1F7030DC00F0EDFF /* CircularAirPro-Light.ttf in Resources */,
-				FCF29C1E1F0ABA4000965D83 /* amex.json in Resources */,
 				FC7E82551F0961C5001333A5 /* Main.storyboard in Resources */,
-				FCF29C201F0ABA4000965D83 /* nyse.json in Resources */,
 				FC0526481F50A729008F12B0 /* CustomAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,19 +409,54 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5B8973C2A2BA22EF08E858B8 /* 📦 Copy Pods Resources */ = {
+		538E717C4D76F21AE5CA888F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VirtualMarket/Pods-VirtualMarket-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
+				"${BUILT_PRODUCTS_DIR}/IHKeyboardAvoiding/IHKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
+				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IHKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VirtualMarket/Pods-VirtualMarket-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VirtualMarket/Pods-VirtualMarket-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BF66ABFD4AFCA8A79A30396 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VirtualMarket-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF6433C0585857CB3C5A1235 /* 📦 Check Pods Manifest.lock */ = {
@@ -438,8 +507,8 @@
 				FC7E826D1F096DC0001333A5 /* CurrentSettings.swift in Sources */,
 				FCA1D2451F1A968D00003264 /* AccountViewController.swift in Sources */,
 				FC17F2821F51433D00F74C70 /* SmallFloatingView.swift in Sources */,
+				0C9EEDC7221CDF87005EE7BC /* ForexDetails.swift in Sources */,
 				FCF4C3171F2C9E0700C38642 /* ChartView.swift in Sources */,
-				FCA1D2471F1A96CF00003264 /* MarketViewController.swift in Sources */,
 				FC4E66501F1BDAC600458B92 /* StockNews.swift in Sources */,
 				FCA1D24B1F1A971B00003264 /* SettingsViewController.swift in Sources */,
 				FCA1D24F1F1A976E00003264 /* StatisticsViewController.swift in Sources */,
@@ -459,8 +528,11 @@
 				FC7E826B1F096CD1001333A5 /* CustomNavigationBar.swift in Sources */,
 				FCA1D2431F1A151200003264 /* SegmentedControl6.swift in Sources */,
 				FC37E4CA1F2A2F4300900A4B /* NewsTableViewCell.swift in Sources */,
+				0C3C2841221896F10028AA6E /* NewsHomeScreenTableViewCell.swift in Sources */,
 				FC4FDFD11F0C063D00CB09A1 /* SearchTableViewCell.swift in Sources */,
 				FCEE32921F795B890047D3E5 /* StockData.swift in Sources */,
+				0C3C283F2217F1A80028AA6E /* DrawSmallGraph.swift in Sources */,
+				0C1F8F072219C31C00685103 /* ForexCollectionViewCell.swift in Sources */,
 				FC4E664E1F1B7BD700458B92 /* CoreDataAccess.swift in Sources */,
 				FC4FDFC91F0BC5E300CB09A1 /* TextField.swift in Sources */,
 				FCE54B2C1F42225800A0C1AC /* WebViewController.swift in Sources */,
@@ -505,6 +577,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -512,6 +585,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -562,6 +636,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -569,6 +644,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -604,13 +680,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4REL9XBP3N;
+				DEVELOPMENT_TEAM = 99HCB28FDZ;
 				INFOPLIST_FILE = VirtualMarket/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nishaanthkanna.VirtualMarket;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nishaanthkanna.Virtual-Market-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -621,13 +697,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4REL9XBP3N;
+				DEVELOPMENT_TEAM = 99HCB28FDZ;
 				INFOPLIST_FILE = VirtualMarket/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nishaanthkanna.VirtualMarket;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nishaanthkanna.Virtual-Market-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

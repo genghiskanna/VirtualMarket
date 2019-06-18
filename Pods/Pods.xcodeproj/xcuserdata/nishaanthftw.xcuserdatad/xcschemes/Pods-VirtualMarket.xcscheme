@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0920"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD5EE42307A9CE387AA5BB649CEE8AC9"
+               BlueprintIdentifier = "33E0CB4249B1B8B4B5C94E9DF760196C"
                BuildableName = "Pods_VirtualMarket.framework"
                BlueprintName = "Pods-VirtualMarket"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD5EE42307A9CE387AA5BB649CEE8AC9"
+            BlueprintIdentifier = "33E0CB4249B1B8B4B5C94E9DF760196C"
             BuildableName = "Pods_VirtualMarket.framework"
             BlueprintName = "Pods-VirtualMarket"
             ReferencedContainer = "container:Pods.xcodeproj">

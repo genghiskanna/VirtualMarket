@@ -12,7 +12,7 @@ extension String {
     /**
     true if self contains characters.
     */
-    public var isNotEmpty: Bool {
+	var isNotEmpty: Bool {
         return !isEmpty
     }
 }
@@ -21,7 +21,6 @@ extension String {
 A TextFieldEffects object is a control that displays editable text and contains the boilerplates to setup unique animations for text entry and display. You typically use this class the same way you use UITextField.
 */
 open class TextFieldEffects : UITextField {
-    
     /**
      The type of animation a TextFieldEffect can perform.
      
@@ -41,19 +40,19 @@ open class TextFieldEffects : UITextField {
     /**
     UILabel that holds all the placeholder information
     */
-    @objc open let placeholderLabel = UILabel()
+    public let placeholderLabel = UILabel()
     
     /**
     Creates all the animations that are used to leave the textfield in the "entering text" state.
     */
-    @objc open func animateViewsForTextEntry() {
+    open func animateViewsForTextEntry() {
         fatalError("\(#function) must be overridden")
     }
     
     /**
     Creates all the animations that are used to leave the textfield in the "display input text" state.
     */
-    @objc open func animateViewsForTextDisplay() {
+    open func animateViewsForTextDisplay() {
         fatalError("\(#function) must be overridden")
     }
     
@@ -67,18 +66,24 @@ open class TextFieldEffects : UITextField {
     
     - parameter rect:	The portion of the view’s bounds that needs to be updated.
     */
-    @objc open func drawViewsForRect(_ rect: CGRect) {
+    open func drawViewsForRect(_ rect: CGRect) {
         fatalError("\(#function) must be overridden")
     }
     
-    @objc open func updateViewsForBoundsChange(_ bounds: CGRect) {
+    open func updateViewsForBoundsChange(_ bounds: CGRect) {
         fatalError("\(#function) must be overridden")
     }
     
     // MARK: - Overrides
     
     override open func draw(_ rect: CGRect) {
-        drawViewsForRect(rect)
+		// FIXME: Short-circuit if the view is currently selected. iOS 11 introduced
+		// a setNeedsDisplay when you focus on a textfield, calling this method again
+		// and messing up some of the effects due to the logic contained inside these
+		// methods.
+		// This is just a "quick fix", something better needs to come along.
+		guard isFirstResponder == false else { return }
+		drawViewsForRect(rect)
     }
     
     override open func drawPlaceholder(in rect: CGRect) {
@@ -87,7 +92,7 @@ open class TextFieldEffects : UITextField {
     
     override open var text: String? {
         didSet {
-            if let text = text, text.isNotEmpty {
+            if let text = text, text.isNotEmpty || isFirstResponder {
                 animateViewsForTextEntry()
             } else {
                 animateViewsForTextDisplay()
@@ -99,9 +104,9 @@ open class TextFieldEffects : UITextField {
     
     override open func willMove(toSuperview newSuperview: UIView!) {
         if newSuperview != nil {
-            NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidEndEditing), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: self)
+            NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidEndEditing), name: UITextField.textDidEndEditingNotification, object: self)
             
-            NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidBeginEditing), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: self)
+            NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidBeginEditing), name: UITextField.textDidBeginEditingNotification, object: self)
         } else {
             NotificationCenter.default.removeObserver(self)
         }

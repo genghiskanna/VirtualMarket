@@ -25,12 +25,11 @@ import UIKit
     
     @objc func setupView(){
         if AppDelegate.darkMode{
-            self.layer.backgroundColor = Colors.blueDark.cgColor
+            self.layer.backgroundColor = Colors.dark.cgColor
         } else {
             self.layer.backgroundColor = Colors.light.cgColor
         }
-        self.layer.borderWidth = 2
-//        self.layer.borderColor = Colors.light.cgColor
-        self.layer.cornerRadius = 30.0
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 15.0
     }
 }

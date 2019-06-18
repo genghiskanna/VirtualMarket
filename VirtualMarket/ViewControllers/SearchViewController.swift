@@ -16,7 +16,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         self.dismiss(animated: true, completion: nil)
     }
     
-    fileprivate var searchResultsGlobal: Dictionary<String,NSArray> = [:]
+    fileprivate var searchResultsGlobal = Array<String>()
 
     @IBOutlet weak var navigationBar: CustomNavigationBar!
     @IBOutlet weak var searchResults: UITableView!
@@ -62,7 +62,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         
         self.searchResults.reloadData()
         if let text = textField.text {
-            let searchResultsA : Dictionary<String,NSArray> = SearchJSON.SearchStock(text.trimmingCharacters(in: CharacterSet(charactersIn: " ")))
+            let searchResultsA : Array<String> = SearchJSON.SearchStock(text.trimmingCharacters(in: CharacterSet(charactersIn: " ")))
             if searchResultsA.count != 1 {
                 self.searchResultsGlobal = searchResultsA
                 self.searchResults.isHidden = false
@@ -70,7 +70,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             
         }
         
-        if textField.text?.characters.count == 0 {
+        if textField.text?.count == 0 {
             self.searchResults.isHidden = true
         }
         self.searchResults.reloadData()
@@ -89,17 +89,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let size = self.searchResultsGlobal["NASDAQ"] {
-//            if size.count == 1{
-//                self.searchResults.separatorColor = self.searchResults.separatorColor?.withAlphaComponent(0.0)
-//            } else {
-//                self.searchResults.separatorColor = self.searchResults.separatorColor
-//            }
-            return size.count
-            
-        } else {
-            return 0
-        }
+        return self.searchResultsGlobal.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -116,11 +106,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! SearchTableViewCell
         tableView.tableFooterView = UIView()
-        if self.searchResultsGlobal.count != 0 {
-            if let nasdaq = self.searchResultsGlobal["NASDAQ"]{
-                cell = cell.configureCell(nasdaq[indexPath.row] as! Dictionary<String,Any>, market: "NASDAQ") as! SearchTableViewCell
-            }
-        }
+        cell = cell.configureCell(searchResultsGlobal[indexPath.row]) as! SearchTableViewCell
         
         return cell
     }

@@ -12,8 +12,7 @@ import UIKit
  An AkiraTextField is a subclass of the TextFieldEffects object, is a control that displays an UITextField with a customizable visual effect around the edges of the control.
  */
 @IBDesignable open class AkiraTextField : TextFieldEffects {
-    
-    private let borderSize: (active: CGFloat, inactive: CGFloat) = (0.5, 1)
+	private let borderSize: (active: CGFloat, inactive: CGFloat) = (1, 2)
     private let borderLayer = CALayer()
     private let textFieldInsets = CGPoint(x: 6, y: 0)
     private let placeholderInsets = CGPoint(x: 6, y: 0)
@@ -74,8 +73,6 @@ import UIKit
     }
     
     override open func animateViewsForTextEntry() {
-        
-        
         UIView.animate(withDuration: 0.3, animations: {
             self.updateBorder()
             self.updatePlaceholder()
@@ -87,7 +84,6 @@ import UIKit
     override open func animateViewsForTextDisplay() {
         UIView.animate(withDuration: 0.3, animations: {
             self.updateBorder()
-            
             self.updatePlaceholder()
         }, completion: { _ in
             self.animationCompletionHandler?(.textDisplay)
@@ -106,10 +102,8 @@ import UIKit
     
     private func updateBorder() {
         borderLayer.frame = rectForBounds(bounds)
-        borderLayer.cornerRadius = 5.0
         borderLayer.borderWidth = (isFirstResponder || text!.isNotEmpty) ? borderSize.active : borderSize.inactive
         borderLayer.borderColor = borderColor?.cgColor
-        
     }
     
     private func placeholderFontFromFont(_ font: UIFont) -> UIFont! {
@@ -140,7 +134,6 @@ import UIKit
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        
         return bounds.offsetBy(dx: textFieldInsets.x, dy: textFieldInsets.y + placeholderHeight/2)
     }
 }

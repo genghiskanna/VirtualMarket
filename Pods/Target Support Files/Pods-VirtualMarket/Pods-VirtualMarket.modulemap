@@ -1,0 +1,6 @@
+framework module Pods_VirtualMarket {
+  umbrella header "Pods-VirtualMarket-umbrella.h"
+
+  export *
+  module * { export * }
+}

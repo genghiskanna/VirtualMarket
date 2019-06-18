@@ -12,7 +12,10 @@ import UIKit
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 
-public func allPendingOrders(buy:Bool) -> Array<Stock>{
+public func allPendingOrders(buy:Bool) -> Array<Stock>?{
+    /*
+        This function exists to fetch all pending orders
+     */
     let pending = "pendingBuy"
     let predicate = NSPredicate(format: "status == %@",pending)
     var stocks = Array<Stock>()
@@ -26,7 +29,10 @@ public func allPendingOrders(buy:Bool) -> Array<Stock>{
     return stocks
 }
 
-public func allOrders(stockName: String) -> Array<Stock>{
+public func allOrders(stockName: String) -> Array<Stock>?{
+    /*
+     This function exists to fetch all orders for a particular stock both pending and history
+     */
     let order = "Market"
     let predicate1 = NSPredicate(format: "name == %@",stockName)
     let predicate2 = NSPredicate(format: "orderType != %@",order)
@@ -47,10 +53,12 @@ public func allOrders(stockName: String) -> Array<Stock>{
 
 
 public func allStocksUnderWatch() -> Array<Stock>? {
+    /*
+     This function exists to fetch all stocks under watch
+     */
     var stocks: Array<Stock>?
     do {
         stocks = try context.fetch(Stock.fetchRequest())
-        print(stocks)
         
     } catch {
         print("Error Fetching All Stocks")
@@ -60,6 +68,9 @@ public func allStocksUnderWatch() -> Array<Stock>? {
 }
 
 public func allGroupedStocksUnderWatch() -> Array<Stock>? {
+    /*
+     i dont know why this function exists!! \_(^'^)_/ #dontknow
+     */
     var tempStocks = [Stock]()
     var tempNames = [String]()
     do {
@@ -79,6 +90,9 @@ public func allGroupedStocksUnderWatch() -> Array<Stock>? {
 }
 
 public func getGroupedStockQuantity(stockName: String) -> Int64 {
+    /*
+     This function exists to fetch stock qunatity for a given stock name
+     */
     var stocks: Array<Stock>?
     var sum = Int64(0)
     do {
@@ -114,7 +128,7 @@ public func allStocksBought() -> Array<Stock>? {
 public func getStockStatus(forStockName stockName:String) -> String?{
     let predicate = NSPredicate(format: "name == %@", stockName)
     var stocks: Array<Stock>
-    var finalStatus = ""
+    let finalStatus = ""
     do {
         let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
         request.predicate = predicate
@@ -122,9 +136,6 @@ public func getStockStatus(forStockName stockName:String) -> String?{
         stocks = try context.fetch(request) as! Array<Stock>
         if stocks.count != 0{
             for stock in stocks{
-                print(stock.name!)
-                print(stock.status!)
-                print("Hola")
                 if let status = stock.status{
                     return status
                 }
@@ -149,7 +160,6 @@ public func isStockBought(forStockName stockName:String) -> Bool{
         if stocks.count != 0{
             for stock in stocks{
                 if let status = stock.status{
-                    print(status)
                     if status.contains("bought"){
                         return true
                     }
@@ -159,7 +169,6 @@ public func isStockBought(forStockName stockName:String) -> Bool{
     } catch {
         print("Error Fetching status BuyOrSell for \(stockName)")
     }
-    print("Gal Gadot")
     return false
 }
 
@@ -179,6 +188,7 @@ public func specificStock(boughtDate forDate: Date) -> Any {
 
 // Buying Power
 public func getBuyingPower() -> Float {
+    
     var users: Array<User>
     do {
         let request  = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
@@ -349,7 +359,7 @@ public func executeOrders(){
 
 
 public func getDarkUser(){
-    var mode = false
+    _ = false
 //    do {
 //        let user = try context.fetch(User.fetchRequest())[0] as User
 //        if user.darkMode != nil {
@@ -359,7 +369,9 @@ public func getDarkUser(){
 //    } catch {
 //        print("Error Fetching Data")
 //    }
-    AppDelegate.darkMode = mode
+    AppDelegate.darkMode = false
+    
+    
 }
 
 
@@ -384,7 +396,7 @@ public func insertStock(_ stockName: String, orderType: String?, quantity: Int64
             case "Market":
                 stock.status = "bought"
                 changeBuyingPower(value: -(Float(stock.quantity) * stock.priceBought))
-                stock.dateBought = Date() as NSDate
+                stock.dateBought = Date()
             case "Limit":
                 stock.limitPrice = priceBought!
             case "Stop Loss":
@@ -458,5 +470,12 @@ public func createUser(){
         try context.save()
     } catch  {
         print("Error in saving the user account")
+    }
+}
+
+public func createSamplePortfolio(){
+    let stocks = ["AAPL","MSFT","TWTR","FB","AMZN","TSLA","BRK.A","BABA"]
+    for stock in stocks{
+        insertStock(stock, orderType: nil, quantity: nil, priceBought: nil, worthBefore: nil,stopLoss: nil, status: "following")
     }
 }

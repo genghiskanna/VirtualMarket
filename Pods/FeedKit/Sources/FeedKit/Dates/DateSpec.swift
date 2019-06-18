@@ -1,7 +1,7 @@
 //
 //  DateSpec.swift
 //
-//  Copyright (c) 2017 Nuno Manuel Dias
+//  Copyright (c) 2016 - 2018 Nuno Manuel Dias
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,38 +24,16 @@
 
 import Foundation
 
-/**
- 
- Date specifications
- 
- */
+/// Date specifications
+///
+/// - rfc822: The `Standard for the format of arpa internet text messages`.
+/// See https://www.ietf.org/rfc/rfc0822.txt
+/// - rfc3999: The `Date and Time on the Internet: Timestamps`.
+/// See https://www.ietf.org/rfc/rfc3339.txt
+/// - iso8601: The `W3CDTF` date time format specification
+/// See http://www.w3.org/TR/NOTE-datetime
 enum DateSpec {
-    
-    /**
-     
-     The `Standard for the format of arpa internet text messages`
-     
-     See https://www.ietf.org/rfc/rfc0822.txt
-     
-     */
     case rfc822
-    
-    /**
-     
-     The `Date and Time on the Internet: Timestamps`
-     
-     See https://www.ietf.org/rfc/rfc3339.txt
-     
-     */
     case rfc3999
-    
-    /**
-     
-     The `W3CDTF` date time format specification
-     
-     See http://www.w3.org/TR/NOTE-datetime
-     
-     */
     case iso8601
-    
 }

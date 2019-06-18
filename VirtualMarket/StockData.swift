@@ -11,7 +11,8 @@ import Foundation
 struct StockDataSource{
     
     var name: String!
-    var news = [News]()
+    var companyName: String!
+    
     var quote = Quote()
     var chart: Chart!
     var about: String!
@@ -19,13 +20,6 @@ struct StockDataSource{
     
 }
 
-struct News{
-    var title: String!
-    var source: String!
-    var url: URL!
-    var date: Date!
-    
-}
 
 struct Quote{
     var price: String!
@@ -41,6 +35,8 @@ struct Quote{
     var div: String!
     var volume: String!
     var marketCap: String!
+    var lastClose: String!
+    var lastTime: String!
 }
 
 struct Chart{

@@ -14,11 +14,13 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var stockCompany: UILabel!
     @IBOutlet weak var stockMarket: UILabel!
     
-    @objc func configureCell(_ stock: Dictionary<String,Any> , market: String) -> UITableViewCell{
+    @objc func configureCell(_ stock: String) -> UITableViewCell{
+        let stockName = stock.components(separatedBy: ";")[0]
+        let companyName = stock.components(separatedBy: ";")[1]
         
-        self.stockName.text = stock["Symbol"] as? String
-        self.stockCompany.text = stock["Name"] as? String
-        self.stockMarket.text = market
+        self.stockName.text = stockName
+        self.stockCompany.text = companyName
+        self.stockMarket.text = "IEX"
         
         if CurrentSettings.getTheme()["light"] == Colors.dark{
             self.backgroundColor = Colors.dark

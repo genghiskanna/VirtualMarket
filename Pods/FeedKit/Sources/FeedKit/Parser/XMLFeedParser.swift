@@ -1,7 +1,7 @@
 //
 //  XMLFeedParser.swift
 //
-//  Copyright (c) 2017 Nuno Manuel Dias
+//  Copyright (c) 2016 - 2018 Nuno Manuel Dias
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,77 +24,55 @@
 
 import Foundation
 
-/**
- 
- The actual engine behind the `FeedKit` framework. `Parser` handles
- the parsing of RSS and Atom feeds. It is an `XMLParserDelegate` of
- itself.
- 
- */
+/// The actual engine behind the `FeedKit` framework. `XMLFeedParser` handles
+/// the parsing of RSS and Atom feeds. It is an `XMLParserDelegate` of
+/// itself.
 class XMLFeedParser: NSObject, XMLParserDelegate, FeedParserProtocol {
     
-    
-    /**
-     
-     The Feed Type currently being parsed. The Initial value of this variable
-     is unknown until a recognizable element that matches a feed type is
-     found.
-     
-     */
+    /// The Feed Type currently being parsed. The Initial value of this variable
+    /// is unknown until a recognizable element that matches a feed type is
+    /// found.
     var feedType: XMLFeedType?
     
-    
-    
-    /**
-     
-     The RSS feed model
-     
-     */
+    /// The RSS feed model.
     var rssFeed: RSSFeed?
     
-    
-    
-    /**
-     
-     The Atom feed model
-     
-     */
+    /// The Atom feed model.
     var atomFeed: AtomFeed?
     
+    /// The XML Parser.
+    let xmlParser: XMLParser
     
-    /**
-     
-     The XML Parser
-     
-     */
-    @objc let xmlParser: XMLParser
-    
-    
-    // MARK: - Initializers
-    
-    @objc required init(data: Data) {
+    /// An XML Feed Parser, for rss and atom feeds.
+    ///
+    /// - Parameter data: A `Data` object containing an XML feed.
+    required init(data: Data) {
         self.xmlParser = XMLParser(data: data)
         super.init()
         self.xmlParser.delegate = self
     }
     
-    /**
-     
-     The current path along the XML's DOM elements. Path components are
-     updated to reflect the current XML element being parsed.
-     e.g. "/rss/channel/title" mean it's currently parsing the channels
-     `<title>` element.
-     
-     */
+    /// An XML Feed Parser, for rss and atom feeds.
+    ///
+    /// - Parameter stream: An `InputStream` object containing an XML feed.
+    init(stream: InputStream) {
+        self.xmlParser = XMLParser(stream: stream)
+        super.init()
+        self.xmlParser.delegate = self
+    }
+
+    /// The current path along the XML's DOM elements. Path components are
+    /// updated to reflect the current XML element being parsed.
+    /// e.g. "/rss/channel/title" means it's currently parsing the channels
+    /// `<title>` element.
     fileprivate var currentXMLDOMPath: URL = URL(string: "/")!
     
-    /**
-     
-     Starts parsing the feed.
-     
-     */
+    /// A parsing error, if any.
+    var parsingError: NSError?
+    var parseComplete = false
+    
+    /// Starts parsing the feed.
     func parse() -> Result {
-        
         let _ = self.xmlParser.parse()
         
         if let error = parsingError {
@@ -106,119 +84,126 @@ class XMLFeedParser: NSObject, XMLParserDelegate, FeedParserProtocol {
         }
         
         switch feedType {
-            
-        case .atom:
-            return Result.atom(self.atomFeed!)
-            
-        case .rss1, .rss2:
-            return Result.rss(self.rssFeed!)
-                        
+        case .atom: return Result.atom(self.atomFeed!)
+        case .rdf, .rss: return Result.rss(self.rssFeed!)
         }
         
     }
     
-    
-    /**
-     
-     Redirects characters found between XML elements to their proper model
-     mappers based on the `currentXMLDOMPath`
-     
-     */
-    fileprivate func mapCharacters(_ string: String) {
-        
+    /// Redirects characters found between XML elements to their proper model
+    /// mappers based on the `currentXMLDOMPath`.
+    ///
+    /// - Parameter string: The characters to map.
+    fileprivate func map(_ string: String) {
         guard let feedType = self.feedType else { return }
         
         switch feedType {
-            
         case .atom:
-            
             if let path = AtomPath(rawValue: self.currentXMLDOMPath.absoluteString) {
-                self.atomFeed?.map(characters: string, forPath: path)
+                self.atomFeed?.map(string, for: path)
             }
             
-        case .rss1, .rss2:
+        case .rdf:
+            if let path = RDFPath(rawValue: self.currentXMLDOMPath.absoluteString) {
+                self.rssFeed?.map(string, for: path)
+            }
             
+        case .rss:
             if let path = RSSPath(rawValue: self.currentXMLDOMPath.absoluteString) {
-                self.rssFeed?.map(string: string, forPath: path)
+                self.rssFeed?.map(string, for: path)
             }
             
         }
         
     }
     
-    @objc var parsingError: NSError?
-    
-    
 }
-
 
 // MARK: - XMLParser delegate
 
-
 extension XMLFeedParser {
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+
+    func parser(
+        _ parser: XMLParser,
+        didStartElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?,
+        attributes attributeDict: [String : String])
+    {
         
-        // Update the current path along the XML's DOM elements by appending the new component with `elementName`
+        // Update the current path along the XML's DOM elements by appending the new component with `elementName`.
         self.currentXMLDOMPath = self.currentXMLDOMPath.appendingPathComponent(elementName)
         
-        // Get the feed type from the element, if it hasn't been done yet
+        // Get the feed type from the element, if it hasn't been done yet.
         guard let feedType = self.feedType else {
             self.feedType = XMLFeedType(rawValue: elementName)
             return
         }
         
         switch feedType {
-            
         case .atom:
-            
             if  self.atomFeed == nil {
                 self.atomFeed = AtomFeed()
             }
-            
             if let path = AtomPath(rawValue: self.currentXMLDOMPath.absoluteString) {
-                self.atomFeed?.map(attributes: attributeDict, forPath: path)
+                self.atomFeed?.map(attributeDict, for: path)
             }
             
-        case .rss1, .rss2:
-            
+        case .rdf:
             if  self.rssFeed == nil {
                 self.rssFeed = RSSFeed()
             }
+            if let path = RDFPath(rawValue: self.currentXMLDOMPath.absoluteString) {
+                self.rssFeed?.map(attributeDict, for: path)
+            }
             
+        case .rss:
+            if  self.rssFeed == nil {
+                self.rssFeed = RSSFeed()
+            }
             if let path = RSSPath(rawValue: self.currentXMLDOMPath.absoluteString) {
-                self.rssFeed?.map(attributes: attributeDict, forPath: path)
+                self.rssFeed?.map(attributeDict, for: path)
             }
             
         }
         
     }
     
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
-        // Update the current path along the XML's DOM elements by deleting last component
+    func parser(
+        _ parser: XMLParser,
+        didEndElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?)
+    {
+        // Update the current path along the XML's DOM elements by deleting last component.
         self.currentXMLDOMPath = self.currentXMLDOMPath.deletingLastPathComponent()
-        
+        if currentXMLDOMPath.absoluteString == "/" {
+            parseComplete = true
+            xmlParser.abortParsing()
+        }
     }
     
-    func parser(_ parser: XMLParser, foundCDATA CDATABlock: Data) {
-        
+    func parser(_ parser: XMLParser, foundCDATA CDATABlock: Data)
+    {
         guard let string = String(data: CDATABlock, encoding: .utf8) else {
             self.xmlParser.abortParsing()
             self.parsingError = ParserError.feedCDATABlockEncodingError(path: self.currentXMLDOMPath.absoluteString).value
             return
         }
-        
-        self.mapCharacters(string)
-        
+        self.map(string)
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        self.mapCharacters(string)
+        self.map(string)
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
-        self.parsingError = NSError(domain: parseError.localizedDescription, code: -1)
+        // Ignore errors that occur after a feed is successfully parsed. Some
+        // real-world feeds contain junk such as "[]" after the XML segment;
+        // just ignore this stuff.
+        guard !parseComplete, parsingError == nil else { return }
+        self.parsingError = NSError(domain: parseError.localizedDescription, code: -1,
+            userInfo: ["CurrentPath": currentXMLDOMPath.absoluteString])
     }
     
 }

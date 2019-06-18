@@ -7,12 +7,12 @@ target 'VirtualMarket' do
 
   # Pods for VirtualMarket
 	pod 'SwiftyJSON'
-	pod 'Kanna', '~> 2.1.0'
-	pod 'iCarousel'
+	pod 'Kanna', '~> 4.0.0'
 	pod 'FeedKit'
 	pod 'M13Checkbox'  
 	pod "TextFieldEffects"
 	pod 'IHKeyboardAvoiding'
 	pod 'SCLAlertView'
+	pod 'iCarousel'
 
 end

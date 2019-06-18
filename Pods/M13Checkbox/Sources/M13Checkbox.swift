@@ -28,7 +28,7 @@ open class M13Checkbox: UIControl {
     - Checked: A checkmark is shown.
     - Mixed: A dash is shown.
     */
-    public enum CheckState: String, RawRepresentable {
+    public enum CheckState: String {
         /// No check is shown.
         case unchecked = "Unchecked"
         /// A checkmark is shown.
@@ -43,7 +43,7 @@ open class M13Checkbox: UIControl {
      - Square: The box is square with optional rounded corners.
      - Circle: The box is a circle.
      */
-    public enum BoxType: String, RawRepresentable {
+    public enum BoxType: String {
         /// The box is a circle.
         case circle = "Circle"
         /// The box is square with optional rounded corners.
@@ -56,7 +56,7 @@ open class M13Checkbox: UIControl {
      - Checkmark: The mark is a standard checkmark.
      - Radio: The mark is a radio style fill.
      */
-    public enum MarkType: String, RawRepresentable {
+    public enum MarkType: String {
         /// The mark is a standard checkmark.
         case checkmark = "Checkmark"
         /// The mark is a radio style fill.
@@ -94,43 +94,30 @@ open class M13Checkbox: UIControl {
             switch rawValue {
             case "Stroke":
                 self = .stroke
-                break
             case "Fill":
                 self = .fill
-                break
             case "BounceStroke":
                 self = .bounce(.stroke)
-                break
             case "BounceFill":
                 self = .bounce(.fill)
-                break
             case "ExpandStroke":
                 self = .expand(.stroke)
-                break
             case "ExpandFill":
                 self = .expand(.fill)
-                break
             case "FlatStroke":
                 self = .flat(.stroke)
-                break
             case "FlatFill":
                 self = .flat(.fill)
-                break
             case "Spiral":
                 self = .spiral
-                break
             case "FadeStroke":
                 self = .fade(.stroke)
-                break
             case "FadeFill":
                 self = .fade(.fill)
-                break
             case "DotStroke":
                 self = .dot(.stroke)
-                break
             case "DotFill":
                 self = .dot(.fill)
-                break
             default:
                 return nil
             }
@@ -251,7 +238,7 @@ open class M13Checkbox: UIControl {
             layer.addSublayer(aLayer)
         }
         controller.tintColor = tintColor
-        controller.resetLayersForState(.unchecked)
+        controller.resetLayersForState(DefaultValues.checkState)
         
         let longPressGesture = M13CheckboxGestureRecognizer(target: self, action: #selector(M13Checkbox.handleLongPress(_:)))
         addGestureRecognizer(longPressGesture)
@@ -262,20 +249,20 @@ open class M13Checkbox: UIControl {
     //----------------------------
     
     /// The object to return from `value` when the checkbox is checked.
-    @objc open var checkedValue: Any?
+    open var checkedValue: Any?
     
     /// The object to return from `value` when the checkbox is unchecked.
-    @objc open var uncheckedValue: Any?
+    open var uncheckedValue: Any?
     
     /// The object to return from `value` when the checkbox is mixed.
-    @objc open var mixedValue: Any?
+    open var mixedValue: Any?
     
     /**
      Returns one of the three "value" properties depending on the checkbox state.
      - returns: The value coresponding to the checkbox state.
      - note: This is a convenience method so that if one has a large group of checkboxes, it is not necessary to write: if (someCheckbox == thatCheckbox) { if (someCheckbox.checkState == ...
      */
-    @objc open var value: Any? {
+    open var value: Any? {
         switch checkState {
         case .unchecked:
             return uncheckedValue
@@ -329,7 +316,7 @@ open class M13Checkbox: UIControl {
      - parameter animated: Whether or not to animate the change. Defaults to false.
      - note: If the checkbox is mixed, it will return to the unchecked state.
      */
-    @objc open func toggleCheckState(_ animated: Bool = false) {
+    open func toggleCheckState(_ animated: Bool = false) {
         switch checkState {
         case .checked:
             setCheckState(.unchecked, animated: animated)
@@ -358,7 +345,7 @@ open class M13Checkbox: UIControl {
     }
     
     /// The type of animation to preform when changing from the unchecked state to any other state.
-    open var stateChangeAnimation: Animation = .stroke {
+    open var stateChangeAnimation: Animation = DefaultValues.animation {
         didSet {
             
             // Remove the sublayers
@@ -380,7 +367,7 @@ open class M13Checkbox: UIControl {
             newManager.animationGenerator.animationDuration = controller.animationGenerator.animationDuration
             newManager.state = controller.state
             newManager.enableMorphing = controller.enableMorphing
-            newManager.setMarkType(controller.markType, animated: false)
+            newManager.setMarkType(type: controller.markType, animated: false)
             
             // Set up the inital state.
             for aLayer in newManager.layersToDisplay {
@@ -456,7 +443,7 @@ open class M13Checkbox: UIControl {
     }
     
     /// The type of mark to display.
-    @IBInspectable open var markType: MarkType {
+    open var markType: MarkType {
         get {
             return controller.markType
         }
@@ -467,8 +454,8 @@ open class M13Checkbox: UIControl {
     }
     
     /// Set the mark type with the option of animating the change.
-    open func setMarkType(_ markType: MarkType, animated: Bool) {
-        controller.setMarkType(markType, animated: animated)
+    open func setMarkType(markType: MarkType, animated: Bool) {
+        controller.setMarkType(type: markType, animated: animated)
     }
     
     /// The stroke width of the box.

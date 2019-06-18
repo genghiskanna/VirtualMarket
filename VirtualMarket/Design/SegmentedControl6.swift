@@ -19,7 +19,7 @@ protocol SegmentedControl6Delegate {
     
     fileprivate var labels = [UILabel]()
     fileprivate let thumbView = UIView()
-    fileprivate var labelStrings = ["1D","7D","1M","3M","6M","1Y","ALL"]
+    fileprivate var labelStrings = ["1D","1M","3M","6M","1Y","5Y"]
     fileprivate var xSkip = 0
     fileprivate var color = UIColor(red: 26.0/255.0, green: 128.0/255.0, blue: 168.0/255.0, alpha: 1.0)
     

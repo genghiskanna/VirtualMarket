@@ -7,73 +7,47 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class SearchJSON: NSObject {
     
-    fileprivate class func SearchMarket(_ json: NSArray, text: String) -> NSArray{
+    fileprivate class func SearchMarket(_ json: JSON, text: String) -> Array<String>{
         
-        var searchResults = Array<Any>()
-        
-        for stock in json{
-            if let stockD = stock as? NSDictionary{
-                let symbol = (stockD["Symbol"] as! String).lowercased()
-                let name = (stockD["Name"] as! String).lowercased()
+        var searchResults = Array<String>()
+
+        for (_,stockD) in json{
+
+            if stockD["isEnabled"].boolValue == true && stockD["type"].stringValue != "crypto"{
+                let symbol = stockD["symbol"].stringValue.lowercased()
+                let name = stockD["name"].stringValue.lowercased()
                 if ((symbol.range(of: text.lowercased()) != nil) || (name.range(of: text.lowercased()) != nil)){
-                    searchResults.append(stockD)
                     
+                    // Format symbol;companyname
+                    searchResults.append(stockD["symbol"].stringValue + ";" + stockD["name"].stringValue)
                 }
             }
         }
-        if text.characters.count != 1 {
-            return searchResults as NSArray
-        } else {
-            return []
-        }
-        
+        return searchResults
     }
     
     
-    @objc class func SearchStock(_ text: String) -> Dictionary<String,NSArray>{
-        
-        var searchResult: Dictionary<String,NSArray> = ["empty":[1,2,3]]
-        
-        //load all json's
-        //NASDAQ
-        let nasdaqPath = Bundle.main.url(forResource: "nasdaq", withExtension: "json")!
-        let nasdaqData = try? Data(contentsOf: nasdaqPath)
-        let nasdaq = try? JSONSerialization.jsonObject(with:nasdaqData!, options: .mutableContainers) as! NSArray
-        if let nasdaqResults = SearchMarket(nasdaq!, text: text) as? NSArray{
+    @objc class func SearchStock(_ text: String) -> Array<String>{
+        var iexResults = Array<String>()
+        do{
+            let iexPath = Bundle.main.url(forResource: "stockSymbolData", withExtension: "json")!
+            let iexData = try String.init(data: Data.init(contentsOf:iexPath),encoding: .utf8)
+    
+            let iex = JSON(parseJSON: iexData!)
             
-            if nasdaqResults.count != 0 {
-                searchResult.updateValue(nasdaqResults, forKey: "NASDAQ")
-            }
-        }
-        
-        
-        //NYSE
-        let nysePath = Bundle.main.url(forResource: "nyse", withExtension: "json")!
-        let nyseData = try? Data(contentsOf: nysePath)
-        let nyse = try? JSONSerialization.jsonObject(with:nyseData!, options: .mutableContainers) as! NSArray
-        if let nyseResults = SearchMarket(nyse!, text: text) as? NSArray{
-            if nyseResults.count != 0{
-                searchResult.updateValue(nyseResults, forKey: "NYSE")
-            }
-        }
-        
-        
-        //AMEX
-        let amexPath = Bundle.main.url(forResource: "amex", withExtension: "json")!
-        let amexData = try? Data(contentsOf: amexPath)
-        let amex = try? JSONSerialization.jsonObject(with:amexData!, options: .mutableContainers) as! NSArray
-        if let amexResults = SearchMarket(amex!, text: text) as? NSArray{
+            iexResults = SearchJSON.SearchMarket(iex, text: text)
             
-            if amexResults.count != 0{
-                searchResult.updateValue(amexResults, forKey: "AMSE")
-            }
+        
+        } catch {
+            print("Error occured in searchStock")
         }
-
-        return searchResult
+        print(iexResults)
+        return iexResults
     }
     
- 
+    
 }

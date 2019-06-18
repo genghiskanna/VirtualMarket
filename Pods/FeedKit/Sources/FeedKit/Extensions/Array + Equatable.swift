@@ -1,7 +1,7 @@
 //
 //  Array + Equatable.swift
 //
-//  Copyright (c) 2017 Nuno Manuel Dias
+//  Copyright (c) 2016 - 2018 Nuno Manuel Dias
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,12 @@
 
 import Foundation
 
+/// Optional arrays equatable
+///
+/// - Parameters:
+///   - lhs: The left-hand side
+///   - rhs: The right-hand side
+/// - Returns: A boolean value
 public func ==<T: Equatable>(lhs: [T]?, rhs: [T]?) -> Bool {
     switch (lhs,rhs) {
     case (.some(let lhs), .some(let rhs)):

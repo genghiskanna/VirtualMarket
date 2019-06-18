@@ -15,13 +15,13 @@ import FeedKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    @objc static var darkMode = Bool()
-    open static var news : RSSFeed?
-    open static var stockData = [String:StockDataSource]()
+    @objc static var darkMode = true
+    public static var news : RSSFeed?
+    public static var stockData = [String:StockDataSource]()
     
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         
         getDarkUser()
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 AppDelegate.stockData.updateValue(new, forKey: stock.name!)
             }
         }
-        stockNews()
+        
         StockDetails.getStockPriceUnderWatch()
         
         // Update Stocks Quotes Perodically
@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
             UserDefaults.standard.synchronize()
             createUser()
+            createSamplePortfolio()
         }
         
         return true

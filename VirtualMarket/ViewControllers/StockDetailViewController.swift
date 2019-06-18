@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import SwiftyJSON
-import Kanna
 
-class StockDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ChartViewDelegate, SegmentedControl6Delegate {
+class StockDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ChartViewDelegate, SegmentedControl6Delegate, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     // Data 
@@ -18,17 +16,18 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     var stockNews: StockDataSource!
     @objc var stock: String!
     
-    var indexDetails = [StockDetails.StockRange.oneDay, StockDetails.StockRange.oneWeek, StockDetails.StockRange.oneMonth,StockDetails.StockRange.threeMonth,StockDetails.StockRange.sixMonth,StockDetails.StockRange.oneYear,StockDetails.StockRange.max]
+    var indexDetails = [StockDetails.StockRange.oneDay,  StockDetails.StockRange.oneMonth,StockDetails.StockRange.threeMonth,StockDetails.StockRange.sixMonth,StockDetails.StockRange.oneYear,StockDetails.StockRange.fiveYear]
     @objc var graphLayers = [CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer(),CAShapeLayer()]
 
+    
     // label
-    @IBOutlet weak var stockName: UILabel!
+    @IBOutlet weak var stockName: UILabel! 
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var priceFloat: UILabel!
     @IBOutlet weak var change: UILabel!
     @IBOutlet weak var priceChart: UILabel!
     @IBOutlet weak var dateChart: UILabel!
-    
+    @IBOutlet weak var stockAlterantePrice: UILabel!
     
     //stats
     @IBOutlet weak var openPrice: UILabel!
@@ -46,7 +45,6 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // News
     @IBOutlet weak var newsTable: UITableView!
-    
     @IBOutlet weak var segmentControl: SegmentedControl6!
     @IBOutlet weak var chart: ChartView!
     
@@ -59,6 +57,8 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     // REcent Orders DataSource
     @objc var orders = [Stock]()
     
+    
+    @IBOutlet weak var backGroundTop: UIView!
     
     // current graph
    
@@ -94,6 +94,10 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         self.dismiss(animated: true, completion: nil)
     }
     
+  
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -106,6 +110,10 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
         self.RecentOrderTableView.delegate = self
         self.chart.delegate = self
         self.segmentControl.delegate = self
+        self.scrollView.delegate = self
+        
+        self.backGroundTop.backgroundColor = .clear
+        
         
     }
     
@@ -114,7 +122,9 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         stock = stockNameG
-        orders = allOrders(stockName: stock)
+        if let orderTemp = allOrders(stockName: stock){
+            orders = orderTemp
+        }
         self.RecentOrderTableView.rowHeight = 60.0
         
         if let status = getStockStatus(forStockName: self.stock) {
@@ -127,14 +137,22 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
             }
         }
         
+        self.newsTable.isHidden = true
         
-        stockNews = getNewsForStock(stockName: stock)
+        
         
         // update Values
-        updateStockPrice(delay: 60)
-        updateDayStats(delay: 120)
+        updateStockPrice(delay: 5)
+        updateDayStats(delay: 5)
         updateLongStats()
         updateChart(inRange: .oneDay)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.newsTable.isHidden = false
+//        stockNews = getNewsForStock(stockName: stock)
+        self.newsTable.reloadData()
     }
     
     
@@ -144,28 +162,27 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
             while true{
                 if let stockTemp = StockDetails.getStockPrice(stockName: self.stock) {
-                    print("123")
                     if let sPrice = stockTemp.quote.price{
-                        print("1232")
-                        print(stockTemp)
-                        print(StockDetails.getStockPrice(stockName: self.stock))
-                        if sPrice.characters.count != 0 {
-                            print("1234")
+                        if sPrice.count != 0 {
                             let splitPrice = sPrice.components(separatedBy: ".")
                             DispatchQueue.main.async {
                                 
                                 self.stockName.text = stockTemp.name
                                 self.price.text = splitPrice.first
                                 
-                                if stockTemp.quote.change.contains("+"){
-                                    self.change.textColor = Colors.materialGreen
-                                } else {
+                                if stockTemp.quote.change.contains("-"){
                                     self.change.textColor = Colors.materialRed
+                                    self.change.text = stockTemp.quote.change
+                                } else {
+                                    self.change.textColor = Colors.materialGreen
+                                    self.change.text = "+"+stockTemp.quote.change
                                 }
-                                self.change.text = stockTemp.quote.change
-                                // fatal error: Index out of range occure
-                                print(splitPrice)
-                                self.priceFloat.text = "." + splitPrice[1]
+                                
+                                if(splitPrice.count != 1){
+                                    self.priceFloat.text = "." + splitPrice[1]
+                                } else {
+                                    self.priceFloat.text = ".00"
+                                }
                                 
                             }
                         }
@@ -182,82 +199,46 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     func updateChart(inRange range:StockDetails.StockRange){
         DispatchQueue.global(qos: .userInitiated).async {
             var prices = [Float]()
-            var dates = [Date]()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-mm-dd HH:mm:ss"
-            var first = true
-            var todayDate = "2017-00-22"
-            if let json = StockDetails.getChartData(forStockName: self.stock, inRange: range){
-                
-                if range == .oneDay{
-                
-                    for (tempDate,value) in json{
-                        if first{
-                            todayDate = tempDate.substring(to: "2017-07-28".endIndex)
-                            prices.append(value["4. close"].floatValue)
-                            if let date = dateFormatter.date(from: tempDate){
-                                dates.append(date)
-                            }
-                            first = false
-                        } else {
-                            if tempDate.contains(todayDate){
-                                prices.append(value["4. close"].floatValue)
-                                if let date = dateFormatter.date(from: tempDate){
-                                    dates.append(date)
-                                }
-                            }
-                        }
-                    }
-                    
+            var dates = [String]()
+            let json = StockDetails.getChartData(forStockName: self.stock, inRange: range)
+            for (_,value) in json!{
+                prices.append(value["close"].floatValue)
+                if range != .oneDay{
+                    dates.append(value["date"].stringValue)
                 } else {
-                    for (_, data) in json{
-                        dateFormatter.dateFormat = "yyyy-mm-dd"
-                        if let dateF = dateFormatter.date(from: data[0].stringValue){
-                            dates.append(dateF)
-                        }
-                        prices.append(data[1].floatValue)
-                        
-                    }
+                    dates.append(value["label"].stringValue)
                 }
             }
             
+            
+        
             // main thread
             DispatchQueue.main.async {
-                prices = prices.reversed()
-                dates = dates.reversed()
+//              prices = prices.reversed()
+//              dates = dates.reversed()
                 self.chart.x = dates
                 self.chart.y = prices
-                var divison = 26
                 switch range {
                     case .oneDay:
-                        divison = 26
                         if !self.firstFlag{
                             self.currentGraph.removeFromSuperlayer()
                         }
                         self.firstFlag = false
-                    case .oneWeek:
-                        divison = 7
-                        self.currentGraph.removeFromSuperlayer()
                     case .oneMonth:
-                        divison = 1
                         self.currentGraph.removeFromSuperlayer()
                     case .threeMonth:
-                        divison = 1
                         self.currentGraph.removeFromSuperlayer()
                     case .sixMonth:
-                        divison = 1
                         self.currentGraph.removeFromSuperlayer()
                     case .oneYear:
-                        divison = 1
                         self.currentGraph.removeFromSuperlayer()
-                    case .max:
-                        divison = 1
+                    case .fiveYear:
                         self.currentGraph.removeFromSuperlayer()
 
                     
                 }
                 self.currentGraph = self.graphLayers[self.indexDetails.index(of: range)!]
-                self.chart.drawGraph(divisons: divison, layerToDraw: self.graphLayers[self.indexDetails.index(of: range)!])
+                self.chart.drawGraph(range: range, layerToDraw: self.graphLayers[self.indexDetails.index(of: range)!])
 
                 print("Completed Loading Charts")
             }
@@ -319,7 +300,12 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @objc func updateLongStats(){
         
         if let stockTemp = StockDetails.getStockPrice(stockName: stock){
-    
+            
+            // Error found nil
+            if Double(stockTemp.quote.lastClose) != nil{
+                self.chart.lastClosePrice = Double(stockTemp.quote.lastClose)!
+            }
+            
             self.wkHigh.text = stockTemp.quote.wkHigh
             self.wkLow.text = stockTemp.quote.wkLow
             self.div.text = stockTemp.quote.div
@@ -337,26 +323,28 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
+    
     // MARK: Update Tables
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == newsTable{
-            return stockNews.news.count
+        if tableView == newsTable && stockNews != nil{
+            return 2
         } else {
             return orders.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == newsTable{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
-        
-            return cell.configureCell(title: stockNews.news[indexPath.row].title, source: stockNews.news[indexPath.row].source)
-        } else {
+//        if tableView == newsTable{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
+//
+////            return cell.configureCell(title: stockNews.news[indexPath.row].title, source: stockNews.news[indexPath.row].source)
+//            return cell.configureCell(stock: orders[indexPath.row])
+//        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! RecentOrderTableViewCell
             
             return cell.configureCell(stock: orders[indexPath.row])
-        }
+//        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -366,12 +354,9 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // Custom Delegates
     
-    @objc func chartMoved(currentPrice price: Float, currentDate date: Date) {
+    @objc func chartMoved(currentPrice price: Float, currentDate date: String) {
         self.priceChart.text = String(describing: price)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd HH:mm:ss"
-        self.dateChart.text = dateFormatter.string(from: date)
+        self.dateChart.text = date
         self.scrollView.isScrollEnabled = false
     }
     
@@ -395,6 +380,20 @@ class StockDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
                 
             
+        }
+    }
+    
+    // UIScroll Delegates
+    @objc func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.y > CGFloat(50){
+            self.backGroundTop.backgroundColor = .white
+            let p = self.price.text!
+            let c = self.priceFloat.text!
+            self.stockAlterantePrice.text = p+c
+        } else {
+            self.backGroundTop.backgroundColor = .clear
+            self.stockAlterantePrice.text = ""
         }
     }
 

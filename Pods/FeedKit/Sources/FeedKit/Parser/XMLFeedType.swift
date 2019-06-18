@@ -1,7 +1,7 @@
 //
 //  XMLFeedType.swift
 //
-//  Copyright (c) 2017 Nuno Manuel Dias
+//  Copyright (c) 2016 - 2018 Nuno Manuel Dias
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,33 +24,13 @@
 
 import Foundation
 
-/**
- 
- Types of feed. The `rawValue` matches the top-level XML element
- of a feed.
- 
- */
+/// Types of feed. The `rawValue` matches the top-level XML element of a feed.
+///
+/// - atom: The `Atom Syndication Format feed type.
+/// - rdf: The Really Simple Syndication feed type version 0.90.
+/// - rss: The Really Simple Syndication feed type version 2.0.
 enum XMLFeedType: String {
-    
-    /**
-     
-     The `Atom Syndication Format feed type
-     
-     */
     case atom = "feed"
-    
-    /**
-     
-     The Really Simple Syndication feed type version 0.9
-     
-     */
-    case rss1 = "rdf:RDF"
-    
-    /**
-     
-     The Really Simple Syndication feed type version 2.0
-     
-     */
-    case rss2 = "rss"
-    
+    case rdf = "rdf:RDF"
+    case rss = "rss"
 }

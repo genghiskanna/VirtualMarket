@@ -22,10 +22,13 @@ import UIKit
     }
     
     @objc func setupBar(){
+        self.isTranslucent = false
         self.barTintColor = CurrentSettings.getTheme()["light"]
+        self.tintColor = CurrentSettings.getTheme()["dark"]
+        
+        self.setValue(true, forKey: "hidesShadow")
         // Warning
-        //self.titleTextAttributes = [NSAttributedStringKey.foregroundColor:CurrentSettings.getTheme()["dark"]!]
-        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: 60)
+        self.titleTextAttributes = [NSAttributedString.Key.foregroundColor:CurrentSettings.getTheme()["dark"]!]
     }
 
 }

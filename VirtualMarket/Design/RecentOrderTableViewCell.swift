@@ -14,7 +14,6 @@ class RecentOrderTableViewCell : UITableViewCell{
     @IBOutlet weak var orderProfitButton: UIButton!
     
     @objc func configureCell(stock:Stock) -> UITableViewCell{
-        print(stock)
         var status = "Placed"
         orderProfitButton.isHidden = true
         if (stock.status?.contains("bought"))! || (stock.status?.contains("sold"))!{

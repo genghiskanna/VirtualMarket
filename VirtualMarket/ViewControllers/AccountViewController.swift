@@ -19,6 +19,10 @@ class AccountViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func buyVirtualPressed(_ sender: Any) {
+        changeAccountValue(value: 1000.0)
+        self.account.text = String(getAccountValue())
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

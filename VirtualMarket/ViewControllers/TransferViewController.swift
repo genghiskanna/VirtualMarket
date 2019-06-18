@@ -35,7 +35,7 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
             showCircularIcon: false
         )
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("Ok", backgroundColor: Colors.teal, textColor: Colors.light, showDurationStatus: false, action: {})
+        alertView.addButton("Ok", backgroundColor: Colors.teal, textColor: Colors.light, showTimeout: nil, action:{})
         
         if let amount = amountField.text{
             if (getBuyingPower() - Float(amount)!) >= 0 {
@@ -60,7 +60,7 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
         )
         
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("Ok", backgroundColor: Colors.teal, textColor: Colors.light, showDurationStatus: false, action: {})
+        alertView.addButton("Ok", backgroundColor: Colors.teal, textColor: Colors.light, showTimeout: nil, action: {})
         
         if let amount = amountField.text{
             if (getAccountValue() - Float(amount)!) >= 0 {
@@ -69,7 +69,7 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
                 self.account.text = String(getAccountValue())
                 self.buyingPower.text = String(getBuyingPower())
             } else {
-                _ = alertView.showCustom("Insufficient Funds", subTitle: "You have Insufficient Funds to transfer funds from Virtual Bank Account to Virtual Trading Account. Consider reducing the amount or buying more virtual money in the market.", color: Colors.teal, icon: UIImage())
+                _ = alertView.showCustom("Insufficient Funds", subTitle: "You have Insufficient Funds to transfer funds from Virtual Bank Account to Virtual Trading Account. Consider reducing the amount or transfering more virtual money in the market.", color: Colors.teal, icon: UIImage())
             }
         }
     }
@@ -110,12 +110,4 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
     @objc func donePressed(){
         self.view.endEditing(true)
     }
-    
-    
-    
-    
-    
-    
-
-    
 }

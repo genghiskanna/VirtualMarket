@@ -67,13 +67,13 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let alertWrongView = SCLAlertView(appearance: appearance)
         if currentStock.quantity != nil{
             if Float(self.currentStock.price) * Float(self.currentStock.quantity) < getBuyingPower(){
-                alertView.addButton("Cancel Order", backgroundColor: Colors.materialRed, textColor: Colors.light, showDurationStatus: false, action: {})
+                alertView.addButton("Cancel Order", backgroundColor: Colors.materialRed, textColor: Colors.light, showTimeout: nil, action: {})
                 
-                alertView.addButton("Confirm Order", backgroundColor: Colors.materialGreen, textColor: Colors.light, showDurationStatus: true, action: {
+                alertView.addButton("Confirm Order", backgroundColor: Colors.materialGreen, textColor: Colors.light, showTimeout: nil, action: {
                     if self.checkOrderValidity(){
                         insertStock(self.currentStock.stockName, orderType: self.currentStock.orderType, quantity: Int64(self.currentStock.quantity), priceBought: Float(self.currentStock.price), worthBefore: getBuyingPower(), stopLoss: self.currentStock.stopLoss, status: "pendingBuy")
                     } else {
-                        alertWrongView.addButton("I'll Check", backgroundColor: Colors.teal, textColor: Colors.light, showDurationStatus: false, action: {})
+                        alertWrongView.addButton("I'll Check", backgroundColor: Colors.teal, textColor: Colors.light, showTimeout: nil, action: {})
                         _ = alertWrongView.showCustom("Wrong Price", subTitle: "You might have given wrong combination of price.Check Help to Know More.", color: Colors.teal, icon: UIImage())
                     }
                 })
@@ -113,14 +113,14 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             
             } else {
                 
-                alertView.addButton("Ok", backgroundColor: Colors.teal, textColor: Colors.light, showDurationStatus: false, action: {})
+                alertView.addButton("Ok", backgroundColor: Colors.teal, textColor: Colors.light, showTimeout: nil, action: {})
                 
                 _ = alertView.showCustom("Insufficient Funds", subTitle: "You have Insufficient Funds to Buy this Stock. Consider reducing the quantity, transfer funds to your virtual trading account or buying more virtual money in the market.", color: Colors.teal, icon: UIImage())
             }
             
         } else {
         
-            alertView.addButton("Ok", backgroundColor: Colors.teal, textColor: Colors.light, showDurationStatus: false, action: {})
+            alertView.addButton("Ok", backgroundColor: Colors.teal, textColor: Colors.light, showTimeout: nil, action: {})
         
             var subTitle = ""
         
@@ -202,7 +202,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.today.toggleCheckState()
         self.today.stateChangeAnimation = .expand(.fill)
         self.untilCancelled.stateChangeAnimation = .expand(.fill)
-        self.today.addTarget(self, action: #selector(markChanged(_:)), for: .allEvents)
+//        self.today.addTarget(self, action: #selector(markChanged(_:)), for: .allEvents)
         self.untilCancelled.addTarget(self, action: #selector(markChanged(_:)), for: .allEvents)
     }
     
@@ -351,7 +351,7 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     @objc func textFieldDidChange(_ textField: UITextField){
         
-        if textField == numberOfShares && numberOfShares.text?.characters.count != 0{
+        if textField == numberOfShares && numberOfShares.text?.count != 0{
             switch currentStock.orderType {
             // error occurred "fatal error: unexpectedly found nil while unwrapping an Optional value"
                 
@@ -398,12 +398,12 @@ class BuySellViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     // when current price reaches stop loss (buy) and again reaches the limit price it sells
                     if let stopLoss = self.stopLimitInput.text, let limitPrice = self.priceInput.text, let amount = self.numberOfShares.text{
                         if let stopLossFloat = Float(stopLoss), let limitPriceFloat = Float(limitPrice), let amountFloat = Float(amount), let priceFloat = Float(price){
-                            if stopLossFloat > priceFloat && limitPriceFloat < stopLossFloat{
-                                self.totalAmount.text = String(describing: (amountFloat * limitPriceFloat))
-                                currentStock.price = limitPriceFloat
-                                currentStock.stopLoss = stopLossFloat
-                                currentStock.quantity = Int(amountFloat)
-                            }
+                            
+                            let temp = amountFloat*limitPriceFloat
+                            self.totalAmount.text = String(format: "%.2f", arguments: [temp])
+                            currentStock.price = limitPriceFloat
+                            currentStock.stopLoss = stopLossFloat
+                            currentStock.quantity = Int(amountFloat)
                         }
                     }
                     break

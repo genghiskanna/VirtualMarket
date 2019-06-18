@@ -12,11 +12,12 @@ import UIKit
     
     
     fileprivate var labels = [UILabel]()
+    
     @objc let thumbView = UIView()
-    @objc var labelStrings = ["Stocks","Commodity"]
+    @objc var labelStrings = ["Stocks","Others"]
     var selectedIndex :Int?
     @objc var xSkip = 0
-    @objc var color = UIColor(red: 26.0/255.0, green: 128.0/255.0, blue: 168.0/255.0, alpha: 1.0)
+    @objc var color = Colors.lightTeal
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,33 +28,40 @@ import UIKit
         super.init(coder: aDecoder)
         setupViewAndLabels()
     }
-    
+
 
     
     @objc func setupViewAndLabels(){
+        // Gradient Layer
+        
         
         
         //setting up view
         self.backgroundColor = .clear
         self.layer.borderColor = self.color.cgColor
-        self.layer.borderWidth = 2.0
+        self.layer.borderWidth = 1.0
         self.layer.cornerRadius = 5.0
-        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: UIScreen.main.bounds.width - (self.frame.origin.x * 2), height: self.frame.height)
+        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width:302, height: self.frame.height)
 //        print(UIScreen.main.bounds.width - (self.frame.origin.x * 2))
         
         
         
         var i = 0
-        xSkip = Int(self.frame.size.width) / self.labelStrings.count
+        xSkip = 302 / self.labelStrings.count
         //setting up labels
         for labelText in labelStrings{
-            
             let label = UILabel(frame: CGRect(x: xSkip * i, y: 0, width: xSkip, height: Int(self.frame.height)))
             label.font = UIFont.systemFont(ofSize: 13.0)
             label.textAlignment = .center
             if i == 0{
-                self.thumbView.frame = label.frame
-                self.thumbView.backgroundColor = self.color
+                // Initializing the thumbView First
+                self.thumbView.frame = CGRect(x: 0, y: 0, width: self.frame.width / CGFloat(self.labelStrings.count), height: self.frame.height)
+                
+                let gradLayer = CAGradientLayer()
+                gradLayer.frame = self.thumbView.bounds
+                gradLayer.colors = [Colors.lightBlueSpecial.cgColor, Colors.lightTeal.cgColor]
+                gradLayer.cornerRadius = 5.0
+                self.thumbView.layer.addSublayer(gradLayer)
                 self.thumbView.layer.cornerRadius = 5.0
                 self.addSubview(thumbView)
                 label.textColor = .white
@@ -73,11 +81,6 @@ import UIKit
         
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//            }
-
     
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         xSkip = Int(self.frame.size.width) / self.labelStrings.count

@@ -8,38 +8,50 @@
 
 import UIKit
 import CoreData
-import iCarousel
-// URL
+import FeedKit
+
 
 var currentUrlForNews = "https://www.apple.com"
 
-class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDelegate, iCarouselDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+
+
+class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // DATA
-    
+    fileprivate var currentMeasure = 0
     fileprivate var pendingOrder = Array<Stock>()
+    fileprivate var smallGraphLayers = Array<CAGradientLayer>()
+    fileprivate var newsFeed:Array<RSSFeedItem> = []
+    fileprivate var currencies = ["EUR","AUD","CHF","JPY","QAR","GBP"]
+    fileprivate var currencyValues = [Float]()
+    fileprivate var smallForexGraphLayers = Array<CAGradientLayer>()
     
-    // Labels
-    @IBOutlet weak var netWorthLabel: UILabel!
-    @IBOutlet weak var netWorth: UILabel!
-    @IBOutlet weak var netWorthCent: UILabel!
-    @IBOutlet weak var change: UILabel!
     //Empty indicator lables
     @IBOutlet weak var pendingOrderEmpty: UILabel!
-    @IBOutlet weak var newsEmpty: UILabel!
+    
     @IBOutlet weak var portfolioEmpty: UILabel!
     
+    @IBOutlet weak var baseScrollView: UIScrollView!
     
-    
-    @IBOutlet weak var newsScrollView: UIScrollView!
     @IBOutlet weak var stockTableView: UITableView!
-    
-    
-    @IBOutlet weak var segmentedControl2: SegmentedControl!
-    @IBOutlet weak var carouselView: iCarousel!
+    @IBOutlet weak var newsTableView: UITableView!
     
     @IBOutlet weak var orderCollections: UICollectionView!
+    @IBOutlet weak var mostCollection: UICollectionView!
     
+    @IBOutlet weak var maskView: UIView!
+    @IBOutlet weak var navBar: CustomNavigationBar!
+    
+    
+    @IBOutlet weak var baseView: UIView!
+    //Private var
+    private var stocksUnderWatch = Array<Stock>()
+    
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var newsTableViewHeight: NSLayoutConstraint!
+    // Constraints
+    @IBOutlet weak var baseViewHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,56 +60,126 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.stockTableView.rowHeight = 70.0
         self.stockTableView.delegate = self
         self.stockTableView.dataSource = self
+        self.stockTableView.isScrollEnabled = false
         
-        self.carouselView.delegate = self
-        self.carouselView.dataSource = self
-        self.carouselView.type = .linear
+        self.newsTableView.rowHeight = 150.0
+        self.newsTableView.delegate = self
+        self.newsTableView.dataSource = self
+        self.newsTableView.isScrollEnabled = false
+        
+        self.mostCollection.backgroundColor = CurrentSettings.getTheme()["light"]
+        
+        self.mostCollection.dataSource = self
+        self.mostCollection.delegate = self
+        self.mostCollection.alwaysBounceVertical = true
         
         
-        self.orderCollections.backgroundColor = Colors.light
+        self.orderCollections.backgroundColor = CurrentSettings.getTheme()["light"]
         self.orderCollections.layer.cornerRadius = 30.0
         
-        
-
-        
+        self.maskView.backgroundColor = CurrentSettings.getTheme()["light"]
+        if AppDelegate.darkMode{
+            self.navigationItem.rightBarButtonItem?.setBackButtonBackgroundImage(UIImage(named: "searchHomeLight"), for: .normal, barMetrics: .default)
+            self.navigationItem.leftBarButtonItem?.setBackButtonBackgroundImage(UIImage(named: "account"), for: .normal, barMetrics: .default)
+        }
         
     }
     
     @objc func updatePendingOrder(){
-        pendingOrder = allPendingOrders(buy: true)
-        print(pendingOrder.count)
+        if let pendingTemp = allPendingOrders(buy: true){
+            pendingOrder = pendingTemp
+        }
+        
         
     }
     
     @objc func updateStocks(delay time: UInt32){
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .background).async {
             while true{
                 sleep(time)
+                if let temp = allGroupedStocksUnderWatch(){
+                    self.stocksUnderWatch = temp
+                }
                 self.stockTableView.reloadData()
             }
         }
     }
   
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setLabelColor()
-        setEmptyIndicator()
-        updatePendingOrder()
-        self.view.backgroundColor = CurrentSettings.getTheme()["light"]
-        let netWorth = String(getTotalStockValue() + getBuyingPower() + getAccountValue())
-        let sPrice = netWorth.components(separatedBy: ".")
-        self.netWorth.text = sPrice.first
-        self.netWorthCent.text = "." + sPrice[1]
         
-        // WARNING to change to show absolute price as well as percentage
-        self.change.text = String(describing: getROI())
-        updateStocks(delay: 60)
+        
+        
+//        DispatchQueue.global(qos: .userInteractive).sync {
+        
+        
+//            DispatchQueue.global(qos: .userInteractive).async {
+            
+                if let temp = stockNews(){
+                    if let temp2 = temp.items{
+                        self.newsFeed = temp2
+                    }
+                }
+//            }
+            
+//            DispatchQueue.global(qos: .userInteractive).async {
+                if let temp = allGroupedStocksUnderWatch(){
+                    self.stocksUnderWatch = temp
+                }
+//            }
+//            DispatchQueue.global(qos: .userInteractive).async {
+                if self.smallForexGraphLayers.count != self.currencies.count{
+                    var currencyQuery = ""
+                    for curr in self.currencies{
+                        currencyQuery += ("USD"+curr+",")
+                        self.smallForexGraphLayers.append(drawSmallGraph(stockOrCurrencyName: curr,isCurrency: true))
+                    }
+                    //remove the last comma
+                    currencyQuery.popLast()
+                    self.currencyValues = ForexDetails.getForexPrice(currency: currencyQuery)
+                }
+//            }
+        
+//        }
+//        DispatchQueue.global(qos: .userInteractive).sync {
+        
+            self.tableViewHeight.constant = CGFloat(70*stocksUnderWatch.count)
+            self.newsTableViewHeight.constant = CGFloat(100*(newsFeed.count+1))
+            print(self.newsTableViewHeight.constant)
+            self.baseScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.baseScrollView.frame.height+CGFloat(70*stocksUnderWatch.count)+CGFloat(100*(newsFeed.count+1)))
+            self.baseViewHeight.constant = self.baseScrollView.frame.height+CGFloat(70*stocksUnderWatch.count)+CGFloat(100*(newsFeed.count+1))
+            
+
+            setLabelColor()
+            setEmptyIndicator()
+            updatePendingOrder()
+            self.view.backgroundColor = CurrentSettings.getTheme()["lightBase"]
+            
+
+            // WARNING to change to show absolute price as well as percentage
+            
+            
+            updateStocks(delay: 60)
+            
+            
+            // update small graph
+            if smallGraphLayers.count != stocksUnderWatch.count{
+                for stock in stocksUnderWatch{
+                    smallGraphLayers.append(drawSmallGraph(stockOrCurrencyName: stock.name!, isCurrency: false))
+                }
+            }
+        
+//        }
+        
+        self.stockTableView.reloadData()
+        self.newsTableView.reloadData()
      }
     
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if CurrentSettings.getStatusBar() == "light"{
+        if AppDelegate.darkMode{
             return .lightContent
             
         } else {
@@ -109,38 +191,44 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     
-    // UIDesign
+    // MARK: UIDesign
     
     @objc func setLabelColor(){
         var color = Colors.dark
         if AppDelegate.darkMode{
             color = Colors.light
-            
         }
         
-        self.netWorthLabel.textColor = color
-        self.netWorth.textColor = color
-        self.netWorthCent.textColor = color
-        self.change.textColor = Colors.materialGreen
+        
+        
+        
+        self.portfolioEmpty.textColor = color
+        self.pendingOrderEmpty.textColor = color
+        
     }
     
     
     @objc func setEmptyIndicator(){
         if let stocks = allStocksUnderWatch(){
             if stocks.count == 0{
-                self.pendingOrderEmpty.isHidden = false
-                self.newsEmpty.isHidden = false
+                
                 self.portfolioEmpty.isHidden = false
             } else {
-                self.pendingOrderEmpty.isHidden = true
-                self.newsEmpty.isHidden = true
+                
                 self.portfolioEmpty.isHidden = true
             }
         }
+        let ordersS = allPendingOrders(buy:true)
+        if ordersS == nil{
+                self.pendingOrderEmpty.isHidden = true
+            } else {
+                self.pendingOrderEmpty.isHidden = false
+            }
+        
     }
     
     
-    // MARK Uitableview
+    // MARK: UITableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let stocks = allGroupedStocksUnderWatch() {
             if stocks.count == 0{
@@ -148,7 +236,13 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
                 return 0
             } else {
                 tableView.isHidden = false
-                return stocks.count
+                if tableView == stockTableView{
+                    return stocks.count
+                } else {
+                    print("ishk")
+                    print(newsFeed.count)
+                    return newsFeed.count
+                }
             }
         }
         return 1
@@ -159,16 +253,26 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as! StockTableViewCell
-        if let stocks = allGroupedStocksUnderWatch(){
-            let stock = stocks[indexPath.row]
-            if stock.status! == "following"{
-                cell.configureStockCell(stock.name!, shares: "Following")
-            } else {
-                cell.configureStockCell(stock.name!, shares: ("\(getGroupedStockQuantity(stockName: stock.name!)) SHARES"))
+        if tableView == stockTableView{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as! StockTableViewCell
+            if stocksUnderWatch.count != 0{
+                let stock = stocksUnderWatch[indexPath.row]
+                let graphLayer = smallGraphLayers[indexPath.row]
+                if stock.status! == "following"{
+                    cell.configureStockCell(stock.name!, shares: "Following",currentMeasure: currentMeasure,graphLayer: graphLayer)
+                } else {
+                    cell.configureStockCell(stock.name!, shares: ("\(getGroupedStockQuantity(stockName: stock.name!)) SHARES"),currentMeasure: currentMeasure,graphLayer: graphLayer)
+                }
             }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsHomeScreenTableViewCell
+            if newsFeed.count != 0{
+                cell.configureCell(newsFeed[indexPath.row],publisher: "Motley Fool")
+                cell.layer.backgroundColor = Colors.light.cgColor
+            }
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -181,85 +285,72 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! StockTableViewCell
-        cell.isSelected = false
-        cell.isHighlighted = false
-        
-    }
-    
-    
-    // MARK iCarousel
-    
-    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
-        
-        // News
-    
-        if let view = Bundle.main.loadNibNamed("QuickNewsView", owner: self, options: nil)?[0]{
-            let newsView = view as! QuickNewsView
-//            newsView.companyTitle.text = stockNameG
-            
-            newsView.newsTitle.text = AppDelegate.stockData["AAPL"]?.news[0].title
-            newsView.newsBody.text = AppDelegate.stockData["AAPL"]?.news[0].source
-            newsView.readMore.textColor = Colors.teal
-            
-            return view as! UIView
-        }
-        let view1 = UIView()
-        view1.backgroundColor = .red
-        return view1
-    }
-    
-    func numberOfItems(in carousel: iCarousel) -> Int {
-        if carousel == carouselView{
-            return AppDelegate.stockData.count
+        if tableView == stockTableView{
+            let cell = tableView.cellForRow(at: indexPath) as! StockTableViewCell
+            cell.isSelected = false
+            cell.isHighlighted = false
         }
         
-        return 0
     }
     
-    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
-        if let link = AppDelegate.news?.items?[index].link{
-            if link.contains("https"){
-                print(currentUrlForNews)
-                currentUrlForNews = link
-            } else {
-                currentUrlForNews = link.replacingOccurrences(of: "http", with: "https")
-                print(currentUrlForNews)
-            }
-            
-        }
-        performSegue(withIdentifier: "NewsSegue", sender: self)
-        
-    }
+    
     
    
-    // MARK UICollectionView
+    // MARK: UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "orderCollection", for: indexPath) as! OrderCollectionViewCell
+        if collectionView == orderCollections{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "orderCollection", for: indexPath) as! OrderCollectionViewCell
         
-        if pendingOrder[indexPath.row].status!.contains("ell"){
-            cell.configureCell(stockName: pendingOrder[indexPath.row].name!, orderType: pendingOrder[indexPath.row].orderType!,buyOrSell: "S")
+            if pendingOrder[indexPath.row].status!.contains("ell"){
+                cell.configureCell(stockName: pendingOrder[indexPath.row].name!, orderType: pendingOrder[indexPath.row].orderType!,buyOrSell: "S")
+            } else {
+                cell.configureCell(stockName: pendingOrder[indexPath.row].name!, orderType: pendingOrder[indexPath.row].orderType!,buyOrSell: "B")
+            }
+        
+            cell.layer.cornerRadius = 30.0
+            cell.backgroundColor = Colors.materialGreen
+        
+            return cell
         } else {
-            cell.configureCell(stockName: pendingOrder[indexPath.row].name!, orderType: pendingOrder[indexPath.row].orderType!,buyOrSell: "B")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topGainerStockCell", for: indexPath) as! ForexCollectionViewCell
+            print(currencies)
+            print(currencyValues)
+            print(smallForexGraphLayers.count)
+            print("allegra")
+            cell.configureCell(currencies[indexPath.row], currencyPrice: String(currencyValues[indexPath.row]), graphLayer: smallForexGraphLayers[indexPath.row])
+            
+            
+            return cell
         }
         
-        cell.layer.cornerRadius = 30.0
-        cell.backgroundColor = Colors.materialGreen
         
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(pendingOrder.count)
-        return pendingOrder.count
+        if collectionView == orderCollections {
+            return pendingOrder.count
+        } else {
+            return 0
+        }
+        
     }
     
     
     
+    //IBAction
     
     
+    @IBAction func changeMeasure(_ sender: Any) {
+        if currentMeasure != 2{
+            currentMeasure+=1
+        } else {
+            currentMeasure = 0
+        }
+        
+        self.stockTableView.reloadData()
+    }
 }
 
 
